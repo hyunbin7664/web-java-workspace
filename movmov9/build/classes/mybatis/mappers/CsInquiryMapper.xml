@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.movmov.mapper.CsInquiryMapper">
+
+	<!-- CS QnA -->
+
+	<!-- ResultMap 정의 (User, Category 포함) -->
+	<resultMap id="inquiryResultMap" type="Inquiry">
+		<id property="inquiryId" column="inquiry_id" />
+		<result property="title" column="inquiry_title" />
+		<result property="content" column="inquiry_content" />
+		<result property="createdDate" column="inquiry_created_date" />
+		<result property="answerDate" column="inquiry_answer_date" />
+		<result property="status" column="inquiry_status" />
+		<result property="isSecret" column="inquiry_is_secret" />
+		<result property="answerContent" column="inquiry_answer_content" />
+		
+		<association property="user" javaType="User">
+			<id property="id" column="inquiry_user_id" />
+			<result property="name" column="user_name" />
+		</association>
+
+		<association property="category" javaType="Category">
+			<id property="id" column="cat_id" />
+			<result property="name" column="cat_name" />
+		</association>
+	</resultMap>
+
+<!-- 모든 문의목록 조회-->
+<select id="getAllInquiries" resultMap="inquiryResultMap">
+  SELECT
+    i.inquiry_id,
+    i.inquiry_user_id,    
+    u.user_name,        
+    i.inquiry_cat_id,
+    c.cat_id,               
+    c.cat_name,           
+    i.inquiry_title,
+    i.inquiry_content,
+    i.inquiry_created_date,
+    i.inquiry_answer_date,
+    i.inquiry_status,
+    i.inquiry_is_secret,
+    i.inquiry_answer_content
+  FROM movmov_cs_user_inquiries i
+  JOIN movmov_users u ON u.user_id = i.inquiry_user_id
+  JOIN movmov_content_categories c ON c.cat_id = i.inquiry_cat_id
+  ORDER BY I.INQUIRY_CREATED_DATE DESC
+</select>
+
+
+	<!-- inquiry_id로 문의목록 조회 -->
+	<select id="getInquiryById" resultMap="inquiryResultMap"
+		parameterType="int">
+		SELECT
+		i.inquiry_id,
+		i.inquiry_user_id,
+		u.user_name,
+		i.inquiry_cat_id,
+		c.cat_id,
+		c.cat_name,
+		i.inquiry_title,
+		i.inquiry_content,
+		i.inquiry_created_date,
+		i.inquiry_answer_date,
+		i.inquiry_status,
+		i.inquiry_is_secret
+		FROM movmov_cs_user_inquiries i
+		JOIN movmov_users u ON u.user_id = i.inquiry_user_id
+		JOIN
+		movmov_content_categories c ON c.cat_id = i.inquiry_cat_id
+		WHERE
+		i.inquiry_id = #{inquiryId}
+	</select>
+
+	<!-- user_id로 문의목록 조회 -->
+	<select id="getInquiryByUserID" resultMap="inquiryResultMap"
+		parameterType="String">
+		SELECT
+		i.inquiry_id,
+		i.inquiry_user_id,
+		u.user_name,
+		i.inquiry_cat_id,
+		c.cat_id,
+		c.cat_name,
+		i.inquiry_title,
+		i.inquiry_content,
+		i.inquiry_created_date,
+		i.inquiry_answer_date,
+		i.inquiry_status,
+		i.inquiry_is_secret
+		FROM movmov_cs_user_inquiries i
+		JOIN movmov_users u ON u.user_id = i.inquiry_user_id
+		JOIN
+		movmov_content_categories c ON c.cat_id = i.inquiry_cat_id
+		WHERE
+		u.user_id = #{userId}
+	</select>
+	
+	<!-- user_id와 inquiry_id로 문의목록 조회 -->
+	<select id="getInquiryByUserIdAndInquiryId" parameterType="map" resultType="Inquiry">
+    SELECT
+        i.inquiry_id	as inquiryId,
+        u.user_id		as userId,
+        c.cat_id		as catId,		
+        i.inquiry_title,
+        i.inquiry_content,
+        i.inquiry_created_date,
+        i.inquiry_answer_date,
+        i.inquiry_status,
+        i.inquiry_is_secret
+    FROM movmov_cs_user_inquiries i, movmov_users u, movmov_content_categories c
+    WHERE u.user_id = #{userId}
+      AND i.inquiry_id = #{inquiryId} 
+      and i.cat_id = c.cat_id;
+</select>
+
+
+	<!-- 필터링된 문의목록 조회 -->
+	<!--
+		getFilteredInquiries(int categoryId, int status, String excludeSecret, String userId)
+			categoryId: 카테고리번호 (0이면 모든 카테고리)
+			status: 0: 전체 1 : 미답변, 2: 답변완료
+			excludeSecret: "exclude" : 비밀글 제외
+			userId: 나의 Q&A만 
+			
+		getFilteredInquiries(Map<String, Object> condition)
+			categoryId: 카테고리번호 (0이면 모든 카테고리)
+			status: 0: 전체 1 : 미답변, 2: 답변완료
+			excludeSecret: "exclude" : 비밀글 제외
+			userId: 나의 Q&A만 
+	
+	-->
+
+    <select id="getFilteredInquiries" parameterType="map" resultMap="inquiryResultMap">
+        SELECT
+        i.inquiry_id,
+		i.inquiry_user_id,
+		u.user_name,
+		i.inquiry_cat_id,
+		c.cat_id,
+		c.cat_name,
+		i.inquiry_title,
+		i.inquiry_content,
+		i.inquiry_created_date,
+		i.inquiry_answer_date,
+		i.inquiry_status,
+		i.inquiry_is_secret
+        FROM
+        	MOVMOV_CS_USER_INQUIRIES i
+        	, MOVMOV_CONTENT_CATEGORIES c
+        	, MOVMOV_USERS U
+        WHERE
+        	i.INQUIRY_CAT_ID = c.CAT_ID
+        	AND I.INQUIRY_USER_ID = U.USER_ID
+        <if test="categoryId != 0 and categoryId != null">
+            AND i.INQUIRY_CAT_ID = #{categoryId}
+        </if>
+        <if test="status != 0 and status != null">
+            AND i.INQUIRY_STATUS = #{status} 
+        </if>
+        <if test="excludeSecret == exclude">
+            AND i.INQUIRY_IS_SECRET = 0
+        </if>
+        <if test="userId != null">
+            AND i.INQUIRY_USER_ID = #{userId}
+        </if>
+        
+        ORDER BY i.inquiry_CREATED_DATE DESC
+        
+    </select>
+
+	<!-- void insertInquiry(Inquiry inquiry) -->
+	<insert id="insertInquiry" parameterType="Inquiry">
+		INSERT into MOVMOV_CS_USER_INQUIRIES 
+				(INQUIRY_ID
+				, INQUIRY_CAT_ID
+				, INQUIRY_USER_ID
+				, INQUIRY_TITLE
+				, INQUIRY_CONTENT
+				, INQUIRY_IS_SECRET)
+		VALUES(
+				INQUIRY_ID_SEQ.nextval
+			   , #{category.id}
+			   , #{user.id}
+			   , #{title}
+			   , #{content}
+			   , #{isSecret}
+			   )
+	</insert>
+</mapper>

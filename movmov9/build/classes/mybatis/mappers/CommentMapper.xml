@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.movmov.mapper.CommentMapper">
+
+	<!--
+		Comment getCommentByNo(int commentNo);
+	-->
+	<select id="getCommentByNo" resultMap="CommentResultMap">
+		select
+			C.comment_no
+		  , C.post_no
+		  , C.comment_content
+		  , C.comment_created_date
+		  , C.comment_updated_date
+		  , C.comment_parent_no
+		  , C.comment_is_deleted
+		  , C.comment_is_reported
+		  , C.comment_report_count
+		  , C.user_id			as user_id
+		  , U.user_nickname		as user_nickname
+		from movmov_community_comments C, movmov_users U
+		where
+			C.comment_no = #{commentNo}
+			AND C.user_id = U.user_id
+	</select>
+	
+	<resultMap type="Comment" id="CommentResultMap">
+		<id column="comment_no" property="no" />
+		<result column="post_no" property="postNo" />
+		<result column="comment_content" property="content" />
+		<result column="comment_created_date" property="createdDate" />
+		<result column="comment_updated_date" property="updatedDate" />
+		<result column="comment_is_deleted" property="isDeleted" />
+		<result column="comment_is_reported" property="isReported" />
+		<result column="comment_report_count" property="reportCount" />
+		<result column="comment_parent_no" property="parentCommentNo" />
+		<association property="user" javaType="User">
+			<id column="user_id" property="id" />
+			<result column="user_nickname" property="nickname" />
+		</association>
+	</resultMap>
+	
+	<!--
+		void insertComment(Comment comment);
+	-->
+	<insert id="insertComment" parameterType="Comment">
+		insert into movmov_community_comments
+		(comment_no
+		, post_no
+		, user_id
+		, comment_content
+		, comment_parent_no
+		, comment_created_date
+		, comment_updated_date)
+		values
+		(COMMENT_NO_SEQ.NEXTVAL
+		, #{postNo}
+		, #{user.id}
+		, #{content}
+		,
+		<choose>
+			<when test="parentCommentNo != 0">
+				#{parentCommentNo}
+			</when>
+			<otherwise>
+				NULL
+			</otherwise>
+		</choose>
+		, #{createdDate}
+		, #{updatedDate}
+		)
+	</insert>
+	
+	<!--
+		List<Comment> getCommentsByPostNo(int postNo);
+	-->
+	<select id="getCommentsByPostNo" resultMap="CommentResultMap">
+		SELECT
+			C.comment_no
+		  , C.post_no
+		  , C.comment_content
+		  , C.comment_created_date
+		  , C.comment_updated_date
+		  , C.comment_parent_no
+		  , C.comment_is_deleted
+		  , C.comment_is_reported
+		  , C.comment_report_count
+		  , C.user_id			as user_id
+		  , U.user_nickname		as user_nickname
+		FROM movmov_community_comments C, movmov_users U
+		WHERE
+			C.post_no = #{postNo}
+			AND C.user_id = U.user_id
+		ORDER BY
+			C.comment_created_date desc
+	</select>
+	
+	<!--
+		void updateComment(Comment comment);
+	-->
+	<update id="updateComment">
+		UPDATE movmov_community_comments
+		SET
+			comment_content = #{content}
+		  , comment_updated_date = #{updatedDate}
+		  , comment_is_deleted = #{isDeleted}
+		  , comment_is_reported = #{isReported}
+		  , comment_report_count = #{reportCount}
+		 WHERE
+		 	comment_no = #{no}
+	</update>
+	
+	<!--
+		int getTotalRows(Map<String, Object> condition);
+			condition: {
+				postNo: 게시글 번호,
+				topLevel: 원댓글 여부 (Y / N)
+			}
+	-->
+	<select id="getTotalRows" parameterType="map">
+		SELECT COUNT(*)
+		FROM MOVMOV_COMMUNITY_COMMENTS
+		WHERE
+			POST_NO = #{postNo}
+			AND comment_is_deleted = 'N'
+			<![CDATA[AND comment_report_count < 5]]>
+		<if test="topLevel != null and topLevel.equals('Y')">
+			AND COMMENT_PARENT_NO IS NULL
+		</if>
+	</select>
+	
+	<!--
+		List<Comment> getCommentsByCondition(Map<String, Object> condition);
+			condition: {
+				postNo: 게시글 번호,
+				topLevel: 원댓글 여부 (Y / N),
+				offset:오프셋값,
+				rows:행개수
+				}
+	-->
+	<select id="getCommentsByCondition" parameterType="map" resultMap="CommentResultMap">
+		SELECT
+			C.comment_no
+		  , C.post_no
+		  , C.comment_content
+		  , C.comment_created_date
+		  , C.comment_updated_date
+		  , C.comment_parent_no
+		  , C.comment_is_deleted
+		  , C.comment_is_reported
+		  , C.comment_report_count
+		  , C.user_id			as user_id
+		  , U.user_nickname		as user_nickname
+		FROM movmov_community_comments C, movmov_users U
+		WHERE
+			C.post_no = #{postNo}
+			AND C.user_id = U.user_id
+			AND C.comment_is_deleted = 'N'
+			<![CDATA[AND C.comment_report_count < 5]]>
+			<if test="topLevel != null and topLevel.equals('Y')">
+				AND C.comment_parent_no is null
+			</if>
+		ORDER BY
+			C.comment_created_date asc
+		<if test="offset != null">
+			OFFSET #{offset} rows
+		</if>
+		<if test="rows != null">
+			FETCH NEXT #{rows} rows only
+		</if>
+	</select>
+
+	<!--
+		int getCurrentCommentNo();
+	-->
+	<select id="getCurrentCommentNo">
+		SELECT COMMENT_NO_SEQ.CURRVAL
+		FROM DUAL
+	</select>
+	
+	<!--
+		void updateCommentReportCount(int commentNo);
+	-->
+	<update id="updateCommentReportCount">
+		UPDATE MOVMOV_COMMUNITY_COMMENTS
+		SET comment_report_count = (
+	   		SELECT COUNT(*)
+	   		FROM MOVMOV_COMMUNITY_REPORTS
+	   		WHERE report_content_no = #{commentNo}
+	   		)
+   	  	  , comment_is_reported = 'Y'
+		WHERE
+			comment_no = #{commentNo}
+	</update>
+	
+</mapper>
+ 

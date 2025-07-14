@@ -1,0 +1,157 @@
+.cart-container {
+	max-width: 1000px;
+	margin: 40px auto;
+	padding: 0 20px;
+}
+
+.cart-header, .cart-row {
+	display: grid;
+	grid-template-columns: 50px 2fr 1fr 1fr 1fr 70px;
+	align-items: center;
+	text-align: center;
+	gap: 12px;
+	padding: 12px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.cart-empty {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height: 200px;
+	gap: 12px;
+	padding: 12px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.cart-header {
+	font-weight: bold;
+	background-color: #f9f9f9;
+}
+
+.cart-row img {
+	width: 80px;
+}
+
+.cart-actions {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	margin-bottom: 80px;
+}
+
+.cart-actions button {
+	padding: 12px 24px;
+	font-size: 14px;
+	border: none;
+	border-radius: 6px;
+	background-color: #333;
+	color: white;
+	cursor: pointer;
+}
+
+.qty-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.qty-box button {
+	border: none;
+	background: none;
+	font-size: 14px;
+	padding: 8px 12px;
+	margin: 0 2px;
+	border-radius: 6px; `
+	cursor: pointer;
+	background-color: #FF74A8;
+	color: white;
+}
+
+.qty-box input {
+	width: 40px;
+	padding: 6px;
+	text-align: center;
+}
+
+.cart-remove {
+	color: #999;
+	cursor: pointer;
+}
+
+.cart-remove:hover {
+	color: red;
+}
+
+.unstyled-link {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.cart-summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 0;
+	margin: 40px 60px;
+}
+
+.price-info-left span {
+	margin: 4px 0;
+	font-size: 20px;
+	color: #555;
+}
+
+.price-info-right {
+	text-align: right;
+}
+
+.price-info-right span {
+	margin: 4px 0;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.btn-pay {
+	display: flex;
+	justify-content: center;
+	gap: 16px;
+	background-color: #FF498D;
+	color: white;
+	border: none;
+	padding: 12px 20px;
+	font-size: 16px;
+	border-radius: 6px;
+	cursor: pointer;
+	}
+.cart-toolbar {	
+	display: flex;
+    height: 30px;
+    justify-content: flex-end;
+    align-items: start;
+    margin: 0 0 8px 0;
+    padding-right: 12px;
+}
+
+.cart-actions {
+	display: flex;
+	gap: 8px;
+}
+
+.cart-actions button {
+	padding: 6px 12px;
+	font-size: 13px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #f6f6f6;
+	color: #333;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.cart-actions button:hover {
+	background-color: #eee;
+}
