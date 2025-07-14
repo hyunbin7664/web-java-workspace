@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>자바스크립트 배열</h1>
+	
+	<script type="text/javascript">
+		let arr1 = ["김유신", "강감찬", "이순신", "유관순"]
+		
+		// .splice(index, count, item1, item2, ..., itemN)
+		// index : 추가/삭제할 위치
+		// count : 삭제할 개수, 0으로 설정하면 삭제하지 않음
+		// item	 : 추가할 값
+		
+		// .splice(index, 1) : 지정된 위치의 값 하나 삭제하기
+		arr1.splice(2, 1);	// 2번째에 저장된 값 삭제
+		console.log(arr1);
+		
+		// .splice(index, 0, 값) : 지정된 위치에 값 추가하기
+		arr1.splice(2, 0, "홍길동");
+		console.log(arr1);
+	</script>
+</body>
+</html>

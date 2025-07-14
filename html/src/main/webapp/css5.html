@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		box-sizing: border-box;
+		border: 2px solid black;
+		width: 100px;
+		height: 100px;
+		background-color: red;
+	}
+	#box1 {
+		position: relative;
+		left: 100px;
+		top: 50px;
+	}
+	#box2 {
+		position: relative;
+		left: -50px;
+	}
+	
+	#box3 {
+		width: 200px;
+		height: 200px;
+		position: relative;
+		left: 20px;
+		top: 20px;
+	}
+	#box4 {
+		width: 50px;
+		height: 50px;
+		background-color: yellow;
+		position: absolute;
+		left: 40px;
+		top: 40px;
+	}
+	#box5 {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		background-color: green;
+	}
+</style>
+</head>
+<body>
+	<h1>CSS Position</h1>
+	
+	<h2>relative</h2>
+	<div id="box1"></div>
+	<div id="box2"></div>
+	
+	<h2>absolute</h2>
+	<div id="box3">
+		<div id="box4"></div>
+	
+	</div>
+	
+	<h2>fixed</h2>
+	<div id="box5"></div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type="text/css">
+	.top-news {
+		font-weight: bold;
+		color: red;
+	}
+	.normal-news {
+		color: gray;
+	}
+</style>
+<body>
+	<h1>id와 class 속성</h1>
+	<!-- 
+		id와 class
+		- id와 class는 모든 엘리먼트가 공통으로 가지는 속성이다.
+		
+		id 속성
+		- 엘리먼트를 고유하게 식별하기 위해서 사용하는 속성값이다.
+		- 하나의 html문서내에서 같은 id값을 갖는 엘리먼트는 없다.
+		
+		class 속성
+		- 같은 클래스 속성값을 갖는 엘리먼트는 같은 스타일이 적용되게 하기 위한 용도로 사용하는 속성이다.
+		- 하나의 html문서 내에서 같은 속성값을 갖는 엘리먼트는 여러개다.
+	-->
+	
+	<h2>id를 사용해서 엘리먼트에 고유한 식별값 설정하기</h2>
+	<form>
+		<div>
+		<label>이름</label> <input type="text" id="name-field" />
+		</div>
+		
+		<div>
+		<label>국어</label> <input type="text" id="kor-field" />
+		</div>
+		
+		<div>
+		<label>영어</label> <input type="text" id="eng-field" />
+		</div>
+		
+		<div>
+		<label>수학</label> <input type="text" id="math-field" />
+		</div>
+	</form>
+	
+	<h2>class를 사용해서 여러 엘리먼트에 같은 스타일 적용하기</h2>
+	<div>
+		<h3>뉴스 속보</h3>
+		<ol>
+			<li class="top-news">검색 순위가 가장 높은 뉴스</li>
+			<li class="normal-news">뉴스다.</li>
+			<li class="normal-news">뉴스다.</li>
+			<li class="normal-news">뉴스다.</li>
+			<li class="normal-news">뉴스다.</li>
+		</ol>
+	</div>
+	<div>
+		<h3>스포츠 뉴스 속보</h3>
+		
+		<ol>
+			<li class="top-news">검색 순위가 가장 높은 스포츠 뉴스</li>
+			<li>스포츠 뉴스다.</li>
+			<li>스포츠 뉴스다.</li>
+			<li>스포츠 뉴스다.</li>
+			<li>스포츠 뉴스다.</li>
+		</ol>
+	</div>
+	
+<script type="text/javascript">
+	// 이름 입력필드에 값 입력하기
+	// - 각 입력필드를 고유하게 식별해서 획득
+	//   document.getElementById("id")
+	document.getElementById("name-field")
+	document.getElementById("kor-field")
+	document.getElementById("eng-field")
+	document.getElementById("math-field")
+	</script>
+</body>
+</html>

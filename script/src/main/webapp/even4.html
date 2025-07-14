@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		border: 2px solid black;
+		padding: 30px;
+	}
+</style>
+</head>
+<body>
+	<h1>DOM 이벤트</h1>
+	
+	<h2>이벤트 버블링</h2>
+	<div onclick="fn4();">
+		<div onclick="fn3()">
+			<div onclick="fn2()">
+				<button onclick="fn1(event)">버튼</button>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		function fn1(event) { 
+			event.stopPropagation();
+			console.log("fn1실행됨") 
+		};
+		function fn2() { 
+			console.log("fn2실행됨") 
+		};
+		function fn3() { 
+			console.log("fn3실행됨") 
+		};
+		function fn4() { 
+			console.log("fn4실행됨") 
+		};
+	</script>
+</body>
+</html>

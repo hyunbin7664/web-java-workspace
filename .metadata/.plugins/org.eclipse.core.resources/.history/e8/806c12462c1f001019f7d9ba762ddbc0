@@ -1,0 +1,45 @@
+.goods-section {
+	padding: 60px 0;
+	background-color: #fafafa;
+}
+
+.section-inner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 60px;
+	box-sizing: border-box;
+}
+
+.section-inner h2 {
+	font-size: 22px;
+	margin-bottom: 20px;
+}
+
+.goods-list {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+.goods-card {
+	background-color: #fff;
+	border: 1px solid #eee;
+	border-radius: 12px;
+	padding: 16px;
+	text-align: center;
+}
+
+.goods-card img {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.goods-card h4 {
+	font-size: 16px;
+	margin: 12px 0 4px;
+}
+
+.goods-card p {
+	color: #FF498D;
+	font-weight: bold;
+}

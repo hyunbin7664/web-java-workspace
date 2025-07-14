@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.bookstore.mapper.OrderMapper">
+	<!--
+		void insertOrder(Order order);
+	-->
+	<insert id="insertOrder" parameterType="Order">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select BOOKSTORE_ORDERS_SEQ.nextval from dual
+		</selectKey>
+		
+		insert into bookstore_orders
+		(order_no, 
+		order_message, 
+		user_id, 
+		addr_no, 
+		book_total_price, 
+		delivery_fee, 
+		order_total_price, 
+		deposit_point)
+		values
+		(#{no}, 
+		#{message}, 
+		#{user.id}, 
+		#{address.no}, 
+		#{bookTotalPrice}, 
+		#{deliveryFee}, 
+		#{orderTotalPrice}, 
+		#{depositPoint})
+	</insert>
+	
+	<!--
+		void insertOrderItem(OrderItem orderItem);
+	-->
+</mapper>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>선택자 연습</h1>
+	
+	<div>
+		<h2>최상위 메뉴</h2>
+		<p>직원관리 기능이 제공되는 페이지입니다.</p>
+	</div>
+	
+	<div id="menu-box">
+		<h3>메뉴목록</h3>
+		<ul>
+			<li>직원관리</li>
+			<li>부서관리</li>
+			<li>업무관리</li>
+		</ul>
+	</div>
+	
+	<div id="employees">
+		<h3>참가 직원목록</h3>
+		<ul id="emp-list-1">
+			<li>홍길동</li>
+			<li>김유신</li>
+			<li>강감찬</li>
+			<li>이순신</li>
+		</ul>
+		
+		<h3>미참가 직원목록</h3>
+		<ul id="emp-list-2">
+			<li>홍길동</li>
+			<li>김유신</li>
+			<li>강감찬</li>
+			<li>이순신</li>
+		</ul>
+	</div>
+	
+	<div id="box-1">
+		<h3>직원현황</h3>
+		<p>직원현황을 확인하세요</p>
+		
+		<div>
+			<h4>이번달 입사자</h4>
+			<p>이번달에 3명이 신규입사하였습니다.</p>
+			<p>홍길동이 신규입사하였습니다.</p>
+			<p>김유신이 신규입사하였습니다.</p>
+			<p>강감찬이 신규입사하였습니다.</p>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		// 첫번째 div엘리먼트 안에 있는 li 엘리먼트 선택하기
+		$("#menu-box li").css("color", "red");
+		
+		// 메뉴목록에서 첫번재 메뉴 선택하기
+		$("#menu-box li:first").css("font-size", "20px");
+		
+		// 직원목록에서 세번째 직원인 강감찬 항목 삭제하기
+		$("#employees li:eq(2)").remove();
+		
+		// 미참가 직원목록에서 세번째 직원인 강감찬 항목 삭제하기
+		$("#emp-list-2 li:eq(2)").remove();
+		
+		// "직원현황을 확인하세요" 엘리먼트 선택하기			/// '>' 는 바로 아래 자식 노드만 선택
+		$("#box-1 > p").css("color", "green");
+		
+		$("#box-1 div p").css('color', 'yellow');	/// 자손 노드 변경
+	</script>
+</body>
+</html>

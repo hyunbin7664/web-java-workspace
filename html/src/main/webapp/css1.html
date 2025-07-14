@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/*태그 선택자*/
+	h1 { text-decoration: line-through; }
+	p {color: red; }
+	
+	/* 클래스 선택자 */
+	.title {background-color: yellow; }
+	
+	/* 아이디 선택자 */
+	#heading { font-size: 60px; }
+	
+	/* 전체 선택자 */
+	* {
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	}
+	* {
+		border: 1px solid black;
+	}
+</style>
+</head>
+<body>
+	<h1>기본 선택자</h1>
+	
+	<h2 id="heading">기본 선택자 연습</h2>
+	<p class="title">기본 선택자 연습입니다.</p>
+	<p class="title">기본 선택자 연습입니다.</p>
+	<p>기본 선택자 연습니다.</p>
+	<p>기본 선택자 연습니다.</p>
+	<p>기본 선택자 연습니다.</p>
+	
+	
+<!-- 
+	기본 선택자		|
+	----------------------
+	태그 선택자		| 태그명  {속성명: 값;} 지정된 모든 태그를 선택
+	클래스 선택자	| .클래스 {속성명: 값;} 지정된 클래스가 적용된 태그를 전부 선택
+	아이디 선택자	| #아이디 {속성명: 값;} 지정된 아이디가 적용된 태그를 선택
+	전체 선택자		| *     {속성명: 값;} 모든 요소를 선택
+
+ -->
+</body>
+</html>

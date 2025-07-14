@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	div {
+		border: 1px solid black;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작하기</h1>
+	
+	<h3>엘리먼트 추가하기</h3>
+	
+
+	<div id="box-1">
+		<!-- before -->
+		<div id="box-2">
+			<!-- prepend -->
+			<p>내용1</p>
+			<!-- append -->
+		</div>
+		<!-- after -->
+	</div>
+	
+	<div>
+		<button id="btn-append">append</button>
+		<button id="btn-prepend">prepend</button>
+		<button id="btn-after">after</button>
+		<button id="btn-before">before</button>
+	</div>
+	
+	<script type="text/javascript">
+		$("#btn-append").click(function(){
+			$("#box-2").append("<p>append</p>");
+		});
+		$("#btn-prepend").click(function(){
+			$("#box-2").prepend("<p>prepend</p>");
+			
+		});
+		$("#btn-after").click(function(){
+			$("#box-2").after("<p>after</p>");
+			
+		});
+		$("#btn-before").click(function(){
+			$("#box-2").before("<p>before</p>");
+			
+		});
+	
+	</script>
+</body>
+</html>

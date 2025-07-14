@@ -1,0 +1,55 @@
+/* setting.css - 설정 페이지 전용 스타일 */
+
+body {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.setting-wrapper {
+  max-width: 28rem;
+  margin: 2.5rem auto;
+}
+
+.setting-wrapper h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.setting-box {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.setting-box > div,
+.setting-box > a {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.setting-box > div:hover,
+.setting-box > a:hover {
+  background-color: #f9fafb;
+}
+
+.setting-box .section-title {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.setting-box .text-red-600 {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.return-home {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.return-home a {
+  color: #2563eb;
+  text-decoration: underline;
+}

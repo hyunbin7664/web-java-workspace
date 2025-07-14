@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작</h1>
+	
+	<h3>학생이름</h3>
+	<ul id="list-students">
+		<li>김유신</li>
+		<li>홍길동</li>
+		<li>강감찬</li>
+		<li>유관순</li>
+	</ul>
+	
+	<script type="text/javascript">
+		// li 엘리먼트 전부 삭제하기 - 묵시적 반복이 사용된다.
+//		$("#list-students li").remove();
+		
+		// li 엘리먼트의 스타일 변경하기 - 묵시적 반복이 사용된다.
+//		$("#list-students li").css('color', 'red');
+		
+/*		$("#list-students li").each(function(index, el) {
+			// console.log(index, el);
+			let name = $(el).text();
+			console.log(name);
+		});*/
+		
+		$("#list-students li").each(function() {
+			// console.log(this)
+			let name = $(this).text();
+			console.log(name);
+		});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type="text/css">
+	p {
+		border: 1px solid red;
+		padding: 10px;
+		
+		}
+	a:link, a:visited {
+	border: 1px solid black;
+	}
+</style>
+<body>
+	<h1>블록 엘리먼트와 인라인 엘리먼트</h1>
+	
+	<h2>블록 레벨 엘리먼트</h2>
+	<!-- 
+		블록 레벨 엘리먼트
+		- 항상 새로운 줄에서 시작한다.
+		- 사용 가능한 최대 너비를 가진다.(기본설정값)
+		- 너비를 지정할 수 있다. 
+		- 내부 컨텐츠 정렬(왼쪽, 가운데, 오른쪽)할 수 있다.
+		
+		h1 ~ h6, p, div, ul, ol, li, dl, dt, dd, table, 
+		form, fieldset, address, section, article, aside, nav, header, footer
+		
+	 -->
+	<p>p는 블록 레벨 엘리먼트다.</p>
+	<p style="width: 75%">p는 블록 레벨 엘리먼트다.</p>
+	<p style="width: 50%">p는 블록 레벨 엘리먼트다.</p>
+	<p style="text-align: left">p는 블록 레벨 엘리먼트다.</p> 
+	<p style="text-align: center">p는 블록 레벨 엘리먼트다.</p>
+	<p style="text-align: right">p는 블록 레벨 엘리먼트다.</p>
+	
+	<h2>인라인 레벨 엘리먼트</h2>
+	<!-- 
+		- 새로운 줄에서 시작하지 않을 수 있다.
+		- 컨텐츠를 표시하는데 필요한 만큼의 너비만 가진다.
+		- 너비를 지정해도 적용되지 않는다.
+		- 내부 컨텐츠를 정렬할 수 없다.
+		- 인라인 레벨 엘리먼트는 항상 블록 레벨 엘리먼트로 감싸자.
+		- 일반적으로 인라인 레벨 엘리먼트는 블록 레벨 엘리먼트를 자식 엘리먼트로 포함할 수 없다.
+		
+		- a, img, strong, em, small, mark, del, ins, sub, sup, code, kbd, samp, var, 
+		  abbr, cite, dfn, q, time, b, i, u, span, input, select, textarea, button, label
+	-->
+	<p>
+		<a href="">다음</a>
+		<a href="">네이버</a>
+		<a href="">구글</a>
+		<a href="">야후</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>GROUVY 회원가입</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+body {
+	background: #f7f7f7;
+}
+
+.auth-card {
+	width: 100%;
+	max-width: 370px;
+	border-radius: 16px;
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+	padding: 2.5rem 2rem 2rem 2rem;
+	background: #fff;
+	margin: 80px auto;
+}
+
+.auth-logo {
+	display: block;
+	margin: 0 auto 0 auto;
+	width: 120px;
+}
+
+.auth-title {
+	font-size: 1.3rem;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+.auth-link {
+	color: #00c3aa;
+	cursor: pointer;
+	text-decoration: underline;
+	font-size: 0.95rem;
+}
+
+.btn-grouvy {
+	background-color: #e6002d; /* 붉은 계열 색상 */
+	border-color: #e6002d;
+	color: #fff;
+	font-weight: 500;
+}
+</style>
+</head>
+<body>
+	<div class="auth-card">
+		<img src="grouvy_logo.jpg" alt="GROUVY 로고" class="auth-logo">
+		<div class="auth-title">회원가입</div>
+		<form action="login.html" method="get">
+			<div class="mb-2">
+				<label for="signupName" class="form-label small">이름</label>
+				<input type="text" class="form-control" id="signupName" required>
+			</div>
+			<div class="mb-2">
+				<label for="signupEmail" class="form-label small">이메일</label>
+				<input type="email" class="form-control" id="signupEmail" required>
+			</div>
+			<div class="mb-2">
+				<label for="signupPhone" class="form-label small">전화번호</label>
+				<input type="tel" class="form-control" id="signupPhone" required>
+			</div>
+			<div class="mb-2">
+				<label for="signupPw" class="form-label small">비밀번호</label> <input
+					type="password" class="form-control" id="signupPw" required>
+			</div>
+			<button type="submit" class="btn btn-grouvy w-100 mb-2">회원가입</button>
+		</form>
+		<div class="text-center mt-2">
+			<a href="login.html" class="auth-link">로그인으로 돌아가기</a>
+		</div>
+	</div>
+</body>
+</html>

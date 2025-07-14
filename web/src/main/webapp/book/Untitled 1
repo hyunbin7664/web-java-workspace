@@ -1,0 +1,297 @@
+   
+   
+   
+   > 도서관리 어플리케이션 <
+   
+   java resources/libraries/web app libraries/ojdbc11.jar 추가
+   
+   src/main/webapp/book
+   		add.jsp/detail.jsp
+   1. src/main/webapp/book
+   	list.jsp
+
+   2. java resources/ dao, util, vo 패키지 생성
+   
+   3. java resources/kr.co.book.vo/Book.java
+   	생성자, getter&setter 생성 tostring 재정의
+
+   4. connectionutil.java 추가
+   5. bookdao.java 작성
+   6. list.jsp 수정
+   7. 
+   
+   > 도서목록 조회작업 <
+   1. 도서정보를 표현하는 vo 클래스를 작성하였다.
+   		public class Book {
+   			...
+   		}
+   2. tb_books 테이블에 대한 CRUD 작업을 수행하는 DAO 클래스를 작성하였다.
+   		public class BookDao {
+   			...
+   		}
+   3. BookDao 클래스에 전체 도서목록 조회 기능을 구현하였다.
+   		public class BookDao {
+   			public List<Book> getAllBooks() {...}
+   		}
+
+   4. book/list.jsp에서 전체 도서목록 조회기능을 실행해서 도서목록을 조회하고 
+      JSP 페이지에서 반복문으로 출력하여 동적 컨텐츠를 생성해서 응답으로 보냄.
+   <%
+   	BookDao bookDao = new BookDao();
+   	List<Book> books = bookDao.getAllBooks();
+   %>
+   
+   <table>
+   <% for (Book book : books) { %>
+   	<tr>
+   		<td><%= book.getTitle() %></td>
+   		<td><%= book.getPublisher() %></td>
+   	</tr>
+   <% } %>
+   </table>
+   
+   > 신규 도서 등록 작업 <
+   1. book/form.jsp를 작성하고, 폼과 폼 입력요소를 추가하였다.
+   2. BookDao 클래스에 신규 도서등록기능을 추가한다.
+   	public class BookDao {
+   		public List<Book> gettAllBooks() {
+   			...
+   		}
+   		public void insertBook(Book book) {
+   			...
+   		}
+   	}
+	
+   3. book/add.jsp를 작성한다.
+	- 폼데이터로 전달받은 요청파라미터 값을 조회한다.
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		...
+	- 조회된 요청파라미터값을 VO객체에 담는다
+		Book book = new Book();
+		book.setTitle(title);
+		book.setAuthor(author);
+		...
+		
+	- 신규도서 등록기능을 실행하고, VO객체를 인자로 전달해서 테이블에 저장시킨다.
+	BookDao bookDao = new BookDao();
+	bookDao.insetBook(book);
+	
+	- 웹브라우저에게 list.jsp를 재요청하게 하는 응답을 보낸다.
+	response.sendRedirect("list.jsp")
+	
+	
+	> 폼입력값 유효성 검증하기 <
+	- 제출버튼을 클릭했을 때 입력요소에 입력된 값을 검증하고, 
+	  유효한 값이 입력되었을때만 서버에 제출되도록 하는 것
+	  
+	  <form method="post" action="add.jsp" id="form-register-book">
+	  	<input type="text" name="title" id="book-title" />
+	  	<input type="text" name="author" id="book-author" />
+	  	...
+	  	<button type="submit">등록</button>
+	  </form>
+	  
+	  1. 입력폼의 입력값은 <form>에서 submit 이벤트가 발생하면 서버로 제출된다.
+	  	- <form>태그는 submit 이벤트가 발생하면 폼입력값을 서버로 제출하는 것이 기본동작이다.
+	  	- 폼 입력값이 유효하지 않을 때는 기본동작이 실행되지 않도록 한다.
+	  	  (폼 입력값이 서버로 제출되지 않는다.)
+	  2. <form>의 submit 이벤트는 <form>내부의 <button>을 클릭하면 발생한다.
+	  3. 폼 입력값을 검증할 때는 <form>의 submit 이벤트를 처리 대상으로 사용한다.
+	  
+	  $("#form-register-book").submit(function() {
+	  	let title = $("input[name=title]").val();
+	  	if (title == "") {	// 폼입력값 유효성 체크
+	  		alert("제목은 필수입력값입니다.");
+	  		return false;
+	  	}
+	  	...
+	  	...
+	  	return true;
+	  });
+	  
+	  * jQuery의 이벤트핸들러 함수는 boolean 값을 반환할 수 있다.
+	  * jQuery의 이벤트핸들러 함수가 false값을 반환하면, 이벤트버블링이 차단된다.
+	  	- event.stopPropagation()를 실행한 것과 같은 효과가 있다.
+	  * jQuery의 이벤트핸들러 함수가 false값을 반환하면, 엘리먼트에서 해당 이벤트와 관련된 기본동작이 있으면 
+	    그 기본동작이 실행되지 않는다.
+	    - event.preventDefault()룰 실행한 것과 같은 효과가 있다.
+	    
+	    
+	> 도서 상세 정보 조회 <
+	1. 도서 목록페이지에서 첵제목을 클릭해 상세정보페이지를 요청한다.
+		http://localhost:8080/web/book/detail.jsp?bno=10001
+	
+	2. BookDao에 도서상세정보를 제공하는 기능을 작성한다.
+		public class BookDao {
+			public List<Book> getAllBooks() {...}
+			public void insertBook(Book book) {...}
+			public Book getBookByNo(int no) {...}
+		}
+	
+	3. book/detail.jsp를 작성한다.
+		- list.jsp에서 detail.jsp를 요청할 때 쿼리스트링으로 전송한 요청파라미터값을 조회한다.
+		  int bookNo = StringUtils.strToInt(request.getParameter("bno"));
+		- BookDao객체를 생성하고, BookDao객체의 책정보 조회기능을 실행해 도서정보를 획득한다.
+		  BookDao bookDao = new BookDao();
+		  Book book = bookDao.getBookByNo(bookNo);
+		- 조회된 책정보를 HTML에 표현해 응답으로 제공한다.
+		
+		
+	> 도서정보 삭제 <
+	1. 도서 상세페이지에서 삭제링크를 클릭해서 book/delet.jsp를 요청한다.
+		http://localhost:8080/web/book/delete.jsp?bno=10001
+	
+	2. BookDao에 삭제기능 작성하기
+		public class BookDao {
+			public List<Book> getAllBooks() {...}
+			public void insertBook(Book book) {...}
+			public Book getBookByNo(int no) {...}
+			public void deleteBookByNo(int no) {...}
+		}
+		
+	3. delete.jsp를 작성한다.
+		- 쿼리스트링을 전달된 요청파라미터값을 조회한다.
+		  int bookNo = StringUtils.strToInt(request.getParameter("bno"):
+		
+		- BookDao객체를 생성하고, 삭제기능을 실행한다.
+		  BookDao bookDao = new BookDao();
+		  bookDao.deleteBookByNo(bookNo);
+		
+		- 웹브라우저에게 list.jsp를 재요청하라는 응답을 보낸다.
+		  response.sendRedirect("list.jsp");
+		  
+	
+	> 링크 혹은 버튼 클릭시 confirm창을 표시해서 사용자의 확인 받기 <
+	
+	<a href="delete.jsp?bno=10000 id="link-del-book">삭제</a>
+	- 링크(<a>태그)는 click이벤트가 발생하면 지정된 url을 요청하는 것이 기본동작이다.
+	- 링크에서 click이벤트가 발생하면 confirm창을 표시한다.
+	* confirm창에서 확인을 클릭하면 true가 반환되고, 취소를 클릭하면 false가 반환된다.
+	* 확인을 클릭했으면 기본동작이 실행되게 한다.
+	  (이벤트핸들러 함수가 true를 반환하게 한다.)
+	* 취소를 클릭했으면 기본동작이 실행되지 않게 한다.
+	  (이벤트핸들러 함수가 false를 반환하게 한다.)
+	$("#link-del-book").click(function() {
+		let result = confirm("삭제하시겠습니까?");
+		return result;
+	});
+	
+	<button id="btn-del-book">삭제</button>
+	- 버튼에서 click이벤트가 발생하면 confirm창을 표시한다.
+	  * confirm창에서 확인을 클릭하면 true가 반환되고, 취소를 클릭하면 false가 반환된다.
+	  * 확인을 클릭했으면 delete.jsp를 요청하게 한다.
+	    (주소창의 주소를 변경해준다.)
+	$("#btn-del-book").click(function() {
+		let result = confirm("삭제하시겠습니까?");
+		if (result) {
+			let bookNo = $(this).attr("data-book-no");
+			location.href = "delete.jsp?no=" + bookNo;
+		}
+	});
+	
+	
+	> 도서정보 수정 <
+	1. 도서 상세페이지에서 수정링크를 클릭해서 book/modify.jsp를 요청한다.
+		/book/modify.jsp?bno=xxxxx
+	
+	2. modify.jsp(수정폼을 제공하는 JSP)를 작성한다.
+		- 수정폼을 작성한다.
+		- 쿼릿트링으로 전달된 요청파라미터값을 조회한다.
+			int bookNo = StringUtils.strToInt(request.getParameter("bno"));
+		- BookDao객체를 생성하고, 조회기능을 실행한다.
+			BookDao bookDao = new BookDao();
+			Book book = bookDao.getBookByNo(bookNo);
+		- 조회된 책정보를 수정폼의 입력필드에 표시한다.
+			<int type="text" name="title" value="<%=book.getTitle() %>" />
+			<textarea name="summary" rows="5"><%=book.getSummary() %></textarea>
+	
+	3. modify.jsp를 작성한다.
+		- 요청파라미터로 전달된 값을 조회한다.
+			name		value
+			-------------------------------
+			bno			수정할 책번호
+			title		제목
+			author		저자
+			publisher	출판사
+			price		가격
+			stock		재고수량
+			pubDate		출판일
+			summary		설명
+		
+		- BookDao객체를 생성하고 테이블에 저장된 수정전 책정보를 조회한다.
+		  BookDao bookDao = new BookDao();
+		  Book book = bookDao.getBookByNo(bno);
+		  
+		- 조회된 수정 전 책정보에 요청파라미터를 대입해서 변경된 책정보를 반영시킨다.
+			book.setTitle(수정된제목);
+			book.setAuthor(수정된저자);
+			
+		- Book 객체의 updatedBook(Book book) 메서드를 실행해서 테이블에 반영시킨다.
+			book.updated(book);
+			
+	> 도서목록 조회 작업 - 페이징 추가 <
+	
+	FETCH를 이용한 페이징처리
+		SELECT 컬럼, 컬럼, 컬럼
+		FROM 테이블
+		WHERE 조건식
+		ORDER BY 정렬기준
+		OFFSET 오프셋값 ROWS
+		FETCH NEXT 개수 ROWS ONLY
+	
+	1. 페이징 처리에 필요한 정보 결정하기
+	  - 요청한 페이지번호에 맞는 데이터 조회해서 출력하기
+		- 한번에 표시할 데이터행의 개수
+			int rows = 10;
+		- 표시할 페이지의 번호
+			int pageNo = 1;
+		- 오프셋 값
+			int offset = (pageNo - 1)*10;
+		
+		// 현재 페이지번호에 맞는 책목록 조회하기
+		public List<Book> getBooks(int offset, int rows) {
+			String sql = """
+				select *
+				from tb_books
+				order by book_no desc
+				offset ? rows
+				fetch next ? rows only
+				""";
+		}
+	  - 페이지네이션 표시하기
+	  	- 전체 데이터개수 조회하기
+	  		int totalRows = bookDao.getTotalRows();
+	  	- 전체 페이지개수 계산하기
+	  		int totalPages = (int) (Math.ceil((double)totalRows/rows))
+	  		
+	  		int totalPages = Math.ceilDiv(totalRows/rows);	-- 18버전부터 가능
+	  	
+	  	- 페이지네이션 표시하기
+	  	<%
+	  		for ( int num=1; num<=totalPages; num++) {
+	  	%>
+	  		<li><a href="list.jsp?page=<%=num %"><%=num %></a></li>
+	  	<%
+	  		}
+	  	%>
+	  		
+	  		// 총 책 정보 행의 개수를 조회한다.
+	  		public int getTotalRows() {
+	  			String sql = """
+	  				select count(*)
+	  				from tb_books
+	  			""";
+	  		}
+		
+		
+	
+
+> 500 에러 <
+ : 프로젝트 전부 remove
+-> clean
+-> clean tomcat work directory
+-> project/clean
+-> add 후 재실행 
+ 
+   

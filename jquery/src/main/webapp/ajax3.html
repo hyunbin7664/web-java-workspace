@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	form {
+		margin-bottom: 20px;
+	
+	}
+	table {
+		width: 100%;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>AJAX 연습</h1>
+	
+	<form>
+		<label>날짜: </label>
+		<input type="date" name="date" />
+		<button type="button" id="btn-get-boxoffice">조회</button>
+	</form>
+	
+	<table id="table-box-office">
+		<colgroup>
+			<col width="10%">
+			<col width="*">
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>순위</th>
+				<th>제목</th>
+				<th>개봉일</th>
+				<th>매출액</th>
+				<th>누적관객수</th>
+			</tr>
+		</thead>	
+		<tbody></tbody>
+	</table>
+	<script type="text/javascript">
+		$("#btn-get-boxoffice").click(function(){
+			let date = $("input[name='date']").val();
+			date = date.replaceAll("-", "");
+			
+			
+			// 요청 URL
+			let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
+			// 서버로 보내는 값
+			let param = {key:"726512c39b94fec57ffea53d92b955ff", targetDt:date};
+			// ajax 처리하기
+			$.getJSON(url, param, function(result){
+				let arr = result.boxOfficeResult.dailyBoxOfficeList;
+				let $tbody = $("#table-box-office tbody").empty();
+				
+				for (let item of arr) {
+					
+					let tr = `
+						<tr>
+							<td>${item.rank}</td>
+							<td>${item.movieNm}</td>
+							<td>${item.openDt}</td>
+							<td>${item.salesAcc}</td>
+							<td>${item.audiAcc}</td>
+						</tr>
+					`;
+					
+					$tbody.append(tr);
+				}
+			});
+		});
+	</script>
+</body>
+</html>

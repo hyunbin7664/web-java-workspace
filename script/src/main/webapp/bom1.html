@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#box {
+		width: 200px;
+		height: 200px;
+		background-color: black;
+	}
+</style>
+</head>
+<body>
+	<h1>브라우저 내장 객체</h1>
+	
+	<div id="box"></div>
+	
+	<button onclick="stopTimer()">중지</button>
+	
+	<script type="text/javascript">
+		/*
+			브라우저 객체 모델(BOM, Browser Object Model)
+			- 브라우저 객체 모델(BOM)은 브라우저의 구성요소를 객체로 표현한 것이다.
+			- BOM은 브라우저의 구성요소를 표준화(객체의 이름, 객체의 속성과 기능)하고, 
+			  각 브라우저 개발사가 BOM을 구현하게 함으로써 
+			  브라우저의 종류에 상관없이 브라우저 구성요소를 동일한 방법으로
+			  자바스크립트 개발자가 제어하게 하는 것이 목적이다.
+			
+			브라우저 객체 모델의 연관관계
+			window
+			|--- location
+			|--- history
+			|--- navigator
+			|--- screen
+			
+			Window 객체
+			+ 브라우저의 현재 열려 있는 창을 표현하는 객체다.
+			+ 다른 BOM객체를 포함하고 있는 컨테이너 객체다.
+			+ 브라우저 기반의 자바스크립트에 최상위 전역 객체다.
+			  (Window 객체의 모든 속성과 모든 메소드를 자유롭게 사용 가능하다.)
+			+ 주요 속성(프로퍼티)
+				location
+					- Location 객체가 연결되어 있다.
+				history
+					- History 객체가 연결되어 있다.
+				screen
+					- Screem 객체가 연결되어 있다.
+				navigator
+					- Navigator 객체가 연결되어 있다.
+				document
+					- Document 객체가 연결되어 있다.
+				console
+					- Console 객체가 연결되어 있다.
+				localStorage
+					- key/value쌍의 값을 저장하는 브라우저의 저장소
+					- 브라우저를 꺼도 값이 유지된다.
+				sessionstorage
+					- key/value쌍의 값을 저장하는 브라우저의 저장소
+					- 브라우저 탭을 닫으면 값이 사라진다.
+			+ 주요 기능(메소드)
+				alert("메세지")
+					- 경고장을 표시한다.
+					- [확인]버튼이 있다.
+				confirm("메세지")
+					- 확인창을 표시한다.
+					- [확인], [취소] 버튼이 있다.
+					- [확인]버튼을 클릭하면 true값을 반환한다.
+				open(url, name, specs)
+					- 새 창 혹은 새 탭을 연다.
+					- 주요 매개변수
+						url : 새 창 혹은 새 탭에 표시할 페이지의 URL
+						name : 새 창 혹은 새 탭의 이름, 생략가능
+						specs : 새 창 혹은 새 탭의 규격
+				setTimeout(함수, 밀리초)
+					- 함수를 지정된 시간이 경과된 후에 실행한다.
+				setInterval(함수, 밀리초)
+					- 함수를 지정된 시간을 간격으로 계속 실행한다.
+				clearTimeout(타이머아이디)
+					- setTimeout()으로 실행한 타이머를 종료시킨다.
+				clearInterval(타이머아이디)
+					- setInterval()으로 실행한 타이머를 종료시킨다.
+		*/
+		
+		// 경고창 표시하기
+//		alert("이름은 필수입력값입니다.");
+		
+		// 확인창 표시하기
+/*		let result = confirm("주문하시겠습니까?");
+		console.log("confirm창의 결과", result);
+		if (result) {
+			console.log("결제 단계로 이동합니다.")
+		} else {
+			console.log("주문을 취소합니다.")
+		}
+*/
+		
+		// 새 창 혹은 새 탭 표시하기
+		
+		// 새 탭에 표시하기
+//		open("http://www.daum.net");
+		
+		// 새 창에 표시하기
+//		open("http://www.daum.net", "daum", "width=500, height=400, titlebar=yes");
+		
+		// 3초 경과 후 표시되는 경고창
+/*		setTimeout(function() {
+			alert("3초가 경과된 후에 표시된 경고창")
+		}, 3000);
+*/
+		
+		// 2초마다 박스의 배경색 변경하기
+/*		let div = document.querySelector("#box");
+		let timerId = setInterval(function() {
+			let r = Math.ceil(Math.random()*256)
+			let g = Math.ceil(Math.random()*256)
+			let b = Math.ceil(Math.random()*256)
+			
+			div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+		}, 2000);
+		
+		function stopTimer() {
+			clearInterval(timerId);
+		}
+*/
+		
+		// localStorage 저장소에 값 저장하기
+		// 저장하기
+		// 		localStorage.setItem(name, value)
+		// 조회하기
+		// 		localStorage.getItem(name)
+		// 삭제하기
+		// 		localStorage.removeItem(name)
+		
+//		localStorage.setItem("username", "hong");
+//		localStorage.setItem("address", "종로구");
+		
+		// 조회하기
+		let name = localStorage.getItem("username");
+		let addr = localStorage.getItem("address");
+		console.log(name, addr);
+		
+	</script>
+</body>
+</html>

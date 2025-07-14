@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>영화 게시판</title>
+  <link rel="stylesheet" href="style/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .board-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.03);
+    }
+
+    .board-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .board-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #FF498D;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-bar input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      width: 200px;
+    }
+
+    .search-bar button {
+      padding: 8px 14px;
+      background-color: #FF498D;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .board-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .board-table thead {
+      background-color: #fce4ef;
+      color: #FF498D;
+      font-weight: bold;
+    }
+
+    .board-table th,
+    .board-table td {
+      text-align: center;
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .board-table tbody tr:hover {
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+
+    .post-category {
+      display: inline-block;
+      font-size: 13px;
+      background-color: #ffe3ef;
+      color: #FF498D;
+      padding: 2px 6px;
+      border-radius: 6px;
+      margin-right: 5px;
+    }
+
+    .write-btn {
+      margin-top: 20px;
+      float: right;
+      background-color: #FF498D;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .write-btn:hover {
+      background-color: #e93d7c;
+    }
+
+    .pagination {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .pagination button {
+      border: none;
+      background: none;
+      font-size: 14px;
+      padding: 8px 12px;
+      margin: 0 2px;
+      color: #666;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .pagination button.active {
+      background-color: #FF498D;
+      color: white;
+    }
+
+    .pagination button:hover {
+      background-color: #ffd2e4;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="resources/logo-primary.png" alt="" class="logo-img"></div>
+        <nav>
+          <ul>
+            <li>홈</li>
+            <li>영화</li>
+            <li>커뮤니티</li>
+            <li>매거진</li>
+            <li>Mov Commerce</li>
+          </ul>
+        </nav>
+        <div class="client">
+          <button class="btn-signin">로그인</button>
+          <button class="btn-signup">회원가입</button>
+        </div>
+      </header>
+      
+  <div class="board-container">
+    <div class="board-header">
+      <div class="board-title">🎬 영화 게시판</div>
+      <div class="search-bar">
+        <input type="text" placeholder="제목 또는 작성자 검색">
+        <button>검색</button>
+      </div>
+    </div>
+
+    <table class="board-table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일</th>
+          <th>조회수</th>
+          <th>댓글</th>
+          <th>추천</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>101</td>
+          <td><span class="post-category">[후기]</span> 전공의생활 2화 진짜 최고</td>
+          <td>movielover</td>
+          <td>2025-04-21 14:32</td>
+          <td>132</td>
+          <td>4</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>100</td>
+          <td><span class="post-category">[질문]</span> 오늘 뭐 볼까요?</td>
+          <td>영화덕후</td>
+          <td>2025-04-20 11:05</td>
+          <td>98</td>
+          <td>2</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>99</td>
+          <td><span class="post-category">[스포일러]</span> 듄2 후기 (주의)</td>
+          <td>듄매니아</td>
+          <td>2025-04-19 17:22</td>
+          <td>261</td>
+          <td>6</td>
+          <td>30</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="write-btn">✍️ 글쓰기</button>
+
+    <div class="pagination">
+      <button>&laquo;</button>
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>&raquo;</button>
+    </div>
+  </div>
+</body>
+
+<footer class="footer">
+  <div class="footer-wrapper">
+    <div class="footer-top">
+      <p class="rating-info">
+        지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+      </p>
+      <div class="language-select">
+        <select>
+          <option>한국어</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">서비스 이용약관</a>
+      <span>|</span>
+      <a href="#"><strong>개인정보 처리방침</strong></a>
+      <span>|</span>
+      <a href="#">회사 안내</a>
+    </div>
+
+    <div class="footer-contact">
+      <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+      <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+      <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+    </div>
+
+    <div class="footer-company">
+      <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+      <p>사업자 등록 번호 211-210-61239</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="copyright"> © Copy Right MovMov 2025 Inc. All rights reserved.</span>
+      <div class="footer-socials">
+        <span><i class="fa-brands fa-facebook"></i></span>
+        <span><i class="fa-brands fa-x-twitter"></i></span>
+        <span><i class="fa-brands fa-instagram"></i></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>

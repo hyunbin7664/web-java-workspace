@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	div {
+		border: 1px solid black;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작</h1>
+	
+	<div id="box-1">
+		<h3>엘리먼트 삭제하기</h3>
+		<p>내용1</p>
+		<p>내용2</p>
+		
+		<div id="box-2">
+			<p>내용3</p>
+			<p>내용4</p>
+			<p>내용5</p>
+		</div>
+	</div>
+	
+	<button id="btn-remove">삭제하기</button>
+	<button id="btn-empty">비우기</button>
+	
+	<script type="text/javascript">
+		/*
+			$(선택자).remove()
+				- 선택자로 선택된 엘리먼트를 삭제한다.
+			$(선택자).empty()
+				- 선택자로 선택된 엘리먼트의 내부를 비운다.
+		*/
+		$("#btn-remove").click(function(){
+			$("#box-2").remove();
+		});
+		$("#btn-empty").click(function(){
+			$("#box-2").empty();
+		});
+	</script>
+	
+</body>
+</html>

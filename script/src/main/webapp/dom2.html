@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>문서 객체 모델</h1>
+	
+	<h2>엘리먼트 찾고 조작하기</h2>
+	<p id="el-1">첫번째 단락</p>
+	
+	<div id="link-box">
+		<a href="http://www.daum.net" title="다음 링크">다음</a>
+		<a href="http://www.naver.com" title="네이버 링크">네이버</a>
+		<a href="http://www.google.com" title="구글 링크">구글</a>
+	</div>
+	
+	<div>
+		<img src="resources/images/book1.png" 
+		id="img-2"
+		alt="지능의 신경과학">
+		<button onclick="changeBook1()">지능의 신경과학</button>
+		<button onclick="changeBook2()">듀얼 브레인</button>
+	</div>
+	
+	<script type="text/javascript">
+		// 1. 엘리먼트의 텍스트 컨텐츠 조작하기
+		let el1 = document.getElementById("el-1");
+		
+		// 엘리먼트객체.textContent - 텍스트컨텐츠를 제공하는 프로퍼티다.
+		// 텍스트컨텐츠 조회하기
+		let text1 = el1.textContent;
+		console.log("텍스트 컨텐츠: ", text1);
+		
+		// 텍스트컨텐츠 조회하기
+		el1.textContent = "변경된 텍스트 컨텐츠";
+		
+		// 2. 엘리먼트의 속성 조작하기
+		// 엘리먼트.getAttribute(name)				- 지정된 이름의 속성값 조회
+		// 엘리먼트.setAttribute(name, value)		- 속성 변경 혹은 추가
+		// 엘리먼트.removeAttribute(name)			- 지정된 이름의 속성 삭제
+		function changeBook1() {
+			let el = document.getElementById("img-2");
+			
+			el.setAttribute("src", "resources/images/book1.png");
+			el.setAttribute("alt", "지능의 신경과학");
+		}
+
+		function changeBook2() {
+			let el = document.getElementById("img-2");
+			
+			// 엘리먼트.setAttribute(name, value)
+			el.setAttribute("src", "resources/images/book2.jpeg");
+			el.setAttribute("alt", "듀얼 브레인");
+			
+		}
+		
+		let nodeList = document.querySelectorAll("#link-box a");
+		// nodeList ---> [<a>, <a>, <a>]
+		for (let index=0; index < nodeList.length; index++) {
+			let link = nodeList[index];
+			// link ---> 엘리먼트객체(<a>)
+			 
+			let href = link.getAttribute("href");
+			console.log(href);
+		}
+		
+	</script>
+</body>
+</html>

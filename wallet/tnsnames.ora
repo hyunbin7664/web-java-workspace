@@ -1,0 +1,12 @@
+movmovdb_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g09279e2a77cb7b_movmovdb_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+movmovdb_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g09279e2a77cb7b_movmovdb_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+movmovdb_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g09279e2a77cb7b_movmovdb_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+movmovdb_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g09279e2a77cb7b_movmovdb_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+movmovdb_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g09279e2a77cb7b_movmovdb_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+

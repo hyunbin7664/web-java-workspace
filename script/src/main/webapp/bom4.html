@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>브라우저 객체 모델</h1>
+	
+	<script type="text/javascript">
+		/*
+			Screen 객체
+			- 사용자의 모니터 정보를 제공하는 객체다.
+			- 속성
+				.width
+					모니터의 너비
+				.height
+					모니터의 높이
+		*/
+		
+//		console.log("스크린 너비", screen.width);
+//		console.log("스크린 높이", screen.height);
+
+		// 팝업창을 스크린의 정중앙에 위치시키기
+		let screenWidth = screen.width;
+		let screenHeight = screen.height;
+		let width = 500;
+		let height = 300;
+		
+		let popupleft = (screenWidth - width)/2;
+		let popuptop = (screenHeight - height)/2;
+		
+		window.open("bom3.html", "bom", 
+				`left=${popupleft}, top=${popuptop}, width=${width}, height=${height}`);
+		// /`` 기호주의하기!!!!!
+	</script>
+</body>
+</html>

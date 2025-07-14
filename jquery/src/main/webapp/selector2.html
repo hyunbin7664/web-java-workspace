@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>선택자 연습</h1>
+	
+	<p>내용입니다.</p>
+	<p>내용입니다.</p>
+	<p>내용입니다.</p>
+	<p>내용입니다.</p>
+	<p>내용입니다.</p>
+	<p>내용입니다.</p>
+	<p>내용입니다.</p>
+	
+	<script type="text/javascript">
+		/*
+			:first		- 첫번째 엘리먼트
+			:last		- 마지막번째 엘리먼트
+			:eq(index)	- index번째 엘리먼트(단, index는 0부터 시작)
+			:lt(index)	- index번째 이전 엘리먼트
+			:gt(index)	- index번째 이후 엘리먼트
+			:even		- 짝수번째 엘리먼트
+			:odd		- 홀수번째 엘리먼트
+		*/
+	
+		// p중에서 첫번째 엘리먼트 선택하기
+		$('p:first').text("첫번째 내용입니다.");
+		
+		// p중에서 두번째 엘리먼트 선택하기
+		$('p:eq(1)').text("두번째 내용입니다.");
+		
+		// p중에서 네번째 이후 엘리먼트 선택하기
+		$('p:gt(3)').text("네번째 이후 내용입니다.");
+		
+		// p중에서 마지막번쨰 엘리먼트 선택하기
+		$('p:last').text("마지막번째 내용입니다.");
+		
+		// p중에서 짝수번째 엘리먼트 선택하기
+		$('p:even').css("color", 'red');
+		
+		// p중에서 홀수번쨰 엘리먼트 선택하기
+		$('p:odd').css("color", 'green');
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>브라우저 객체 모델</h1>
+	
+	<button onclick="prev()">이전</button>
+	<button onclick="next()">다음</button>
+	
+	<script type="text/javascript">
+	
+		function prev() {
+			history.back();
+		}
+		
+		function next() {
+			history.forward();
+		}
+		
+		/*
+			History 객체
+			- 사이트 방문 이력정보를 관리하는 객체다.
+			- 속성
+				.length
+					- 저장된 방문이력정보 개수를 반환한다.
+			- 메소드
+				.back()
+					- 이전 페이지로 이동한다.
+				.forward()
+					- 다음 페이지로 이동한다.
+				.go(숫자)
+					- 지정된 숫자에 해당하는 단계의 페이지로 이동한다.
+		*/
+	</script>
+</body>
+</html>

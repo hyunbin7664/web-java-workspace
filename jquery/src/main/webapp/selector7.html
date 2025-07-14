@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>선택자 연습</h1>
+	
+	<form>
+		<div>
+			<p>개인정보 활용에 동의하시겠습니까?(필수)</p>
+			<input type="checkbox" name="ch1" checked>
+			<p>개인정보 활용에 동의하시겠습니까?(필수)</p>
+			<input type="checkbox" name="ch1" checked>
+			<p>개인정보 활용에 동의하시겠습니까?(필수)</p>
+			<input type="checkbox" name="ch1">
+		</div>
+		<div>
+			<p>개인정보를 마케팅 이용에 사용하는 것을 동의하겠습니까?(선택)</p>
+			<input type="checkbox" name="ch2">
+			<p>개인정보를 제3자에게 제공하는 것을 동의하시겠습니까?(선택)</p>
+			<input type="checkbox" name="ch2">
+		</div>
+	</form>
+	
+	<script type="text/javascript">
+		// 체크박스를 전부 선택하기
+		let len1 = $(":checkbox").length;
+		console.log("체크박스 개수", len1);
+		
+		// 체크박스중에서 체크된 것 선택하기
+		let len2 = $(":checkbox:checked").length;
+		console.log("체크된 체크박스 개수", len2);
+		
+		// 체크박스중에서 name이 ck1인 것 중에서 체크된 것 선택하기
+		let len3 = $(":checkbox[name='ch1']:checked").length;
+		if (len3 < 3) {
+			alert("필수 항목을 전부 체크하세요");
+		}
+	</script>
+</body>
+</html>

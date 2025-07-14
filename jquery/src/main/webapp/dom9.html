@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	table {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	th, td {
+		padding: 10px;
+		text-align: center;
+	}
+	.highlight {
+		background-color: dodgerblue;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작</h1>
+	
+	<table id="table-carts">
+		<thead>
+			<tr>
+				<th>순번</th>
+				<th>상품명</th>
+				<th>가격</th>
+				<th>수량</th>
+				<th>주문액</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>10</td>
+				<td>색연필</td>
+				<td><strong>3,000</strong> 원</td>
+				<td><strong>1</strong> 개</td> 
+				<td><strong>0</strong> 원</td> 
+				<td><button>삭제</button></td>
+			</tr>
+			<tr>
+				<td>20</td>
+				<td>지우개</td>
+				<td><strong>700</strong> 원</td>
+				<td><strong>3</strong> 개</td>
+				<td><strong>0</strong> 원</td> 
+				<td><button>삭제</button></td>
+			</tr>
+			<tr>
+				<td>30</td>
+				<td>수채화 물감</td>
+				<td><strong>43,000</strong> 원</td>
+				<td><strong>1</strong> 개</td>
+				<td><strong>0</strong> 원</td> 
+				<td><button>삭제</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>총 주문금액</td>
+				<td colspan="7"><strong id="total-price">0</strong> 원</td>
+				
+			</tr>
+		</tfoot>
+	</table>
+	
+	<script type="text/javascript">
+		/*
+		각 주문 상품의 구매가격을 계산해서 표시하기
+		1. 주문상품정보가 표시된 행을 전부 선택한다.
+			$("#table-carts tbody tr")
+		2. 선택된 행을 반복처리한다.
+			$("#table-carts tbody tr").each(function() {})
+		3. 각 행마다 실행할 작업을 함수에 구현한다.
+			
+		*/
+		$("#table-carts tbody tr").each(function() {
+			// 현재 반복처리 중인 <tr>엘리먼트를 this로 전달받아서 
+			// jQuery 집합객체로 변환한 후 변수에 대입한다.
+			let $tr = $(this);
+			
+			// 해당 행($tr)에서 가격과 수량을 조회한다.
+			let text1 = $tr.find("td:eq(2) strong").text().replaceAll(',', "");
+			let text2 = $tr.find("td:eq(3) strong").text();
+			
+			// 조회된 값을 숫자로 변환한다.
+			let price =parseInt(text1);
+			let amount =parseInt(text2);
+			
+			// 구매가격을 계산한다.
+			let orderPrice = price*amount;
+			
+			// 구매가격을 표시한다.
+			$tr.find("td:eq(4) strong").text(orderPrice.toLocaleString());
+		});
+		
+		// 총 구매금액을 계산해서 표시하는 함수
+		function refreshTotalPrice(){
+			let totalPrice = 0;
+			
+			$("#table-carts tbody td:nth-child(5) strong").each(function() {
+				let text = $(this).text().replaceAll(',', "");
+				totalPrice += parseInt(text);
+			});
+			
+			$("#total-price").text(totalPrice.toLocaleString());
+		}
+		
+		refreshTotalPrice();
+		
+		// 삭제버튼을 클릭하면 실행되는 이벤트핸들러 함수 등록
+		// 이벤트핸들러함수에서는 행을 삭제하고, 
+		// 총구매금액 계산하고 표시하는 함수를 호출한다.
+		$("#table-carts tbody button").click(function() {
+			$(this).parents("tr").remove();
+			refreshTotalPrice();
+		})
+	</script>
+</body>
+</html>

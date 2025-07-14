@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>마이페이지</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	color: #333;
+	padding-top: 80px;
+}
+
+.navbar-brand {	
+	color: #e6002d !important;
+	font-size: 1.5rem;
+}
+
+.nav-item {
+	padding-right: 1rem;
+}
+
+.navbar-nav .nav-link.active {
+	font-weight: bold;
+	color: #e6002d !important;
+}
+
+.logo-img {
+	width: 160px;
+	height: 50px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.navbar .container-fluid {
+	padding-right: 2rem;
+}
+
+.container {
+	display: flex;
+	padding: 20px;
+}
+
+.sidebar {
+	width: 200px;
+	background-color: white;
+	border-radius: 12px;
+	padding: 15px;
+	margin-right: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+	margin-top: 0;
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar ul li {
+	margin: 10px 0;
+}
+
+.sidebar ul li a {
+	color: #333;
+	text-decoration: none;
+}
+
+.sidebar ul li a.active, .sidebar ul li a:hover {
+	color: #1abc9c;
+	font-weight: bold;
+}
+
+.main-content {
+	flex: 1;
+	background-color: white;
+	padding: 50px 20px;
+	text-align: center;
+	border-radius: 12px;
+	padding: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	/* margin: 0 auto; */
+}
+
+.main-content img {
+	width: 60px;
+	margin-bottom: 20px;
+}
+
+.main-content p {
+	font-size: 14px;
+	color: #555;
+}
+
+.main-content input[type="password"] {
+	padding: 8px;
+	width: 220px;
+	margin-top: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 13px;
+}
+
+.main-content div {
+	margin-top: 15px;
+}
+
+.main-content button {
+	padding: 8px 16px;
+	margin: 0 5px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 13px;
+}
+
+.confirm-btn {
+	background-color: #4CAF50;
+	color: #fff;
+}
+
+.cancel-btn {
+	background-color: #ccc;
+	color: #333;
+}
+
+footer {
+	text-align: center;
+	padding: 15px;
+	font-size: 12px;
+	color: #999;
+	border-top: 1px solid #eee;
+	margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center" href="index.html"> 
+				<span class="logo-crop"> 
+					<img src="grouvy_logo.jpg" alt="GROUVY 로고" class="logo-img">
+				</span>
+			</a>
+			<ul class="navbar-nav mb-2 mb-lg-0">
+				<li class="nav-item"><a class="nav-link active" href="#">전자결재</a></li>
+				<!-- 커서 active-->
+				<li class="nav-item"><a class="nav-link" href="#">업무문서함</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">업무 관리</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">쪽지</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">메신저</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">조직도</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">일정</a></li>
+				<li class="nav-item"><a class="nav-link" href="admin_dashboard.html">관리자</a></li>
+			</ul>
+			<div class="d-flex align-items-center">
+				<a href="mypage.html" >
+					<img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fs3.orbi.kr%2Fdata%2Ffile%2Funited2%2F6cc64e06aa404ac3a176745b9c1d5bfa.jpeg&type=sc960_832"
+							alt="프로필" class="rounded-circle" width="36" height="36">
+				</a>
+				<a href="mypage.html" class="ms-2 text-decoration-none text-dark">마이페이지</a>
+			</div>
+		</div>
+	</nav>
+
+	<main>
+		<div class="container">
+			<!-- 좌측 nav -->
+			<div class="sidebar">
+				<h3>마이페이지</h3>
+				<ul>
+					<li><a href="mypage_profile.html">개인 정보</a></li>
+					<li><a href="mypage_attendance.html">근태 관리</a></li>
+					<li><a href="mypage_loginlog.html">로그인 기록</a></li>
+					<li><a href="mypage_settings.html">페이지 설정</a></li>
+				</ul>
+			</div>
+
+			<!-- 마이페이지 > 근태관리 -->
+			<div class="main-content">
+				<h4 class="mb-4">근태 관리</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>날짜</th>
+							<th>출근</th>
+							<th>퇴근</th>
+							<th>근무 상태</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>2025-07-08</td>
+							<td>09:00</td>
+							<td>18:10</td>
+							<td>정상</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h5 class="mt-4">연차 사용 현황</h5>
+				<p>총 연차: 15일 / 사용: 5일 / 잔여: 10일</p>
+
+				<h5 class="mt-4">연장/야근 기록</h5>
+				<ul>
+					<li>2025-07-01 : 2시간</li>
+					<li>2025-07-03 : 1시간 30분</li>
+				</ul>
+
+				<h5 class="mt-4">월별 근태 통계</h5>
+				<p>출근일수: 20일 / 지각: 2회 / 조퇴: 1회 / 연장시간: 12시간</p>
+			</div>
+
+		</div>
+
+	</main>
+
+	<footer>© 2025 그룹웨어 Corp.</footer>
+
+</body>
+</html>

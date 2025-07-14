@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	.box{
+		padding: 20px;
+		margin-bottom: 20px;
+	}
+	.primary{
+		background-color: dodgerblue;
+		color: white;
+	}
+	.secondary {
+		background-color: lightgray;
+		color: black;
+	}
+	.warning {
+		background-color: tomato;
+		color: white;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작</h1>
+	
+	<div id="box-1" class="box primary">
+		<h3>제목</h3>
+		<p>내용입니다.</p>
+	</div>
+	
+	<div class="box">
+		<button id="btn-1">secondary 스타일 적용</button>
+		<button id="btn-2">warning 스타일 적용</button>
+		<button id="btn-3">primary 스타일 토글하기</button>
+	</div>
+	
+	<script type="text/javascript">
+		$("#btn-1").click(function(){
+			$("#box-1").removeClass("primary")
+						.removeClass("warning")
+						.addClass("secondary");
+		});
+		$("#btn-2").click(function(){
+			$("#box-1").removeClass("primary")
+						.removeClass("secondary")
+						.addClass("warning");
+		});
+		$("#btn-3").click(function(){
+			$("#box-1").toggleClass("primary");
+		});
+		
+		
+	</script>
+</body>
+</html>

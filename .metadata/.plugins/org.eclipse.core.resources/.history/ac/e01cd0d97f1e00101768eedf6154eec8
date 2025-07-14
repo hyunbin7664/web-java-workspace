@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovShop</title>
+  <link rel="stylesheet" href="style/watcha.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+  .goods-section {
+  padding: 40px 0;
+  background-color: #fafafa;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.more-link {
+  font-size: 14px;
+  color: #999;
+  text-decoration: none;
+}
+
+.more-link:hover {
+  color: #FF498D;
+}
+
+.goods-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  justify-content: center;  /* ✅ 카드도 가운데 정렬 */
+}
+
+.goods-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+</style>
+
+
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="resources/logo-primary.png" alt="MovShop 로고" class="logo-img"></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="category.html">카테고리</a></li>
+        <li><a href="cart.html">장바구니</a></li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-signin">로그인</button>
+      <button class="btn-signup">회원가입</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="goods-section">
+      <div class="section-header">
+        <h2>📸 포토카드</h2>
+        <a href="category-photocard.html" class="more-link">더보기 &gt;</a>
+      </div>
+      <div class="goods-list">
+        <div class="goods-card"><img src="resources/photocard1.jpg" alt="포토카드1"><h4>도영 포토카드</h4><p>₩3,000</p></div>
+        <div class="goods-card"><img src="resources/photocard2.jpg" alt="포토카드2"><h4>호시 포토카드</h4><p>₩3,000</p></div>
+        <div class="goods-card"><img src="resources/photocard3.jpg" alt="포토카드3"><h4>아이유 포토카드</h4><p>₩3,000</p></div>
+      </div>
+    </section>
+
+    <section class="goods-section">
+      <div class="section-header">
+        <h2>🎟️ 관람권</h2>
+        <a href="category-ticket.html" class="more-link">더보기 &gt;</a>
+      </div>
+      <div class="goods-list">
+        <div class="goods-card"><img src="resources/ticket1.jpg" alt="티켓1"><h4>일반 관람권</h4><p>₩13,000</p></div>
+        <div class="goods-card"><img src="resources/ticket2.jpg" alt="티켓2"><h4>Dolby Cinema</h4><p>₩18,000</p></div>
+        <div class="goods-card"><img src="resources/ticket3.jpg" alt="티켓3"><h4>프라이빗 관람권</h4><p>₩50,000</p></div>
+      </div>
+    </section>
+
+    <section class="goods-section">
+      <div class="section-header">
+        <h2>🍿 스낵/음료</h2>
+        <a href="category-snack.html" class="more-link">더보기 &gt;</a>
+      </div>
+      <div class="goods-list">
+        <div class="goods-card"><img src="resources/combo1.jpg" alt="콤보1"><h4>라지콤보</h4><p>₩17,000</p></div>
+        <div class="goods-card"><img src="resources/combo2.jpg" alt="콤보2"><h4>더블콤보</h4><p>₩22,000</p></div>
+        <div class="goods-card"><img src="resources/combo3.jpg" alt="콤보3"><h4>러브콤보</h4><p>₩32,000</p></div>
+      </div>
+    </section>
+
+    <section class="goods-section">
+      <div class="section-header">
+        <h2>🎁 굿즈</h2>
+        <a href="category-goods.html" class="more-link">더보기 &gt;</a>
+      </div>
+      <div class="goods-list">
+        <div class="goods-card"><img src="resources/goods1.jpg" alt="굿즈1"><h4>쉬리 포스터</h4><p>₩10,000</p></div>
+        <div class="goods-card"><img src="resources/goods2.jpg" alt="굿즈2"><h4>기생충 피규어</h4><p>₩25,000</p></div>
+        <div class="goods-card"><img src="resources/goods3.jpg" alt="굿즈3"><h4>해리포터 머그컵</h4><p>₩12,000</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <p class="rating-info">
+          지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+        </p>
+        <div class="language-select">
+          <select>
+            <option>한국어</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">서비스 이용약관</a>
+        <span>|</span>
+        <a href="#"><strong>개인정보 처리방침</strong></a>
+        <span>|</span>
+        <a href="#">회사 안내</a>
+      </div>
+
+      <div class="footer-contact">
+        <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+        <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+        <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+      </div>
+
+      <div class="footer-company">
+        <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+        <p>사업자 등록 번호 211-210-61239</p>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="copyright"> © Copy Right MovMov 2025 Inc. All rights reserved.</span>
+        <div class="footer-socials">
+          <span><i class="fa-brands fa-facebook"></i></span>
+          <span><i class="fa-brands fa-x-twitter"></i></span>
+          <span><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

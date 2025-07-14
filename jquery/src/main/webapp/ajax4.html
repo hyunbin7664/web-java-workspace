@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	form {
+		margin-bottom: 20px;
+	
+	}
+	table {
+		width: 100%;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>AJAX 연습</h1>
+	
+	<form>
+		<label>날짜: </label>
+		<input type="date" name="date" />
+		<button type="button" id="btn-get-boxoffice">조회</button>
+	</form>
+	
+	<table id="table-box-office">
+		<colgroup>
+			<col width="10%">
+			<col width="*">
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>순위</th>
+				<th>제목</th>
+				<th>개봉일</th>
+				<th>매출액</th>
+				<th>누적관객수</th>
+			</tr>
+		</thead>	
+		<tbody></tbody>
+	</table>
+	<script type="text/javascript">
+		$("#btn-get-boxoffice").click(function(){
+			let date = $("input[name='date']").val();
+			date = date.replaceAll("-", "");
+			
+			// ajax 처리하기
+			/*
+				$.ajax({
+					// 요청방식을 정의한다.
+					type: "get", 
+					// 요청 URL을 정의한다.
+					url: "http://......", 
+					// 서버는 보내는 데이터를 정의한다.
+					data: {name:value, name:value}, 
+					// 응답데이터의 형식을 정의한다.
+					dataType: "json", 
+					// 성공적인 응답이 왔을 때 실행되는 함수를 정의한다.
+					success: function(result) {}, 
+					// 요청처리가 실패했을 때 실행되는 함수를 정의한다.
+					error: function() {}
+				})
+				
+			*/
+
+			let $tbody = $("#table-box-office tbody").empty();
+			
+			$.ajax({
+				type:"get", 
+				url:"https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json", 
+				data: {key:"726512c39b94fec57ffea53d92b955ff", targetDt:date}, 
+				dataType: "json", 
+				success: function(result) {
+					let arr = result.boxOfficeResult.dailyBoxOfficeList;
+					for(let item of arr){
+						let tr = `
+							<tr>
+								<td>${item.rank}</td>
+								<td>${item.movieNm}</td>
+								<td>${item.openDt}</td>
+								<td>${item.salesAcc}</td>
+								<td>${item.audiAcc}</td>
+							</tr>
+						`;
+						
+						$tbody.append(tr);
+					}
+				}, 
+				error: function() {
+					alert("일별 박스오피스 조회 중 오류가 발생하였습니다.");
+				}
+			
+			})
+			})
+	</script>
+</body>
+</html>

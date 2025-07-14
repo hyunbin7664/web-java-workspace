@@ -1,0 +1,72 @@
+<%@page import="kr.co.bookstore.util.MybatisUtils"%>
+<%@page import="kr.co.bookstore.mapper.OrderMapper"%>
+<%@page import="kr.co.bookstore.vo.Order"%>
+<%@page import="kr.co.bookstore.util.StringUtils"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	/*
+		요청정보
+			- 요청 URL
+				order/order.jsp
+			- 요청 파라미터
+				name				value
+				--------------------------------------------
+				addrNo				배송지번호
+				totalProductPrice	총상품금액
+				deliveryFee			배송비
+				totalOrderPrice		총주문금액
+				bookNo				책번호
+				quantity			구매수량
+				message				배송메시지
+		
+		요청처리 절차
+			1. 요청파라미터값을 조회한다.
+			2. 세션에서 사용자 아이디를 조회한다.
+			3. Order객체를 생성해서 주문정보 저장에 필요한 값을 담는다.
+				- User객체를 생성해서 사용자아이디를 담고, User객체를 Orderrorcpdp ekasmsek.
+				- Address객체를 생성해서 배송지번호를 담고, Address객체를 Order객체에 담는다.
+				- 총주문금액의 3%로 적립포인트를 계산하고 Order 객체에 담는다.
+			4. Order객체를 전달해서 테이블에 저장시킨다.
+			5. OrderItem객체를 생성해서 주문아이템정보 저장에 필요한 값을 담는다.
+				- Order객체를 OrderItem객체에 담는다.
+				- 책번호로 도서정보(Book객체)를 조회한다.
+				- Book객체를 OrderItem객체에 담는다.
+				- Book객체의 할인가격을 OrderItem객체에 담는다.
+				- 구매수량을 OrderItem객체에 담는다.
+			6. OrderItem객체를 전달해서 테이블에 저장시킨다.
+			7. 도서정보의 재고수량을 감소시킨다.
+				- 5번에서 획득된 책의 재고수량을 1 감소시킨다.
+				- 재고수량이 변경된 정보를 전달받아서 테이블에 반영시킨다.
+			8. 사용자의 포인트를 증가시킨다.
+				- 사용자 아이디로 사용자정보를 조회한다.
+				- 조회된 사용자정보의 포인트를 증가시킨다.
+				- 포인트가 변경된 정보를 전달해 테이블에 반영시킨다.
+	*/
+	int addrNo = StringUtils.strToInt(request.getParameter("addrNo"));
+	int totalProductPrice = StringUtils.strToInt(request.getParameter("totalProductPrice"));
+	int deliveryFee = StringUtils.strToInt(request.getParameter("deliveryFee"));
+	int totalOrderPrice = StringUtils.strToInt(request.getParameter("totalOrderPrice"));
+	int bookNo = StringUtils.strToInt(request.getParameter("bookNo"));
+	int quantity = StringUtils.strToInt(request.getParameter("quantity"));
+	String message = request.getParameter("message");
+	
+	String userId = (String) session.getAttribute("LOGINED_USER_ID");
+	
+	Order order = new Order();
+	order.setBookTotalPrice(totalProductPrice);
+	order.setDeliveryFee(deliveryFee);
+	order.setOrderTotalPrice(totalOrderPrice);
+	order.setAddrNo(addrNo);
+	order.setUserId(userId);
+	order.setMessage(message);
+	order.setDepositPoint((int)(totalOrderPrice*0.03));
+	System.out.println("저장 전: " + order.getNo());
+	
+	OrderMapper orderMapper = MybatisUtils.getMapper(OrderMapper.class);
+	orderMapper.insertOrder(order);		// 주문정보 저장
+	System.out.println("저장 후: " + order.getNo());
+	
+	
+	
+%>

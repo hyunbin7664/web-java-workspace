@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>DOM 이벤트</h1>
+	<button id="btn-1" onclick="fn1()">버튼1</button>
+	<button id="btn-2">버튼2</button>
+	<button id="btn-3">버튼3</button>
+	
+	<script type="text/javascript">
+		// 엘리먼트객체.addEventListener("이벤트명", 이벤트리스너);
+		let el2 = document.getElementById("btn-2");
+		el2.addEventListener("click", fn2);
+		
+		let el3 = document.getElementById("btn-3");
+		el2.addEventListener("click", function() {
+			console.log("fn3실행됨");
+		});
+		
+		function fn1() { 
+			console.log("fn1실행됨") 
+		};
+		function fn2() { 
+			console.log("fn2실행됨") 
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>문서 객체 모델</h1>
+	
+	<h2>form 입력요소 조작하기</h2>
+	<form>
+		<div>
+			<label>이름</label><br/>
+			<input type="text" name="name" id="name-field">
+		</div>
+		<div>
+			<label>성별</label><br/>
+			<input type="radio" name="gender" id="gender-1" value="남"> 남자
+			<input type="radio" name="gender" id="gender-2" value="여"> 여자
+		</div>
+		<div>
+			<label>희망 근무지</label><br/>
+			<select name="city" id="city-select">
+				<option value="">희망근무지를 선택하세요</option>
+				<option value="seoul">서울</option>
+				<option value="busan">부산</option>
+				<option value="incheon">인천</option>
+			</select>
+		</div>
+	</form>
+	<script type="text/javascript">
+		// 1. 입력필드의 값 변경하기
+		let el1 = document.getElementById("name-field");
+		el1.value = "김유신";
+		
+		// 2. 입력필드 비활성화 시키기
+		el1.disabled = true;
+		
+		// 3. 체크박스 체크하기
+		let el2 = document.getElementById("gender-2");
+		el2.checked = true;
+		
+		// 4. 셀렉터박스에서 특정 옵션을 선택하기
+		let el3 = document.getElementById("city-select");
+		el3.value = "busan";
+	</script>
+</body>
+</html>

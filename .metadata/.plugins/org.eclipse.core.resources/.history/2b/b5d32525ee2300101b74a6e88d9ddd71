@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovMov Community</title>
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/report-form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" href="../resources/favicon.ico" type="image/x-icon">
+  </head>
+<body>
+  <header>
+    <div class="logo"><img src="../resources/logo-primary.png" alt="" class="logo-img"></span></div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="movList.html">영화</a></li>
+        <li><a href="community.html">커뮤니티</a></li>
+        <li><a href="shopmain.html">Mov Commerce</a></li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-signin">로그인</button>
+      <button class="btn-signup">회원가입</button>
+    </div>
+  </header>
+  <div class="report-container">
+    <h2>🚨 게시글 신고하기</h2>
+    <form>
+      <label for="reason">신고 사유</label>
+      <select id="reason" name="reason" required>
+        <option value="">-- 선택해주세요 --</option>
+        <option value="spam">스팸 또는 광고</option>
+        <option value="hate">혐오 발언 또는 괴롭힘</option>
+        <option value="violence">폭력적인 내용</option>
+        <option value="illegal">불법 정보 포함</option>
+        <option value="etc">기타</option>
+      </select>
+
+      <label for="details">상세 내용</label>
+      <textarea id="details" name="details" placeholder="신고 사유에 대한 자세한 설명을 입력해주세요."></textarea>
+
+      <button type="submit" class="submit-btn">신고하기</button>
+      <button type="button" class="return-btn">돌아가기</button>
+    </form>
+  </div>
+</body>
+<footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <p class="rating-info">
+          지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+        </p>
+        <div class="language-select">
+          <select>
+            <option>한국어</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="footer-links">
+        <a href="#">서비스 이용약관</a>
+        <span>|</span>
+        <a href="#"><strong>개인정보 처리방침</strong></a>
+        <span>|</span>
+        <a href="#">회사 안내</a>
+      </div>
+  
+      <div class="footer-contact">
+        <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+        <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+        <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+      </div>
+  
+      <div class="footer-company">
+        <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+        <p>사업자 등록 번호 211-210-61239</p>
+      </div>
+  
+      <div class="footer-bottom">
+        <span class="copyright"> © Copy Right MovMov 2025 Inc. All rights reserved.</span>
+        <div class="footer-socials">
+          <span><i class="fa-brands fa-facebook"></i></span>
+          <span><i class="fa-brands fa-x-twitter"></i></span>
+          <span><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>

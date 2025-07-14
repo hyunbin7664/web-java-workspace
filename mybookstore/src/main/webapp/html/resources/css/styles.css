@@ -1,0 +1,327 @@
+/* 도서 카드 스타일 */
+.book-card {
+    height: 100%;
+    transition: transform 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.book-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.book-card .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-card .author {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.book-card .price {
+    font-weight: bold;
+    color: #e44d26;
+}
+
+.book-card .rating {
+    color: #ffc107;
+}
+
+.book-card .review-count {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* 페이지네이션 스타일 */
+.pagination .page-link {
+    color: #333;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* 필터 섹션 스타일 */
+.form-select {
+    border-radius: 20px;
+    border: 1px solid #ddd;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+    .book-card img {
+        height: 150px;
+    }
+}
+
+/* 회원 정보 수정 페이지 스타일 */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f8f9fa;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.profile-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image-upload {
+    margin-top: 10px;
+}
+
+.form-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form-section h5 {
+    margin-bottom: 15px;
+    color: #495057;
+}
+
+.required-field::after {
+    content: "*";
+    color: #dc3545;
+    margin-left: 4px;
+}
+
+/* 배송지 관리 페이지 스타일 */
+.address-card {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.address-header {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.address-body {
+    padding: 15px;
+}
+
+.address-footer {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-top: 1px solid #dee2e6;
+    text-align: right;
+}
+
+.default-badge {
+    background-color: #28a745;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.address-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.address-contact {
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.address-detail {
+    margin-top: 10px;
+}
+
+.address-actions {
+    margin-top: 10px;
+}
+
+.add-address-btn {
+    margin-bottom: 20px;
+}
+
+/* QnA 작성 페이지 스타일 */
+.form-label {
+    font-weight: 500;
+}
+
+.required::after {
+    content: "*";
+    color: #dc3545;
+    margin-left: 4px;
+}
+
+.form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* QnA 목록 페이지 스타일 */
+.qna-status {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.qna-status.pending {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.qna-status.answered {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.qna-date {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.qna-title {
+    font-weight: 500;
+}
+
+.qna-title:hover {
+    color: #0d6efd;
+}
+
+.qna-author {
+    font-size: 0.9rem;
+}
+
+.qna-views {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* QnA 상세 페이지 스타일 */
+.question-status {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.status-answered {
+    background-color: #198754;
+    color: #fff;
+}
+
+.question-meta {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.answer-box {
+    background-color: #f8f9fa;
+    border-left: 4px solid #0d6efd;
+}
+
+/* 주문 페이지 스타일 */
+.order-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.delivery-address {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.delivery-address p {
+    margin-bottom: 5px;
+}
+
+.delivery-address p:last-child {
+    margin-bottom: 0;
+}
+
+.address-list-item {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.2s;
+}
+
+.address-list-item:hover {
+    background-color: #f8f9fa;
+}
+
+.address-list-item.selected {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+}
+
+/* 주문 완료 페이지 스타일 */
+.order-complete-icon {
+    font-size: 5rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.order-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.order-info h6 {
+    margin-bottom: 15px;
+    color: #495057;
+}
+
+.order-info p {
+    margin-bottom: 10px;
+}
+
+.order-info p:last-child {
+    margin-bottom: 0;
+}
+
+.order-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+} 

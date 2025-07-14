@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	div {
+	border: 1px solid black;
+	padding: 10px;
+	margin-bottom: 10px;	
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작</h1>
+	
+	<div id="box-1">
+		<h3>제목1</h3>
+		<div id="box-2">
+			<p>내용1</p>
+			<p>내용2</p>
+			<p>내용3</p>
+		</div>
+		<ul>
+			<li>항목1</li>
+			<li>항목2</li>
+			<li>항목3</li>
+			<li>항목4</li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+		// .parent() - 선택된 엘리먼트의 부모 엘리먼트를 선택한다.
+		console.log('parent:', $("h3").parent());
+		// .parents() - 선택된 엘리먼트의 모든 조상 엘리먼트를 선택한다.
+		console.log('parents:', $("h3").parents());
+		// .closest(선택자) - 선택된 엘리먼트의 조상 중에서 선택자에 해당하는 
+		//					가장 가까운 조상 엘리먼트를 선택한다.
+		console.log('closest:', $("p:first").closest('div'));
+		// .prev - 선택된 엘리먼트의 형제 엘리먼트 중에서 앞에 위치한 엘리먼트를 선택한다.
+		console.log('prev:', $("#box-2").prev());
+		// .next - 선택된 엘리먼트의 형제 엘리먼트 중에서 뒤에 위치한 엘리먼트를 선택한다.
+		console.log('next:', $("#box-2").next());
+		// .sibilings - 선택된 엘리먼트의 형제 엘리먼트를 전부 선택한다.
+		console.log('siblings:', $("#box-2").siblings());
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>브라우저 객체 모델</h1>
+	
+	<script type="text/javascript">
+		/*
+			Location 객체
+			- 주소창을 표현하는 객체
+			- 주요 속성
+				href
+					- 주소창의 URL을 반환한다.
+					// 현재 주소창의 URL을 조회한다.
+					let url = location.href;
+					// 현재 주소창의 URL을 변경한다.
+					location.href = url
+				search
+					- 주소창의 URL에서 쿼리스트링(queryString)을 반환한다.
+					- 쿼리스트링은 서버에 요청을 보낼 때 요청 처리에 필요한 값을 url의 ? 뒤에 붙여보낸 문자열이다.
+					
+			- 주요 메소드
+				reload()
+					- 웹 페이지를 새로 고침한다.
+		*/
+		
+		// 주소창의 URL 조회하기
+		let url = location.href;
+		console.log(url);
+		
+		// 주소창의 URL 변경하기
+		location.href = "http://www.daum.net";
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 상세 - MOVSHOP</title>
+  <link rel="stylesheet" href="../css/watcha.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../resources/logo-primary.png" alt="MOVSHOP 로고" class="logo-img">
+    </div>
+    <nav>
+      <ul>
+        <li onclick="location.href='shopmain.html'">홈</li>
+        <li onclick="location.href='photo.html'">카테고리</li>
+        <li onclick="location.href='cart.html'">장바구니</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="product-detail" style="display: flex; gap: 60px; padding: 60px; background-color: #fafafa; flex-wrap: wrap; justify-content: center;">
+    <div class="product-image" style="flex: 1; min-width: 320px;">
+      <img src="../resources/17313091696130.jpg" alt="CGV 관람권 이미지" style="width: 100%; border-radius: 12px;">
+    </div>
+    <div class="product-info" style="flex: 1; min-width: 320px; background-color: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee;">
+      <h2 style="font-size: 26px; font-weight: 700; margin-bottom: 12px;">CGV 영화 관람권</h2>
+      <div class="price" style="font-size: 22px; color: #FF498D; font-weight: bold; margin: 12px 0 24px;">₩3,000</div>
+
+      <div class="detail-table" style="font-size: 15px; line-height: 1.8; color: #444; margin-bottom: 20px;">
+        <div><span style="font-weight: bold; display: inline-block; width: 90px; color: #111;">상품구성</span> 영화 관람권 1매</div>
+        <div><span style="font-weight: bold; display: inline-block; width: 90px; color: #111;">유효기간</span> 구매일로부터 6개월</div>
+        <div><span style="font-weight: bold; display: inline-block; width: 90px; color: #111;">사용처</span> 전국 CGV 극장</div>
+        <div><span style="font-weight: bold; display: inline-block; width: 90px; color: #111;">상품교환</span> <a href="#" style="color:#FF498D; text-decoration: underline;">MOVSHOP 이용안내</a></div>
+      </div>
+
+      <div class="quantity-box" style="display: flex; align-items: center; margin: 20px 0;">
+        <button onclick="updateQuantity(-1)" style="width: 36px; height: 36px; font-size: 18px; border: 1px solid #ccc; background-color: #fff; cursor: pointer; font-weight: bold;">-</button>
+        <input type="text" id="qty" value="1" readonly style="width: 48px; text-align: center; border: none; font-size: 16px; margin: 0 12px; background-color: #f5f5f5;">
+        <button onclick="updateQuantity(1)" style="width: 36px; height: 36px; font-size: 18px; border: 1px solid #ccc; background-color: #fff; cursor: pointer; font-weight: bold;">+</button>
+      </div>
+
+      <div class="total-price" style="font-weight: bold; text-align: right; font-size: 16px; margin-top: 10px; color: #FF498D;">총 구매금액 <span id="total">₩3,000</span></div>
+
+      <div class="btn-group" style="display: flex; gap: 12px; margin-top: 24px;">
+        <button class="btn-cart" onclick="handleCart()" style="flex: 1; padding: 14px 0; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; background-color: #f2f2f2; cursor: pointer;">장바구니</button>
+        <button class="btn-gift" style="flex: 1; padding: 14px 0; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; background-color: #1d1d1d; color: white; cursor: pointer;">선물하기</button>
+        <button class="btn-buy" style="flex: 1; padding: 14px 0; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; background-color: #FF498D; color: white; cursor: pointer;">구매하기</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let quantity = 1;
+    function updateQuantity(change) {
+      quantity = Math.max(1, quantity + change);
+      document.getElementById('qty').value = quantity;
+      document.getElementById('total').textContent = `₩${(quantity * 3000).toLocaleString()}`;
+    }
+    function handleCart() {
+      const goToCart = confirm("장바구니 페이지로 이동하시겠습니까?");
+      if (goToCart) {
+        window.location.href = "cart.html";
+      }
+    }
+  </script>
+</body>
+</html>

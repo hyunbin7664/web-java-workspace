@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>선택자 연습</h1>
+	
+	<ul>
+		<li><a href="main.jsp" title="메인 페이지">링크1</a></li>
+		<li><a href="about.jsp" title="도움말 페이지">링크2</a></li>
+		<li><a href="http://www.daum.net" title="다음">링크3</a></li>
+		<li><a href="http://www.naver.com" title="네이버">링크4</a></li>
+		<li><a href="selector1.html" title="선택자 연습">링크5</a></li>
+		<li><a href="selector2.html" title="선택자 연습하기">링크6</a></li>
+	</ul>
+	
+	<script type="text/javascript">
+		// 링크 중에서 title 속성값이 "다음"인 것 선택
+		$("a[title='다음']").css('background-color', 'green');
+		
+		// 링크 중에서 경로가 http로 시작하는 거 선택
+		$("a[href^='http']").css('border', '1px solid red');
+		
+		// 링크 중에서 경로가 jsp로 끝나는 것 선택
+		$("a[href$='jsp']").css('background-color', 'yellow');
+		
+		// 링크 중에서 title 속성값에 "연습"을 포함하고 있는 것 선택
+		$("a[title*='연습']").css("font-size", '30px');
+		
+		// 링크 중에서 title 속성값에 "연습"이 별도의 구분된 단어로 포함하고 있는 것 선택
+		$("a[title~='연습']").css("background-color", 'pink');
+		
+	</script>
+</body>
+</html>

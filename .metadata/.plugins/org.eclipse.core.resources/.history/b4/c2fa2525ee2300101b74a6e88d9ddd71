@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>설정</title>
+<link rel="stylesheet" href="../style/css/watcha.css">
+<link rel="stylesheet" href="../style/css/setting.css">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+	<div class="max-w-md mx-auto py-10">
+		<h1 class="text-2xl font-bold mb-6">설정</h1>
+
+		<!-- 설정 목록 -->
+		<div class="bg-white rounded-xl shadow divide-y">
+			<div class="p-4 hover:bg-gray-50 cursor-pointer">마케팅 정보</div>
+			<div class="p-4 hover:bg-gray-50 cursor-pointer">공개 설정</div>
+			<div class="p-4 hover:bg-gray-50 cursor-pointer">프로필 공유</div>
+
+			<a href="change-password.html"
+				class="block p-4 hover:bg-gray-50 cursor-pointer">비밀번호 변경</a> <a
+				href="delete-account.html"
+				class="block p-4 hover:bg-gray-50 cursor-pointer text-red-600 font-semibold">계정
+				탈퇴</a>
+
+			<div class="p-4 text-gray-500 text-sm">서비스 설정</div>
+			<div class="flex justify-between items-center p-4">
+				<span>언어</span> <span class="text-gray-700">한국어</span>
+			</div>
+			<div class="flex justify-between items-center p-4">
+				<span>국가 및 지역</span> <span class="text-gray-700">대한민국</span>
+			</div>
+		</div>
+		<div class="mt-8 text-center">
+			<a href="page.jsp" class="text-blue-600 hover:underline">← 마이페이지
+				홈으로</a>
+		</div>
+	</div>
+
+
+
+ <!-- footer.jsp -->
+<footer class="footer">
+  <div class="footer-wrapper">
+    <div class="footer-top">
+      <div class="rating-info">
+        지금까지 <span class="rating-count">★737,172,583</span> 개의 평가가 쌓였어요.
+      </div>
+      <div class="language-select">
+        <select>
+          <option selected>한국어</option>
+          <option>English</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      서비스 이용약관 |
+      <a href="#"><strong>개인정보 처리방침</strong></a> |
+      회사 안내
+    </div>
+
+    <div class="footer-contact">
+      <p>고객센터 | cs@watchapedia.co.kr, 02-515-9985</p>
+      <p>광고 문의 | ad-sales@watcha.com / 최신 광고 소개서</p>
+      <p>제휴 및 대외 협력 | https://watcha.team/contact</p>
+    </div>
+
+    <div class="footer-company">
+      <p>주식회사 왓챠 | 대표 박태훈 | 서울특별시 서초구 강남대로 343 신덕빌딩 3층</p>
+      <p>사업자 등록 번호 211-88-66013</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>WATCHA © 2025 by WATCHA, Inc. All rights reserved.</span>
+      <div class="footer-socials">
+        <span>◐</span>
+        <span>✖</span>
+        <span>🅱</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

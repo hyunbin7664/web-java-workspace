@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;jquery/src/main/webapp/selector8.html&apos; to &apos;event1.html&apos;" description="Rename resource &apos;selector8.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/selector8.html" name="event1.html" stamp="1743042610054" updateReferences="true"/>
+</session>

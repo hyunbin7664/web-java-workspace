@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>로그인 기록 관리</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+body {
+	background-color: #f7f7f7;
+	font-family: Arial, sans-serif;
+	margin: 0;
+}
+
+header {
+	background-color: #2c3e50;
+	color: white;
+	padding: 15px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav {
+	display: flex;
+	justify-content: flex-end; 
+	background-color: #34495e;
+}
+
+nav a {
+	padding: 10px 20px;
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+}
+
+nav a:hover, nav a.active {
+	background-color: #1abc9c;
+}
+
+.container {
+	display: flex;
+	padding: 20px;
+}
+
+.sidebar {
+	width: 200px;
+	background-color: white;
+	border-radius: 8px;
+	padding: 15px;
+	margin-right: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+	margin-top: 0;
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar ul li {
+	margin: 10px 0;
+}
+
+.sidebar ul li a {
+	color: #333;
+	text-decoration: none;
+}
+
+.sidebar ul li a.active, .sidebar ul li a:hover {
+	color: #1abc9c;
+	font-weight: bold;
+}
+
+.main-content {
+	flex: 1;
+	background-color: white;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+	text-align: center;
+	padding: 10px;
+	font-size: 12px;
+	color: #999;
+}
+</style>
+</head>
+<body>
+	<header>
+		<h1>Admin Dashboard</h1>
+		<div>홍길동 관리자</div>
+	</header>
+	<nav>
+		<a href="admin_dashboard.html">계정관리</a> <a href="user_list.html">사용자
+			목록</a> <a href="employee_approval.html">회원가입 승인</a> <a
+			href="login_log.html" class="active">로그인 기록</a> <a
+			href="attendance_log.html">출퇴근 기록</a>
+	</nav>
+	<div class="container">
+		<div class="sidebar">
+			<h3>관리 기능</h3>
+			<ul>
+				<li><a href="employee_approval.html">신규 사원번호 발급</a></li>
+				<li><a href="employee_approval.html">회원가입 승인</a></li>
+				<li><a href="user_list.html">재직 상태 관리</a></li>
+				<li><a href="admin_dashboard.html">계정관리 바로가기</a></li>
+				<li><a href="user_list.html">사용자 목록 관리</a></li>
+				<li><a href="user_list.html">부서 추가/삭제</a></li>
+			</ul>
+		</div>
+		<div class="main-content">
+			<h2>접속/로그인 기록 관리</h2>
+			<table class="table table-bordered align-middle">
+				<thead class="table-light">
+					<tr>
+						<th>사원명</th>
+						<th>사원번호</th>
+						<th>이메일</th>
+						<th>최근 로그인 시각</th>
+						<th>IP</th>
+						<th>비정상 로그인</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>홍길순</td>
+						<td>20250001</td>
+						<td>hongsoon@email.com</td>
+						<td>2025-07-07 09:12:33</td>
+						<td>192.168.0.10</td>
+						<td><span class="badge bg-danger">탐지</span></td>
+					</tr>
+					<tr>
+						<td>김철수</td>
+						<td>20250002</td>
+						<td>kimcs@email.com</td>
+						<td>2025-07-07 08:55:10</td>
+						<td>192.168.0.11</td>
+						<td><span class="badge bg-success">정상</span></td>
+					</tr>
+					<!-- 추가 행 -->
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<footer>© 2025 그룹웨어 Corp.</footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+package kr.co.bookstore.mapper;
+
+import kr.co.bookstore.vo.Order;
+import kr.co.bookstore.vo.OrderItem;
+
+public interface OrderMapper {
+
+	void insertOrder(Order order);
+	void insertOrderItem(OrderItem orderItem);
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>찜한 작품 | McvMov</title>
+  <link rel="stylesheet" href="../style/css/wishlist.css">
+</head>
+<body>
+
+<!-- nav.jsp -->
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #fff; border-bottom: 1px solid #eaeaea; position: relative;">
+  
+  <!-- 로고 (왼쪽 정렬) -->
+  <div class="logo" style="position: absolute; left: 40px;">
+    <a href="index.jsp">
+      <img src="../resources/logo-primary.png" alt="McvMov 로고" class="logo-img" />
+    </a>
+  </div>
+
+  <!-- 메뉴 (가운데 정렬) -->
+  <nav style="margin: 0 auto;">
+    <ul style="display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-weight: 500;">
+      <li><a href="index.jsp">홈</a></li>
+      <li><a href="movies.jsp">영화</a></li>
+    </ul>
+  </nav>
+  
+</header>
+
+  <!-- 전체 찜한 작품 목록 -->
+  <section class="container">
+    <h2 style="margin-bottom: 20px;">📌 찜한 모든 콘텐츠</h2>
+
+    <div class="link-grid">
+      <!-- 예시 콘텐츠 카드 반복 -->
+      <a href="movie-detail.jsp?id=101" class="link-card">
+        <h4>영화제목 1</h4>
+        <p>찜한 이유 간단 설명</p>
+      </a>
+      <a href="movie-detail.jsp?id=102" class="link-card">
+        <h4>영화제목 2</h4>
+        <p>장르: 액션 / 감독: 아무개</p>
+      </a>
+      <a href="movie-detail.jsp?id=103" class="link-card">
+        <h4>영화제목 3</h4>
+        <p>내가 좋아하는 배우 출연</p>
+      </a>
+      <!-- ... 더 많은 콘텐츠 출력 예정 -->
+    </div>
+
+    <!-- 페이지네이션 -->
+    <div class="pagination">
+      <a href="?page=1" class="active">1</a>
+      <a href="?page=2">2</a>
+      <a href="?page=3">3</a>
+      <a href="?page=4">4</a>
+      <a href="?page=5">5</a>     
+    </div>
+  </section>
+
+
+    
+ <!-- footer.jsp -->
+<footer class="footer">
+  <div class="footer-wrapper">
+    <div class="footer-top">
+      <div class="rating-info">
+        지금까지 <span class="rating-count">★737,172,583</span> 개의 평가가 쌓였어요.
+      </div>
+      <div class="language-select">
+        <select>
+          <option selected>한국어</option>
+          <option>English</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      서비스 이용약관 |
+      <a href="#"><strong>개인정보 처리방침</strong></a> |
+      회사 안내
+    </div>
+
+    <div class="footer-contact">
+      <p>고객센터 | cs@watchapedia.co.kr, 02-515-9985</p>
+      <p>광고 문의 | ad-sales@watcha.com / 최신 광고 소개서</p>
+      <p>제휴 및 대외 협력 | https://watcha.team/contact</p>
+    </div>
+
+    <div class="footer-company">
+      <p>주식회사 왓챠 | 대표 박태훈 | 서울특별시 서초구 강남대로 343 신덕빌딩 3층</p>
+      <p>사업자 등록 번호 211-88-66013</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>WATCHA © 2025 by WATCHA, Inc. All rights reserved.</span>
+      <div class="footer-socials">
+        <span>◐</span>
+        <span>✖</span>
+        <span>🅱</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

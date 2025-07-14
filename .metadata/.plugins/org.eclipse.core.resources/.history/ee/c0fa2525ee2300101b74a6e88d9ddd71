@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>리뷰 캘린더 | McvMov</title>
+  <link rel="stylesheet" href="../style/css/watcha.css">
+  <link rel="stylesheet" href="../style/css/calendar.css"> 
+</head>
+<body>
+
+<!-- nav.jsp -->
+<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #fff; border-bottom: 1px solid #eaeaea; position: relative;">
+  
+  <!-- 로고 (왼쪽 정렬) -->
+  <div class="logo" style="position: absolute; left: 40px;">
+    <a href="index.jsp">
+      <img src="../resources/logo-primary.png" alt="McvMov 로고" class="logo-img" />
+    </a>
+  </div>
+
+  <!-- 메뉴 (가운데 정렬) -->
+  <nav style="margin: 0 auto;">
+    <ul style="display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-weight: 500;">
+      <li><a href="index.jsp">홈</a></li>
+      <li><a href="movies.jsp">영화</a></li>
+    </ul>
+  </nav>
+  
+</header>
+
+<section class="container">
+
+  <div class="calendar-header">
+    <a href="#" class="month-btn">← 이전 달</a>
+    <div class="month-title">2025년 4월</div>
+    <a href="#" class="month-btn">다음 달 →</a>
+  </div>
+
+  <div class="calendar">
+    <div class="day">일</div>
+    <div class="day">월</div>
+    <div class="day">화</div>
+    <div class="day">수</div>
+    <div class="day">목</div>
+    <div class="day">금</div>
+    <div class="day">토</div>
+
+    <!-- 앞 공백 -->
+    <div class="date-box"></div>
+
+    <!-- 날짜들 -->
+    <div class="date-box">1</div>
+    <div class="date-box reviewed">2<div class="review-snippet">The Matrix</div></div>
+    <div class="date-box">3</div>
+    <div class="date-box reviewed">4<div class="review-snippet">Dune</div></div>
+    <div class="date-box">5</div>
+    <div class="date-box">6</div>
+    <div class="date-box">7</div>
+    <div class="date-box">8</div>
+    <div class="date-box">9</div>
+    <div class="date-box">10</div>
+    <div class="date-box">11</div>
+    <div class="date-box">12</div>
+    <div class="date-box">13</div>
+    <div class="date-box">14</div>
+    <div class="date-box">15</div>
+    <div class="date-box">16</div>
+    <div class="date-box">17</div>
+    <div class="date-box">18</div>
+    <div class="date-box">19</div>
+    <div class="date-box">20</div>
+    <div class="date-box">21</div>
+    <div class="date-box">22</div>
+    <div class="date-box">23</div>
+    <div class="date-box">24</div>
+    <div class="date-box">25</div>
+    <div class="date-box">26</div>
+    <div class="date-box">27</div>
+    <div class="date-box">28</div>
+    <div class="date-box">29</div>
+    <div class="date-box">30</div>
+  </div>
+</section>
+
+<!-- footer.jsp -->
+<footer class="footer">
+  <div class="footer-wrapper">
+    <div class="footer-top">
+      <div class="rating-info">
+        지금까지 <span class="rating-count">★737,172,583</span> 개의 평가가 쌓였어요.
+      </div>
+      <div class="language-select">
+        <select>
+          <option selected>한국어</option>
+          <option>English</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      서비스 이용약관 |
+      <a href="#"><strong>개인정보 처리방침</strong></a> |
+      회사 안내
+    </div>
+
+    <div class="footer-contact">
+      <p>고객센터 | cs@watchapedia.co.kr, 02-515-9985</p>
+      <p>광고 문의 | ad-sales@watcha.com / 최신 광고 소개서</p>
+      <p>제휴 및 대외 협력 | https://watcha.team/contact</p>
+    </div>
+
+    <div class="footer-company">
+      <p>주식회사 왓챠 | 대표 박태훈 | 서울특별시 서초구 강남대로 343 신덕빌딩 3층</p>
+      <p>사업자 등록 번호 211-88-66013</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>WATCHA © 2025 by WATCHA, Inc. All rights reserved.</span>
+      <div class="footer-socials">
+        <span>◐</span>
+        <span>✖</span>
+        <span>🅱</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

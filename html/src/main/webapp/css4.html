@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/*
+		content-box인 경우
+			width: 30px는 컨텐츠의 너비를 지정한다.
+		border-box인 경우
+			width: 300px는 테두리를 포함한 너비로 지정한다.
+	*/
+	#box1{
+		box-sizing: content-box;
+	}
+	#box2{
+		box-sizing: border-box;
+	}
+	
+	.box{
+		width: 300px;
+		border: 10px solid green;
+		padding: 40px;
+		content: 20px;
+	}
+	
+	/*
+		margin, padding, border 너비 설정하기
+		
+		margin: 10px;
+			4방향(top, right, bottom, left)의 너비가 전부 10px로 설정
+		
+		margin: 10px 20px;
+			top과 bottom은 10px, right와 left는 20px로 설정
+		
+		margin: 10px 20px 30px 40px;
+			top -> right -> bottom -> left 순으로 설정
+		
+		margin: 10px 20px 30px;
+			top: 10px, right/left: 20px, bottom: 30px
+			
+	*/
+</style>
+</head>
+<body>
+	<h1>박스 모델</h1>
+	
+	<div id="box1" class="box">컨텐츠</div>
+	
+	<div id="box2" class="box">컨텐츠</div>
+</body>
+</html>

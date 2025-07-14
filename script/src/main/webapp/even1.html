@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>DOM 이벤트</h1>
+	
+	<h2>이벤트 처리하기</h2>
+	<!--
+		1. 이벤트소스 선정하기
+			버튼1과 사용자의 상호작용이 있을 때
+		2. 이벤트의 종류 선정하기
+			버튼1을 클릭했을 때
+		3. 선정된 이벤트가 발생했을 떄 실행될 이벤트리스너 등록
+	-->
+	<button onclick="fn1()">버튼1</button>
+	<button onmouseenter="fn2()" onmouseleave="fn3()">버튼2</button>
+	
+	<script type="text/javascript">
+		// 이벤트리스너(이벤트핸들러) 함수 작성하기
+		function fn1() {
+			alert("ㅋㅋ");
+		}
+		function fn2() {
+			console.log("마우스가 버튼안으로 진입했다.");
+		}
+		function fn3() {
+			console.log("마우스가 버튼밖으로 나갔다.");
+		}
+		/*
+			DOM 이벤트
+			- 이벤트는 웹페이지에서 사용자와의 상호작용으로 발생되는 사건이다.
+			- 웹브라우저는 사용자의 상호작용으로 사건이 발생하면 이벤트 객체를 생성한다.
+			  (이벤트 객체에는 이벤트의 종류, 이벤트 소스 등의 정보가 있다.)
+			- 이벤트를 활용하면 사용자의 상호작용에 대응하는 프로그램을 실행할 수 있다.
+			
+			- 이벤트 종류(상호작용의 종류)
+				마우스 이벤트
+					click, dbclick
+					mouseenter, mouseleave
+					mouseover, mouseout
+					mousemove
+					mousedown, mouseup
+				키보드 이벤트
+					keydown
+					keyup
+					keypres
+				폼 이벤트
+					change
+					submit
+				포커스 이벤트
+					focus
+					blur
+				윈도우 이벤트
+					scroll
+					resize
+					
+			- Event 객체
+				발생한 이벤트와 관련된 정보를 표현하는 객체다.
+				- 프로퍼티
+					target
+						이벤트가 발생한 엘리먼트 객체를 반환한다.
+					type
+						발생한 이벤트 이름을 반환한다.
+				- 메소드
+					preventDefault()
+						이벤트와 관련된 기본 동작의 실행을 방해한다.
+					stopPropagation()
+						이벤트 버블링을 차단한다.
+		*/
+	</script>
+</body>
+</html>

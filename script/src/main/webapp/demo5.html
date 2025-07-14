@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>반복문</h1>
+	<script type="text/javascript">
+	for (let num=1;num<=10; num++){
+		console.log(num);
+	}
+	
+	let arr = ['홍길동', '김유신', '강감찬'];
+	
+	// for문으로 반복처리하기
+	for(let index = 0; index < arr.length; index++) {
+		let name = arr[index];
+		console.log(name);
+	}
+	
+	// for ~ of 구문으로 반복처리하기
+	for(let name of arr){
+		console.log(name);
+	}
+	</script>
+</body>
+</html>

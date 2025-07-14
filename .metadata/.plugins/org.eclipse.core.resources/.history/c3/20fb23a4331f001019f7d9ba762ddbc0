@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>상품 상세 페이지</title>
+<link rel="stylesheet" href="style/main.css" />
+<link rel="stylesheet" href="style/detail.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+	rel="stylesheet" />
+
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<img src="resources/logo-primary.png" alt="" class="logo-img"></span>
+		</div>
+		<nav>
+			<ul>
+				<li>홈</li>
+				<li>영화</li>
+				<li>커뮤니티</li>
+				<li>매거진</li>
+				<li>Mov Commerce</li>
+			</ul>
+		</nav>
+		<div class="client">
+			<button class="btn-signin">로그인</button>
+			<button class="btn-signup">회원가입</button>
+		</div>
+	</header>
+
+	<main>
+		<!-- ✅ 상단 메뉴 추가 -->
+		<section class="menu-section"
+			style="text-align: center; margin-top: 40px;">
+			<button>🎟️ 관람권</button>
+			<button>🍿 스낵음료</button>
+			<button>🎁 굿즈</button>
+		</section>
+		<div class="detail-container">
+			<div class="detail-image">
+				<img src="resources/shopimages/ticket-image.jpg" alt="일반 관람권" />
+			</div>
+			<div class="detail-info">
+				<h1>CGV 영화관람권</h1>
+				<div class="price">13,000원</div>
+				<div class="meta">상품구성: CGV 일반 영화관람권 1매</div>
+				<div class="meta">유효기간: 구매일로부터 24개월 이내</div>
+				<div class="meta">
+					상품교환: <a href="#">사용가능 CGV 보기</a>
+				</div>
+
+				<div class="quantity-control">
+					<button onclick="decreaseQty()">-</button>
+					<input type="text" id="qty" value="1" readonly />
+					<button onclick="increaseQty()">+</button>
+				</div>
+
+				<div class="total-price">
+					총 구매금액 <span id="total">13,000</span>원
+				</div>
+
+				<div class="detail-actions">
+					<button onclick="handleWishlist()">찜하기</button>
+					<button onclick="moveToCart()">
+						<i class="fa-solid fa-cart-shopping"></i> 장바구니
+					</button>
+					<button onclick="moveToPurchase()">구매하기</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="detail-description">
+			<strong>[이용안내]</strong><br /> 해당 기프트콘은 CGV 온/오프라인 극장에서 영화를 예매할 수 있는
+			온라인 상품입니다.<br /> - 구매 후 전송받은 기프트콘은 CGV에서 지정된 상영 타입의 영화만 예매 가능.<br />
+			- 금액권이 아니므로 차액 환불되지 않으며 유효기간은 24개월입니다.<br /> - 영화 상영 후 환불 및 반품은
+			불가합니다.<br /> - 관련 교환처 및 환불 정보는 CGV 사이트에서 확인 바랍니다.
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="footer-wrapper">
+			<div class="footer-top">
+				<p class="rating-info">
+					지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+				</p>
+				<div class="language-select">
+					<select>
+						<option>한국어</option>
+					</select>
+				</div>
+			</div>
+			<div class="footer-links">
+				<a href="#">서비스 이용약관</a> <span>|</span> <a href="#"><strong>개인정보
+						처리방침</strong></a> <span>|</span> <a href="#">회사 안내</a>
+			</div>
+			<div class="footer-contact">
+				<p>고객센터 | cs@movmov.com, 02-000-0000</p>
+				<p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+				<p>
+					제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a>
+				</p>
+			</div>
+			<div class="footer-company">
+				<p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+				<p>사업자 등록 번호 211-210-61239</p>
+			</div>
+			<div class="footer-bottom">
+				<span class="copyright">© Copy Right MovMov 2025 Inc. All
+					rights reserved.</span>
+				<div class="footer-socials">
+					<span><i class="fa-brands fa-facebook"></i></span> <span><i
+						class="fa-brands fa-x-twitter"></i></span> <span><i
+						class="fa-brands fa-instagram"></i></span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		let unitPrice = 13000;
+		let qty = 1;
+		const qtyInput = document.getElementById('qty');
+		const totalPrice = document.getElementById('total');
+
+		function updateTotal() {
+			totalPrice.textContent = (qty * unitPrice).toLocaleString();
+		}
+
+		function increaseQty() {
+			qty++;
+			qtyInput.value = qty;
+			updateTotal();
+		}
+
+		function decreaseQty() {
+			if (qty > 1) {
+				qty--;
+				qtyInput.value = qty;
+				updateTotal();
+			}
+		}
+
+		function moveToCart() {
+			if (confirm('장바구니로 이동하시겠습니까?')) {
+				window.location.href = 'cart.html';
+			}
+		}
+		function handleWishlist() {
+			if (confirm('찜한 상품으로 이동하시겠습니까?')) {
+				window.location.href = 'wishlist.html';
+			}
+		}
+		function moveToPurchase() {
+			if (confirm('결제 페이지로 이동하시겠습니까?')) {
+				window.location.href = 'payment.html'; // 결제 페이지
+			}
+		}
+	</script>
+</body>
+</html>

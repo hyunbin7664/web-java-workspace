@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>DOM 이벤트</h1>
+	
+	<h2>이벤트 처리하기</h2>
+	<!--
+		이벤트리스너(이벤트핸들러)에 Event객체 전달하기
+			onclick="함수명(event)"
+			* 위와 같이 작성하면 이벤트리스너함수에게 사용자와 상호작용의 결과로 발생한
+			  이벤트 객체를 전달할 수 있다.
+	-->
+	<button type="button" onclick="fn1(event)">버튼1</button>
+	<button type="submit" onclick="fn1(event)">버튼2</button>
+	
+	<script type="text/javascript">
+		function fn1(e) {
+			// console.log(e.target);
+			// 이벤트가 발생한 엘리먼트 획득하기
+			let el = e.target;
+			
+			// 이벤트가 발생한 엘리먼트의 텍스트 컨텐츠 조회하기
+			let txt = el.textContent;
+			console.log(txt);
+			
+			// 이벤트가 발생한 엘리먼트의 속성 조회하기
+			let type = el.getAttribute("type");
+			console.log(type);
+			
+			// 이벤트가 발생한 엘리먼트 비활성화
+			// 폼 입력요소 한정
+			el.disabled = true;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	form {
+		margin-bottom: 20px;
+	
+	}
+	table {
+		width: 100%;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>AJAX 연습</h1>
+	
+	<form>
+		<label>날짜: </label>
+		<input type="date" name="date" />
+		<button type="button" id="btn-get-boxoffice">조회</button>
+	</form>
+	
+	<table id="table-box-office">
+		<colgroup>
+			<col width="10%">
+			<col width="*">
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>순위</th>
+				<th>제목</th>
+				<th>개봉일</th>
+				<th>매출액</th>
+				<th>누적관객수</th>
+			</tr>
+		</thead>	
+		<tbody></tbody>
+	</table>
+	
+	<script type="text/javascript">
+		$("#btn-get-boxoffice").click(function() {
+			let date = $(":input[name=date]").val();
+			date = date.replaceAll("-", "");
+			
+			refreshBoxOffice(date);
+		});
+		
+		function refreshBoxOffice(date) {
+			let $tbody = $("#table-box-office tbody").empty(); 
+			let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=726512c39b94fec57ffea53d92b955ff&targetDt=${date}`;
+			
+			let xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					let xmlDoc = xhr.responseXML;
+					
+					$(xmlDoc).find("dailyBoxOffice").each(function() {
+						/*
+							this는 <dailyBoxOffice>
+									<rank>1</rank>
+									...
+						*/
+						let rank = $(this).find("rank").text();
+						let title = $(this).find("movieNm").text();
+						let open = $(this).find("openDt").text();
+						let sales = $(this).find("salesAcc").text();
+						let audience = $(this).find("audiAcc").text();
+						
+						let tr = `
+							<tr>
+								<td>${rank}</td>
+								<td>${title}</td>
+								<td>${open}</td>
+								<td>${sales}</td>
+								<td>${audience}</td>
+							</tr>
+						`;
+						
+						$tbody.append(tr);
+					});
+				}
+			};
+			xhr.open("get", url);
+			xhr.send();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<style>
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f7f7f7;
+}
+
+header {
+	background-color: #2c3e50;
+	color: white;
+	padding: 15px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header h1 {
+	font-size: 20px;
+}
+
+nav {
+	display: flex;
+	justify-content: flex-end; 
+	background-color: #34495e;
+}
+
+nav a {
+	padding: 10px 20px;
+	color: white;
+	text-decoration: none;
+	display: inline-block;
+}
+
+nav a:hover {
+	background-color: #1abc9c;
+}
+
+.container {
+	display: flex;
+	padding: 20px;
+}
+
+.sidebar {
+	width: 200px;
+	background-color: white;
+	border-radius: 8px;
+	padding: 15px;
+	margin-right: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+	margin-top: 0;
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar ul li {
+	margin: 10px 0;
+	cursor: pointer;
+}
+
+.main-content {
+	flex: 1;
+	background-color: white;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+	background-color: #ecf0f1;
+	padding: 15px;
+	border-radius: 6px;
+	margin-bottom: 15px;
+}
+
+.card h4 {
+	margin-top: 0;
+	font-size: 15px;
+}
+
+footer {
+	text-align: center;
+	padding: 10px;
+	font-size: 12px;
+	color: #999;
+}
+</style>
+</head>
+<body>
+	<header>
+		<h1>
+			<a href="admin_dashboard.html" style="text-decoration: none; color: inherit;">Admin Dashboard</a>
+		</h1>
+		<div>홍길동 관리자</div>
+	</header>
+	<nav>
+		<a href="#">전자결재</a> 
+		<a href="#">업무관리</a> 
+		<a href="#">업무문서함</a> 
+		<a href="#">조직도</a>
+	</nav>
+
+	<div class="container">
+		<div class="sidebar">
+			<h3>관리 기능</h3>
+			<ul>
+				<li><a href="employee_approval.html">회원가입 승인</a> </li>
+				<li><a href="user_list.html">사용자 계정관리</a> </li>
+				<li><a href="login_log.html">로그인 기록</a> </li>
+				<li><a href="attendance_log.html" class="active">출퇴근 기록</a></li>
+			</ul>
+		</div>
+
+		<div class="main-content">
+			<div class="card">
+				<h4>전체 사용자</h4>
+				<p>총 100명 (활성: 95 / 비활성: 5)</p>
+			</div>
+
+			<div class="card">
+				<h4>최근 가입 승인 요청</h4>
+				<p>3건 대기중</p>
+			</div>
+
+			<div class="card">
+				<h4>최근 로그인 현황</h4>
+				<p>오늘 로그인: 82명</p>
+			</div>
+
+			<div class="card">
+				<h4>공지사항</h4>
+				<p>현재 등록된 공지: 2건</p>
+			</div>
+
+		</div>
+	</div>
+
+	<footer> © 2025 그룹웨어 Corp. </footer>
+</body>
+</html>

@@ -1,0 +1,233 @@
+	
+	
+	게시판 만들기
+	
+	1. 클래스 정의하기
+		Board.java와 BoardDao.java를 작성한다.
+	2. 게시글 목록 조회
+	
+	3. 신규 게시글 등록
+	
+	4. 게시글 상세정보 조회
+	
+	5. 게시글 삭제
+	
+	
+	4/8
+	
+	자바의 데이터베이스 엑세스 기술
+	- JDBC(Java DataBase Connectivity)
+		+ 자바에서 데이터베이스와 통신하기(엑세스하기) 위한 저수준 API
+		+ 장점
+			가볍고 단순하다.
+		+ 단점
+			생산성이 낮다.
+			형식적인 코드가 너무 많다.
+	
+	- SQL Mapper
+		+ SQL과 객체(파라미터값, 결과값) 매핑하는 방식
+		+ 대표적 기술
+			- ibatis, mybatis
+		+ 장점
+			SQL을 직접 제어할 수 있다.
+			복잡한 쿼리를 작성할 수 있다.
+			자바코드와 SQL을 분리할 수 있다.
+		+ 단점
+			복잡한 객체 매핑이 불편하다.
+	
+	- ORM(Object-Relational Mapping)
+		+ 객체와 테이블을 매핑하는 방식
+		+ 대표적 기술
+			- JPA, hibernate
+		+ 장점
+			객체지향적이고 생산성이 높다.
+			코드가 단순하고 유지보수성이 좋다.
+		+ 단점
+			복잡한 SQL에 대응하기 어렵다.
+			SQL 성능 튜닝이 어렵다.
+			학습 곡선이 높다.
+	
+	mybatis
+	- SQL Mapping Framework다
+	- 자바객체와 SQL을 매핑하는 방식으로 데이터베이스 엑세스 작업을 수행한다.
+	- 필요한 라이브러리
+		+ ojdbc11.jar (오라클인 경우)
+		+ mybatis-3.x.x.jar
+	- mybatis의 주요 구성요소
+		+ Mapper 인터페이스
+			- 실현할 데이터베이스 엑세스 작업이 정의된 인터페이스다.
+			- 예시
+				public interface BoardMapper {
+					// 아래는 전부 추상메소드다.
+					void insertBoard(Board board);
+					Board getBoardByNo(int no);
+					List<Board> getBoards(int offset, int rows);
+					void updateBoard(Board board);
+				}
+		+ Mapper XML 파일
+			- Mapper 인터페이스에 정의된 데이터베이스 엑세스 작업과 관련된 매핑된 SQL 구문을 정의한다.
+			- 예시
+				<insert id="insertBoard" parameterType="kr.co.board.vo.Board">
+					..
+				</insert>
+				
+				<select id="getBoardByNo" parameterType="java.lang.integer"
+										  resultType="kr.co.board.vo.Board">
+				...
+				</select>
+		+ Mapper 인스턴스
+			- Mapper 인터페이스를 구현한 객체다.
+			- Mapper 인터페이스에 정의된 추상메소드가 전부 구현된 객체다.
+				+ 추상메소드의 이름과 일치하는 매핑된 SQL 구문을 실행하도록 구현된다.
+				+ mybatis가 구현객체를 제공한다.
+		+ mybatis 환경설정파일
+			- mybatis 실행에 필요한 환경설정정보를 설정하는 파일이다.
+			- 데이터베이스 연결 정보 트랜잭션
+	
+	- mybatis의 주요 API
+		+ SqlSession
+			- SQL을 실행하는 객체다.
+			- 주요 메소드
+				selectOne(String id, Object parameter), 
+				selectList(String id, Object parameter), 
+				insert(String id, Object parameter), 
+				update(String id, Object parameter), 
+				delete(String id, Object parameter) 
+				등의 메소드가 있다.
+		+ SqlSessionFactory
+			- SqlSession객체를 생성하는 팩토리객체다.
+		+ SqlSessionFactoryBuilder
+			- mybatis 환경설정 파일을 로드해서 SqlSessionFactory객체를 build한다.
+	
+	
+	Mapper XML 파일 작성
+	
+	<insert />, <update />, <delete />
+	- 각각 INSERT, UPDATE, DELETE SQL 구문을 매핑하는 태그다.
+	- 주요 속성
+		id 속성
+			- SQL 구문을 식별하는 고유한 이름
+			- 하나의 Mapper XML 파일안에서 고유한 이름을 가져야 한다.
+			- Mapper 인터페이스의 메소드이름과 동일한 이름으로 설정한다.
+		parameterType 속성
+			- SQL 구문을 실행하는 필요한 값을 가지고 있는 자바 클래스의 전체 이름 혹은 별칭이다.
+			- 알려진 자바타입(String, Integer, Double, Long, Date, List, HashMap)은 mybatis에서 내장된 별칭을 제공한다.
+			  예) 
+			  	java.lang.String -> String
+			  	java.lang.Integer -> int
+			  	java.lang.Double -> double
+			  	java.lang.Long -> long
+			  	java.lang.Date -> date
+			  	java.lang.List -> map
+			  	java.lang.HashMap -> hashmap
+	
+	<select />
+	- SELECT SQL 구문을 매핑하는 태그다.
+	- 주요 속성
+		id 속성
+		parameterType 속성
+			- SQL 구문을 실행하는 필요한 값을 가지고 있는 자바 클래스의 전체 이름 혹은 별칭이다.
+		resultType 속성	
+			- SQL 구문의 실행 결과값을 담는 자바 클래스의 전체 이름 혹은 별칭이다.
+		resultMap
+			- <resultMap />의 이름을 지정한다.
+		* <select />태그는 parameterType은 생략가능하다.
+		* SQL 구문의 실행 결과값을 담기 위해서 resultType 혹은 resultMap 속성 중 하나를 설정한다.
+	
+	작성예시
+	
+	Mapper 인터페이스의 메소드
+		void insertBoard(Board board);
+	Mapper XML의 구문
+		<insert id="insertBoard" parameterType="kr.co.jhta.vo.Board">
+			insert into tb_boards
+			(board_no, board_title, board_writer, board_content)
+			values
+			(board_seq.nextval, #{title}, #{writer}, #{content})
+		</insert>
+	
+	Mapper 인터페이스 메소드
+		void deleteBoardByNo(int no)
+	Mapper XML의 구문
+		<delete id="deleteBoardByNo" parameterType="int">
+			delete from tb_boards
+			where board_no = #{value}
+		</delete>
+		* parameterType이 기본자료형타입일 때는 #{}에 아무글자나 적어도 된다.
+	
+	Mapper 인터페이스 메소드
+		void deleteBoardByNo(int no)
+	Mapper XML의 구문
+		<delete id="deleteBoardByNo">
+			delete from tb_boards
+			where board_no = #{no}
+		</delete>
+		* parameterType을 생략한 경우, 매개변수 이름으로 매핑된다.
+	
+	Mapper 인터페이스 메소드
+		List<Board> getBoards(int offset, int rows);
+	Mapper XML의 구문
+		<select id="getBoards" resultType="kr.co.jhta.vo.Board">
+			select board_no as no, 
+					board_title as title, 
+					board_writer as writer, 
+					board_created_date as createdDate
+			from tb_boards
+			order by board_no desc
+			offset #{offset} rows
+			fetch next #{rows} rows only
+		</select>
+		* 메소드의 매개변수가 2개 이상일 때는 parameterType을 사용할 수 없다.
+	
+	Mapper 인터페이스 메소드
+		getTotalRows()
+	Mapper XML의 구문
+		<select id="getTOtalRows" resultType="int">
+			select count(*)
+			from tb_boards
+		</select>
+		* SQL 구문을 실행하면 1행1열짜리 결과값이 획득되면 해당 값을 타입을 resultType으로 지정한다.
+		* 위의 SQL 구문은 총 게시글 개수를 정수로 반환한다.
+		
+	Mapper 인터페이스 메소드
+		List<Board> getAllBoards()
+		Board getBoardByNo(int no)
+	Mapper XML의 구문
+		<select id="getAllBoards" resultType="kr.co.jhta.vo.Board">
+		
+		</select>
+		
+		<select id="getBoardByNo" resultType="kr.co.jhta.vo.Board">
+		
+		</select>
+		* Mapper 인터페이스 메소드의 반환타입이 List<Board> 혹은 Board인 경우 
+		  resultType은 kr.co.jhta.vo.Board다.
+		* mybatis는 반환타입이 List<Board>이면 
+		  미리 List객체를 생성하고, 
+		  조회된 게시글 한 행마다 Board객체를 생성해서 게시글 정보를 담고, 
+		  Board객체를 List객체에 전부 담아 반환한다.
+		  반환타입이 결코 null일 수 없다.
+		* mybatis는 반환타입이 Board면 조회된 행이 없으면 Null을 반환한다.
+		  조회된 행이 있으면 Board객체를 생성해서 게시글 정보를 담고 Board객체를 반환한다.
+		  2건 이상이 조회될 수 있는데 Mapper 인터페이스 메소드의 반환타입을 Board로 지정하면 오류가 발생한다.
+		  예)
+		  	Board getBoardByNo(int no);
+		  		조회조건이 글번호(기본키)이기 때문에 오직 한 건 조회된다.
+		  	Board getBoardByWriter(String writer);
+		  		조회조건이 작성자(기본키 아님. 고유키 아님.)이기 때문에 2건 이상 조회된다.
+		  		오류 발생함.
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

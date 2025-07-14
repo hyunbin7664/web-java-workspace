@@ -1,0 +1,80 @@
+<style>
+  .goods-section {
+    padding: 60px 0;
+    background-color: #fafafa;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .more-link {
+    font-size: 14px;
+    color: #999;
+    text-decoration: none;
+  }
+
+  .more-link:hover {
+    color: #FF498D;
+  }
+
+  .goods-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .goods-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .goods-card img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .goods-card h4 {
+    font-size: 16px;
+    margin: 12px 0 4px;
+  }
+
+  .goods-card p {
+    color: #FF498D;
+    font-weight: bold;
+  }
+</style>
+
+<!-- HTML 구조에 section-inner로 감싸기 -->
+<section class="goods-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>🎟️ 관람권</h2>
+      <a class="more-link" href="category-ticket.html">더보기 ></a>
+    </div>
+    <div class="goods-list">
+      ... 상품 카드 ...
+    </div>
+  </div>
+</section>
+
+<!-- 위 구조를 스낵음료 / 굿즈에도 반복 적용 -->

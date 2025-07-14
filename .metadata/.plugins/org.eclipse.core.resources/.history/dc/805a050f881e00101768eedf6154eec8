@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 상세 - MovMov</title>
+  <link rel="stylesheet" href="style/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cartBtn = document.getElementById('add-to-cart');
+      cartBtn.addEventListener('click', function () {
+        const confirmMove = confirm("장바구니 페이지로 이동하시겠습니까?");
+        if (confirmMove) window.location.href = 'cart.html';
+      });
+    });
+  </script>
+  <style>
+    .detail-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      display: flex;
+      gap: 40px;
+    }
+    .detail-image {
+      flex: 1;
+    }
+    .detail-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .detail-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .detail-info h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .detail-info p.description {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .detail-info p.price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #FF498D;
+    }
+    .detail-buttons button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .detail-buttons .cart {
+      background-color: #FF498D;
+      color: white;
+    }
+    .detail-buttons .gift,
+    .detail-buttons .buy {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="resources/logo-primary.png" alt="logo" class="logo-img"></div>
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>영화</li>
+        <li>커뮤니티</li>
+        <li>매거진</li>
+        <li>Mov Commerce</li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-cart">장바구니</button>
+      <button class="btn-signout">로그아웃</button>
+      <img src="resources/default-profile.png" id="profile-toggle" alt="">
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-section">
+      <div class="detail-image">
+        <img src="resources/ticket1.jpg" alt="일반 관람권 이미지">
+      </div>
+      <div class="detail-info">
+        <div>
+          <h1>일반 관람권</h1>
+          <p class="description">모든 상영관에서 사용 가능한 일반 영화 관람권입니다. 예매 시 사용 가능합니다.</p>
+          <p class="price">₩13,000</p>
+        </div>
+        <div class="detail-buttons">
+          <button id="add-to-cart" class="cart">장바구니</button>
+          <button class="gift">선물하기</button>
+          <button class="buy">구매하기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <p class="rating-info">
+          지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+        </p>
+        <div class="language-select">
+          <select>
+            <option>한국어</option>
+          </select>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">서비스 이용약관</a>
+        <span>|</span>
+        <a href="#"><strong>개인정보 처리방침</strong></a>
+        <span>|</span>
+        <a href="#">회사 안내</a>
+      </div>
+      <div class="footer-contact">
+        <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+        <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+        <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+      </div>
+      <div class="footer-company">
+        <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+        <p>사업자 등록 번호 211-210-61239</p>
+      </div>
+      <div class="footer-bottom">
+        <span class="copyright">© Copy Right MovMov 2025 Inc. All rights reserved.</span>
+        <div class="footer-socials">
+          <span><i class="fa-brands fa-facebook"></i></span>
+          <span><i class="fa-brands fa-x-twitter"></i></span>
+          <span><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

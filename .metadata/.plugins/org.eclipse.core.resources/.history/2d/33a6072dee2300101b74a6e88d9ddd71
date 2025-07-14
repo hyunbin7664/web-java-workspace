@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovMov 결제</title>
+  <link rel="stylesheet" href="../style/main.css">
+  <link rel="stylesheet" href="../style/payment.css">
+  <link rel="icon" href="resources/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header (공통요소) -->
+  <header>
+    <div class="logo"><img src="../resources/logo-primary.png" alt="MovMov 로고" class="logo-img"></div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="movList.html">영화</a></li>
+        <li><a href="community.html">커뮤니티</a></li>
+        <li><a href="shopmain.html">Mov Commerce</a></li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-cart">장바구니</button>
+      <button class="btn-signout">로그아웃</button>
+      <img src="../resources/default-profile.png" id="profile-toggle" alt="프로필">
+      <div class="profile-dropdown" id="profile-dropdown">
+        <div class="profile-info">
+          <img src="../resources/default-profile.png" alt="프로필 이미지">
+          <div class="user-meta">
+            <strong>user12345</strong>님
+            <p>example12345@gmail.com</p>
+            <div class="actions">
+              <a href="#">My Page</a> |
+              <a href="#">이용약관</a>
+            </div>
+            <div class="balance">잔액 <strong>11,527</strong>원</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../script/toggler.js"></script>
+  </header>
+
+  <main class="payment-wrapper">
+    <div class="payment-left">
+      <section class="shipping-box">
+        <h3>배송지</h3>
+        <div class="shipping-info">
+          <p><strong>송하영</strong>(우리 집) <button class="tag">주소지 선택</button></p>
+          <p>010-0000-1111 <button class="tag">안심번호 사용</button></p>
+          <p>서울특별시 종로구 율곡로10길 105 디아망 4층<br>(공동현관 중3805) (03409)<button class="tag">우편번호 검색</button></p>
+          <select>
+            <option>선택 안 함</option>
+            <option>직접 입력하기</option>
+            <option>문 앞에 놓아주세요</option>
+            <option>경비실에 맡겨주세요</option>
+            <option>부재 시 연락주세요</option>
+            <option>배송 전 미리 연락주세요</option>
+          </select>
+          <label class="checkbox">
+            <input type="checkbox" checked> 다음에도 사용할게요
+          </label>
+        </div>
+      </section>
+
+      <section class="product-box">
+        <h3>주문상품</h3>
+        <div class="product-detail">
+          <div class="store-name">CGV</div>
+          <div class="product-summary">
+            <img src="../resources/logo-primary.png" alt="상품 이미지">
+            <div class="summary-text">
+              <p><strong>MovMov 상품권 50,000원 권</strong></p>
+              <p class="option">무료 배송 / 수량 : 1개</p>
+              <p class="price"><del>50,000원</del> <strong>49,560원</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="point-wallet">
+        <h3>포인트 · 머니</h3>
+        <div class="wallet-summary">
+          <p>사용 가능: <strong>11,527원</strong></p>
+          <ul>
+            <li>포인트 <span>1,477원</span></li>
+            <li>머니 <span>10,050원</span></li>
+          </ul>
+          <div class="point-use">
+            <input type="number" placeholder="사용 금액 입력">
+            <button class="btn-outline">전액사용</button>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox" checked> 항상 잔여 사용
+          </label>
+        </div>
+      </section>
+
+      <section class="pay-method">
+        <h3>결제수단 <span class="price-main">49,560원</span></h3>
+        <h4>Pay 결제</h4>
+        <label>
+          <input type="radio" name="pay-method"><img src="../resources/logo_navergr_small.svg" alt="">
+          <input type="radio" name="pay-method"><img src="../resources/Toss_Logo_Primary.png" alt="">
+          <input type="radio" name="pay-method"><img src="../resources/payment_icon_yellow_medium.png" alt="">
+        </label>
+        <div class="rewards-msg">충전결제하고 최대 <strong>770원</strong> 더 받기</div>
+        <label></label>
+
+        <h4>계좌 간편결제</h4>
+        <div class="account-select">
+          <input type="radio" name="pay-method">
+          <button class="account active">토스뱅크 <span>100••••4495</span></button>
+          <button class="account">미래에셋 <span>400••••8290</span></button>
+        </div>
+
+        <h4>카드 간편결제</h4>
+        <input type="radio" name="pay-method">
+        <p class="dimmed">카드를 결제 수단에 등록해 주세요</p>
+
+        <h4>일반결제</h4>
+        <input type="radio" name="pay-method">
+        <p class="dimmed">선결제 전용 카드 사용 시 변경 가능합니다.</p>
+      </section>
+
+      <section class="cash-receipt">
+        <h3>현금영수증</h3>
+        <label><input type="radio" name="cash" checked> 신청</label>
+        <label><input type="radio" name="cash"> 미신청</label><br>
+        <label><input type="radio" name="is-personal" checked> 개인소득공제용</label>
+        <label><input type="radio" name="is-personal">사업자지출증빙용(세금계산서 대용)</label>
+        <p>사업자지출증빙용(세금계산서 대용)</p>
+        <p>사업자등록번호: 408-••••-****</p>
+        <button class="btn-outline">변경</button>
+      </section>
+    </div>
+    </div>
+
+    <div class="payment-right">
+      <section class="summary-box">
+        <h3>결제상세 <span class="price-main">49,560원</span></h3>
+        <p>머니 사용 <span class="price">49,560원</span></p>
+      </section>
+
+      <section class="point-benefit">
+        <h3>포인트 혜택 <span class="highlight">최대 2,833원</span></h3>
+        <div class="benefit-list">
+          <p>구매적립 <span class="right">총 1,283원</span></p>
+          <ul>
+            <li>기본적립 <span class="right">513원</span></li>
+            <li>카카오페이 결제적립 <span class="right">770원</span></li>
+          </ul>
+          <p>리뷰적립 <span class="right">최대 1,550원</span></p>
+        </div>
+        <button class="benefit-btn">+2,054원 구매 감사 포인트 받기</button>
+      </section>
+
+      <div class="payment-btn-container">
+        <button class="pay-btn">49,560원 결제하기</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (공통요소) -->
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <p class="rating-info">지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.</p>
+        <div class="language-select">
+          <select>
+            <option>한국어</option>
+          </select>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">서비스 이용약관</a>
+        <span>|</span>
+        <a href="#"><strong>개인정보 처리방침</strong></a>
+        <span>|</span>
+        <a href="#">회사 안내</a>
+      </div>
+      <div class="footer-contact">
+        <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+        <p>광고 문의 | ad-sales@movmov.com</p>
+        <p>제휴 문의 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+      </div>
+      <div class="footer-company">
+        <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+        <p>사업자 등록 번호 211-210-61239</p>
+      </div>
+      <div class="footer-bottom">
+        <span>© Copy Right MovMov 2025 Inc. All rights reserved.</span>
+        <div class="footer-socials">
+          <span><i class="fa-brands fa-facebook"></i></span>
+          <span><i class="fa-brands fa-x-twitter"></i></span>
+          <span><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

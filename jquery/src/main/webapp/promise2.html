@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>Promise API</h1>
+	
+	<script type="text/javascript">
+		// 실행시간이 오래 소요되는 작업은 약속객체(진동벨)를 반환하도록 작성하자.
+		// 그러면, 비동기방식으로 호출할 수 있다.
+		// getUser() 메소드를 호출한 다음에 실행이 완료될 때까지 기다리지 않고, 
+		// 다른 작업을 실행할 수 있다.
+		function getUser() {
+			let promise = new Promise(function(resolve, reject) { 
+				// 사용자정보를 조회하는 작업은 매우 시간이 오래 걸리는 작업이다.
+				// setTimeout 함수를 이용해서 3초 지연 후 실행하도록 했다.
+				setTimeout(function() {
+					// 비동기로 수행할 작업
+					let user = {id:"hong", name:"홍길동"};
+					// 작업이 성공했기 때문에 resolve() 실행
+					resolve(user);
+					
+				}, 3000);
+			});
+			
+			return promise;
+		}
+		
+// Promise API를 사용해서 비동기방식으로 호출하기
+		function fn1() {
+			getUser()	// Promise객체를 반환하는 메소드 호출
+				.then(function(result) {
+					let id = result.id;
+					let name = result.name;	
+					console.log(id, name);
+				});
+			// getUser()메소드가 실행이 완료될때까지 기다리지 않고
+			// 다른 작업을 실행할 수 있다.
+			console.log("작업1");
+			console.log("작업2");
+			console.log("작업3");
+		};
+// async/await를 사용해서 비동기방식으로 호출하기
+		async function fn2() {
+			// await는 비동기 작업의 실행이 완료될 때까지 기다린다.
+			// await는 resolve함수로 전달된 값을 반환한다.
+			// await는 async 키워드가 지정된 함수안에서만 사용할 수 있다.
+			let user = await getUser();
+	
+			let id = user.id;
+			let name = user.name;	
+			console.log(id, name);
+			
+		}
+		
+		// 비동기작업을 호출하는 메소드 실행하기
+		fn2();
+		
+		// 비동기 작어비 완료될 때까지 기다리지 않고 다른 작업 완료하기
+		console.log("작업1");
+		console.log("작업2");
+		console.log("작업3");
+	</script>
+</body>
+</html>

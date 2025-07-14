@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 상세</title>
+  <link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .product-container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 40px;
+      display: flex;
+      gap: 40px;
+    }
+    .product-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .product-details {
+      flex: 1;
+    }
+    .product-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .product-price {
+      font-size: 20px;
+      color: #111;
+      margin: 10px 0;
+    }
+    .product-meta {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .quantity-control button {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      background: #eee;
+      border: none;
+      cursor: pointer;
+    }
+    .quantity-control input {
+      width: 40px;
+      text-align: center;
+      border: 1px solid #ddd;
+      height: 32px;
+      margin: 0 8px;
+    }
+    .total-price {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+    }
+    .action-buttons button {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-cart { background-color: #FFECDB; color: #333; }
+    .btn-gift, .btn-buy { background-color: #333; color: white; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="product-container">
+      <div class="product-image">
+        <img src="resources/ticket1.jpg" alt="영화 관람권">
+      </div>
+      <div class="product-details">
+        <div class="product-title">CGV 영화 관람권</div>
+        <div class="product-price" id="unit-price">13,000원</div>
+        <div class="product-meta">
+          <p>상품구성: CGV 일반 영화관람권 1매</p>
+          <p>유효기간: 구매일로부터 24개월 이내</p>
+          <p>상품교환: <a href="#">사용가능 CGV 보기</a></p>
+        </div>
+        <div class="quantity-control">
+          <button onclick="updateQuantity(-1)">-</button>
+          <input type="text" id="quantity" value="1" readonly>
+          <button onclick="updateQuantity(1)">+</button>
+        </div>
+        <div class="total-price">총 구매금액 <strong id="total-price">13,000</strong>원</div>
+        <div class="action-buttons">
+          <button class="btn-cart" onclick="goToCart()"><i class="fa-solid fa-cart-shopping"></i> 장바구니</button>
+          <button class="btn-gift">선물하기</button>
+          <button class="btn-buy">구매하기</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const unitPrice = 13000;
+    function updateQuantity(change) {
+      const qtyInput = document.getElementById('quantity');
+      let qty = parseInt(qtyInput.value);
+      qty = Math.max(1, qty + change);
+      qtyInput.value = qty;
+      document.getElementById('total-price').innerText = (unitPrice * qty).toLocaleString();
+    }
+
+    function goToCart() {
+      if (confirm('장바구니 페이지로 이동하시겠습니까?')) {
+        window.location.href = 'cart.html';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovShop - 카테고리</title>
+  <link rel="stylesheet" href="style/watcha.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <style>
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      border-bottom: 2px solid #eee;
+      margin: 40px 0 20px;
+    }
+
+    .category-tab {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 0;
+      position: relative;
+    }
+
+    .category-tab a {
+      text-decoration: none;
+      color: #1d1d1d;
+    }
+
+    .category-tab.active a {
+      font-weight: 700;
+      color: #FF498D;
+    }
+
+    .category-tab.active::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: #FF498D;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="resources/logo-primary.png" alt="MovShop 로고" class="logo-img"></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="category.html">카테고리</a></li>
+        <li><a href="cart.html">장바구니</a></li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-signin">로그인</button>
+      <button class="btn-signup">회원가입</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="category-tabs">
+      <div class="category-tab active"><a href="category-photocard.html">포토카드</a></div>
+      <div class="category-tab"><a href="category-ticket.html">관람권</a></div>
+      <div class="category-tab"><a href="category-snack.html">스낵음료</a></div>
+      <div class="category-tab"><a href="category-goods.html">굿즈</a></div>
+    </section>
+
+    <section class="goods-section">
+      <div class="goods-list">
+        <div class="goods-card">
+          <img src="resources/photocard1.jpg" alt="포토카드 이미지">
+          <h4>도영 포토카드</h4>
+          <p>₩3,000</p>
+        </div>
+        <div class="goods-card">
+          <img src="resources/photocard2.jpg" alt="포토카드 이미지">
+          <h4>호시 포토카드</h4>
+          <p>₩3,000</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <p class="rating-info">
+          지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+        </p>
+        <div class="language-select">
+          <select>
+            <option>한국어</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">서비스 이용약관</a>
+        <span>|</span>
+        <a href="#"><strong>개인정보 처리방침</strong></a>
+        <span>|</span>
+        <a href="#">회사 안내</a>
+      </div>
+
+      <div class="footer-contact">
+        <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+        <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+        <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+      </div>
+
+      <div class="footer-company">
+        <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+        <p>사업자 등록 번호 211-210-61239</p>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="copyright"> © Copy Right MovMov 2025 Inc. All rights reserved.</span>
+        <div class="footer-socials">
+          <span><i class="fa-brands fa-facebook"></i></span>
+          <span><i class="fa-brands fa-x-twitter"></i></span>
+          <span><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

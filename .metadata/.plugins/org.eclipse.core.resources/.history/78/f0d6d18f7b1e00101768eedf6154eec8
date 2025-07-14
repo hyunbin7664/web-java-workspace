@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovShop</title>
+  <link rel="stylesheet" href="style/watcha.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="resources/logo-primary.png" alt="MovShop 로고" class="logo-img"></div>
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>카테고리</li>
+        <li>장바구니</li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-signin">로그인</button>
+      <button class="btn-signup">회원가입</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="goods-section">
+      <h2>🎁 지금 인기있는 영화 상품들</h2>
+      <div class="goods-list">
+        <div class="goods-card">
+          <img src="../resources/combo-image.jpg/200x200" alt="콤보 세트 이미지">
+          <h4>콤보 세트</h4>
+          <p>₩17,000</p>
+        </div>
+        <div class="goods-card">
+          <img src="../resources/ticket-image.jpg/200x200" alt="영화 관람권 이미지">
+          <h4>영화 관람권</h4>
+          <p>₩13,000</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <p class="rating-info">
+          지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+        </p>
+        <div class="language-select">
+          <select>
+            <option>한국어</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">서비스 이용약관</a>
+        <span>|</span>
+        <a href="#"><strong>개인정보 처리방침</strong></a>
+        <span>|</span>
+        <a href="#">회사 안내</a>
+      </div>
+
+      <div class="footer-contact">
+        <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+        <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+        <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+      </div>
+
+      <div class="footer-company">
+        <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+        <p>사업자 등록 번호 211-210-61239</p>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="copyright"> © Copy Right MovMov 2025 Inc. All rights reserved.</span>
+        <div class="footer-socials">
+          <span><i class="fa-brands fa-facebook"></i></span>
+          <span><i class="fa-brands fa-x-twitter"></i></span>
+          <span><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

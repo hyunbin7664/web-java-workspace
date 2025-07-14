@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>자바스크립트 변수</h1>
+	
+	<script type="text/javascript">
+		// 변수 선언하기
+		var x = 10;		// var는 변수를 선언할 때 사용되는 키워드다.
+		
+		// ES6부터 지원된다.
+		let y = 10;		// let은 변수를 선언할 때 사용되는 키워드다.
+		const z = 10;	// const는 상수를 선언할 때 사용되는 키워드다.
+		
+		var x = 30;		// - 같은 변수명으로 중복 선언해도 시스템적으로는 오류가 나지 않아 let을 쓰는 것을 습관화하여야한다.
+		
+		/*
+			var와 let, const
+			+ var
+				- 같은 이름의 변수를 중복선언해도 오류가 발생하지 않는다.
+				  마지막에 선언한 변수만 남는다.
+				- 변수를 사용할 수 있는 범위가 함수 범위다.
+				  var선언한 변수는 변수 선언이 함수의 맨꼭대기로 끌어올려진다.
+				  (변수 호이스팅)
+			+ let
+				- 같은 이름의 변수를 중복선언할 수 없다.
+				- 변수를 사용할 수 있는 범위가 블록 범위다.
+			+ const
+				- let과 동일한 성질을 가진다.
+				- 단, const로 선언변수는 한번 할당한 값을 변경할 수 없다.
+				
+			* 값을 자주 바꾸는 변수는 let으로 선언하고, 
+			  한번 값을 대입한 후 변경하지 않을 때는 const로 선언하자.
+		*/
+		
+		function fn1() {
+			// 호이스팅된 변수 선언식
+			var a, b;
+			a = 10;
+			
+			if (a <=10){
+				var b = a*2;
+				let c = a*3;
+				
+				console.log("if문 안", b);	// 20 출력
+				console.log("if문 안", c);	// 30 출력
+			}
+			console.log("if문 밖", b);		// 20 출력
+//			console.log("if문 밖", c);		// 오류발생
+		}
+		
+		// 함수 호출
+		fn1();
+	</script>
+</body>
+</html>

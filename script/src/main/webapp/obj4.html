@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>자바스크립트 내장객체</h1>
+	
+	<form>
+		날짜 : <input type="date" name="date1" id="date-field-1"> ~
+				<input type="date" name="date2" id="date-field-2">
+	</form>
+	
+	<script type="text/javascript">
+		// 날짜정보를 표현하는 내장 객체
+		// 현재 날짜와 시간정보를 표현하는 Date객체 획득하기
+		let date = new Date();
+		
+		let year = date.getFullYear();
+		let month = date.getMonth() + 1;
+		let day = date.getDate();
+		let hours = date.getHours();
+		let minutes = date.getMinutes();
+		let seconds = date.getSeconds();
+		let unixTime = date.getTime();
+		
+		console.log("년", year);
+		console.log("월", month);
+		console.log("일", day);
+		console.log("시", hours);
+		console.log("분", minutes);
+		console.log("초", seconds);
+		console.log("유닉스타임", unixTime);
+		console.log(date);
+		console.log(date.toLocaleDateString());
+		
+		// 현재 날짜에 대한 "yyyy-mm-dd" 형식의 문자열 얻기
+		let todayString = dateToString();
+		// 7일 후 날짜에 대한 "yyyy-mm-dd" 형식의 문자열 얻기
+		let afterDayString = dateToString(afterDay(7))
+		
+//		console.log(todayString);
+//		console.log(afterDayString);
+		// 입력필드에 현재 날짜 설정하기
+		document.querySelector("#date-field-1").value = todayString;
+		document.querySelector("#date-field-2").value = afterDayString;
+		
+		// 전달받은 날짜를 "YYYY-MM-DD"형식의 문자열로 반환한다.
+	    // 날짜를 전달받지 못하면 현재 날짜를 "YYYY-MM-DD"형식의 문자열로 반환한다.
+	    function dateToString(date) {
+			//|| 연산자를 이용해서 기본값 설정하기
+			date = date || new Date();
+			
+			let year = date.getFullYear();
+			let month = date.getMonth() + 1;
+			let day = date.getDate();
+	         
+	         return year 
+	            + "-"
+	            + (month < 10 ? "0" + month : month)
+	            + "-"
+	            + (day < 10 ? "0" + day : day);
+	    }
+		
+		
+		// 오늘 날짜를 기준으로 지정된 일수만큼 경과된 날짜 반환 함수
+		function afterDay(dates) {
+			// 현재 날짜와 시간정보를 표현하는 Date객체 생성
+			let now = new Date();
+			
+			// 현재 날짜와 시간정보에 해당하는 유닉스타임 획득
+			let nowUnixTime = now.getTime();
+			// 지정된 일수만큼 유닉스타임 계산
+			let increaseUnixTime = 1000*60*60*24*dates
+			
+			// 유닉스타임값을 전달해서 Date객체 생성
+			let afterday = new Date(nowUnixTime + increaseUnixTime);
+			
+			return afterday;
+		}
+		
+		// 오늘을 기준으로 지정된 일수만큼 이전 날짜를 반환한다. 
+	      function beforeDay(days) {
+	         let now = new Date();
+	         
+	         let nowUnixTime = now.getTime();
+	         let decreaseUnixTime = 1000*60*60*24*days;
+	         
+	         let beforeDay = new Date(nowUnixTime - decreaseUnixTime);
+	         
+	         return beforeDay;
+	      }
+	      
+		
+		// "yyyy-mm-dd"형식으로 오늘 날짜를 반환한다.
+		function today() {
+			let date = new Date();
+			
+			let year = date.getFullYear();
+			let month = date.getMonth() + 1;
+			let day = date.getDate();
+			
+			return year 
+				+ '-' 
+				+ (month < 10 ? '0' + month : month) 
+				+ '-' 
+				+ (day < 10 ? '0' + day : day);
+		}
+		
+//		console.log(today())
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관람권 상품 목록 - MovMov 스토어</title>
+<link rel="stylesheet" href="style/main.css">
+<link rel="stylesheet" href="style/list.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<script>
+	function handleWishlist() {
+		if (confirm('찜한 상품으로 이동하시겠습니까?')) {
+			window.location.href = 'wishlist.html';
+		}
+	}
+	function handleCart() {
+		if (confirm('장바구니로 이동하시겠습니까?')) {
+			window.location.href = 'cart.html';
+		}
+	}
+</script>
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<img src="resources/logo-primary.png" alt="" class="logo-img"></span>
+		</div>
+		<nav>
+			<ul>
+				<li>홈</li>
+				<li>영화</li>
+				<li>커뮤니티</li>
+				<li>매거진</li>
+				<li>Mov Commerce</li>
+			</ul>
+		</nav>
+		<div class="client">
+			<button class="btn-signin">로그인</button>
+			<button class="btn-signup">회원가입</button>
+		</div>
+	</header>
+
+	<main>
+		<section class="goods-section">
+			<div class="section-inner">
+				<h2>🎟️ 관람권 전체 상품</h2>
+				<div class="goods-list">
+					<div class="goods-card">
+						<a href="detail.html"> <img
+							src="resources/shopimages/ticket-image.jpg" alt="일반관람권" />
+							<div class="hover-actions">
+								<button class="wishlist" onclick="handleWishlist()">❤️
+									찜</button>
+								<button class="cart" onclick="handleCart()">🛒 장바구니</button>
+							</div>
+						</a>
+						<h4>일반 관람권</h4>
+						<p>₩13,000</p>
+					</div>
+					<div class="goods-card">
+						<a href="detail.html"> <img
+							src="resources/shopimages/ticket-image.jpg" alt="일반관람권" />
+						</a>
+						<h4>2D 관람권</h4>
+						<p>₩10,000</p>
+					</div>
+					<div class="goods-card">
+						<a href="detail.html"> <img
+							src="resources/shopimages/ticket-image.jpg" alt="일반관람권" />
+						</a>
+						<h4>4D 관람권</h4>
+						<p>₩18,000</p>
+					</div>
+					<div class="goods-card">
+						<a href="detail.html"> <img
+							src="resources/shopimages/ticket-image.jpg" alt="일반관람권" />
+						</a>
+						<h4>IMAX 관람권</h4>
+						<p>₩20,000</p>
+					</div>
+					<div class="goods-card">
+						<a href="detail.html"> <img
+							src="resources/shopimages/ticket-image.jpg" alt="일반관람권" />
+						</a>
+						<h4>프리미엄 관람권</h4>
+						<p>₩25,000</p>
+					</div>
+					<div class="goods-card">
+						<a href="detail.html"> <img
+							src="resources/shopimages/ticket-image.jpg" alt="일반관람권" />
+						</a>
+						<h4>CGV 관람권</h4>
+						<p>₩15,000</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<div class="footer-wrapper">
+			<div class="footer-top">
+				<p class="rating-info">
+					지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+				</p>
+				<div class="language-select">
+					<select>
+						<option>한국어</option>
+					</select>
+				</div>
+			</div>
+			<div class="footer-links">
+				<a href="#">서비스 이용약관</a> <span>|</span> <a href="#"><strong>개인정보
+						처리방침</strong></a> <span>|</span> <a href="#">회사 안내</a>
+			</div>
+			<div class="footer-contact">
+				<p>고객센터 | cs@movmov.com, 02-000-0000</p>
+				<p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+				<p>
+					제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a>
+				</p>
+			</div>
+			<div class="footer-company">
+				<p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+				<p>사업자 등록 번호 211-210-61239</p>
+			</div>
+			<div class="footer-bottom">
+				<span class="copyright">© Copy Right MovMov 2025 Inc. All
+					rights reserved.</span>
+				<div class="footer-socials">
+					<span><i class="fa-brands fa-facebook"></i></span> <span><i
+						class="fa-brands fa-x-twitter"></i></span> <span><i
+						class="fa-brands fa-instagram"></i></span>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

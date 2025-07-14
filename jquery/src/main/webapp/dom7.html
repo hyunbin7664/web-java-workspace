@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	table {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	th, td {
+		padding: 10px;
+		text-align: center;
+	}
+	.highlight {
+		background-color: dodgerblue;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작</h1>
+	
+	<table id="table-students">
+		<thead>
+			<tr>
+				<th>순번</th>
+				<th>이름</th>
+				<th>학년</th>
+				<th>학과</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>10</td>
+				<td>김유신</td>
+				<td>1</td>
+				<td>기계공학과</td>
+				<td><button>삭제</button></td>
+				
+			</tr>
+			<tr>
+				<td>13</td>
+				<td>강감찬</td>
+				<td>4</td>
+				<td>전자공학과</td>
+				<td><button>삭제</button></td>
+				
+			</tr>
+			<tr>
+				<td>15</td>
+				<td>이순신</td>
+				<td>3</td>
+				<td>컴퓨터공학과</td>
+				<td><button>삭제</button></td>
+				
+			</tr>
+			<tr>
+				<td>21</td>
+				<td>김도영</td>
+				<td>3</td>
+				<td>뮤지컬과</td>
+				<td><button>삭제</button></td>
+			</tr>
+			<tr>
+				<td>29</td>
+				<td>김정우</td>
+				<td>3</td>
+				<td>뮤지컬과</td>
+				<td><button>삭제</button></td>
+			</tr>
+			<tr>
+				<td>24</td>
+				<td>정재현</td>
+				<td>3</td>
+				<td>뮤지컬과</td>
+				<td><button>삭제</button></td>
+			</tr>
+			<tr>
+				<td>32</td>
+				<td>이소희</td>
+				<td>3</td>
+				<td>뮤지컬과</td>
+				<td><button>삭제</button></td>
+			</tr>
+			<tr>
+				<td>27</td>
+				<td>사쿠야</td>
+				<td>3</td>
+				<td>뮤지컬과</td>
+				<td><button>삭제</button></td>
+			</tr>
+			<tr>
+				<td>20</td>
+				<td>유우시</td>
+				<td>3</td>
+				<td>뮤지컬과</td>
+				<td><button>삭제</button></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<form>
+		이름 : <input type="text" name="name">
+		<button type="button" id="btn-search">검색</button>
+	</form>
+	
+	<script type="text/javascript">
+		$("#btn-search").click(function() {
+			
+			$("#table-students tbody tr").removeClass("highlight");
+			
+			let keyword = $("input[name='name']").val();
+			if (!keyword) {
+				alert("이름을 입력하세요.");
+				return;
+			}
+			
+			$(`#table-students td:contains('${keyword}')`).parent().addClass("highlight");
+		})
+	
+		$("#table-students tbody button").click(function() {
+			$(this).closest("tr").remove();
+		});
+		
+		$("#table-students tbody tr").mouseenter(function() {
+			$(this).addClass("highlight")		// 선택된 엘리먼트에 클래스 추가
+					.siblings()					// 선택된 엘리먼트의 형제 엘리먼트 선택
+					.removeClass("highlight");	// 형제 엘리먼트에서 클래스 삭제
+		});
+		
+		$("#table-students").mouseleave(function() {
+			$(this).find(".highlight").removeClass("highlight");
+		})
+	</script>
+</body>
+</html>

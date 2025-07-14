@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	form {
+		margin-bottom: 20px;
+	
+	}
+	table {
+		width: 100%;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>AJAX 연습</h1>
+	
+	<form>
+		<label>날짜: </label>
+		<input type="date" name="date" />
+		<button type="button" id="btn-get-boxoffice">조회</button>
+	</form>
+	
+	<table id="table-box-office">
+		<colgroup>
+			<col width="10%">
+			<col width="*">
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>순위</th>
+				<th>제목</th>
+				<th>개봉일</th>
+				<th>매출액</th>
+				<th>누적관객수</th>
+			</tr>
+		</thead>	
+		<tbody></tbody>
+	</table>
+	<script type="text/javascript">
+	/*	$("#btn-get-boxoffice").click(async function () {
+			let $tbody = $("#table-box-office tbody").empty();
+		
+			let date = $("input[name='date']").val();
+			date = date.replaceAll("-", "");
+			
+			let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=726512c39b94fec57ffea53d92b955ff&targetDt=${date}`;
+			let response = await fetch(url);
+			let jsonData = await response.json();
+			
+			let arr = jsonData.boxOfficeResult.dailyBoxOfficeList;
+			for(let item of arr){
+				let tr = `
+					<tr>
+						<td>${item.rank}</td>
+						<td>${item.movieNm}</td>
+						<td>${item.openDt}</td>
+						<td>${item.salesAcc}</td>
+						<td>${item.audiAcc}</td>
+					</tr>
+				`;
+				
+				$tbody.append(tr);
+			}
+		});
+	*/
+	$("#btn-get-boxoffice").click(async function () {
+	
+		let date = $("input[name='date']").val();
+		date = date.replaceAll("-", "");
+		
+		let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=726512c39b94fec57ffea53d92b955ff&targetDt=${date}`;
+		/*
+			1. fetch(url)를 실행하면 Promise객체가 반환된다.
+			2. Promise객체의 약속이 성취되면 then()에 설정된 함수가 실행된다.
+			   함수를 실행할 때 Response객체가 매개변수 인자로 전달된다.
+			3. Response객체의 json()를 실행하면 Promise객체가 반환된다.
+			4. Promise객체의 약속이 성취되면 then()에 설정된 함수가 실행된다. 
+			   그 함수를 실행할 때 응답으로 받은 최종 결과가 매개변수 인자로 전달된다.
+			   최종결과는 json텍스트를 자바스크립트 객체나 배열로 변환하는 것
+		*/
+		let $tbody = $("#table-box-office tbody").empty();
+		fetch(url)
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(result){
+				let arr = result.boxOfficeResult.dailyBoxOfficeList;
+				for(let item of arr){
+					let tr = `
+						<tr>
+							<td>${item.rank}</td>
+							<td>${item.movieNm}</td>
+							<td>${item.openDt}</td>
+							<td>${item.salesAcc}</td>
+							<td>${item.audiAcc}</td>
+						</tr>
+					`;
+					
+					$tbody.append(tr);
+				};
+			});
+			})
+	</script>
+</body>
+</html>

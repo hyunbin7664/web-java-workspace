@@ -1,0 +1,249 @@
+/* ==========================
+   공통 스타일 (기존 watcha.css)
+   ========================== */
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
+  color: #1d1d1d;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+nav ul li {
+  cursor: pointer;
+}
+
+nav ul li:hover {
+  color: #FF498D;
+  font-weight: 700;
+}
+
+.btn-signin, .btn-signup {
+  border-radius: 12px;
+  font-size: 12px;
+  padding: 10px 20px;
+  border: none;
+  font-weight: 700;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.btn-signup {
+  background-color: #FF498D;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.profile-box {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 24px;
+}
+
+.bio {
+  font-size: 14px;
+  color: #666;
+}
+
+.stats a {
+  margin-right: 15px;
+  color: #FF498D;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.settings-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: #666;
+  text-decoration: none;
+}
+
+.recent-section h3 {
+  margin-bottom: 16px;
+}
+
+.recent-box {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.recent-box div {
+  background: white;
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.recent-box ul {
+  padding-left: 16px;
+}
+
+.recent-box li {
+  margin-bottom: 6px;
+}
+
+.more {
+  font-size: 12px;
+  color: #888;
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.link-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.link-card:hover {
+  background-color: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background-color: #111;
+  color: #ccc;
+  padding: 40px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+footer h4,
+footer strong {
+  color: #f5f5f5;
+  font-size: 16px;
+}
+
+footer a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #FF498D;
+  text-decoration: underline;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #666;
+  font-size: 12px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.footer-language {
+  margin-top: 10px;
+}
+
+footer select {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+
+/* ==========================
+   찜한 작품 전용 스타일
+   ========================== */
+
+.pagination {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.pagination a {
+  display: inline-block;
+  margin: 0 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  font-weight: 500;
+}
+
+.pagination a:hover {
+  background-color: #FF498D;
+  color: white;
+}
+
+.pagination .active {
+  background-color: #FF498D;
+  color: white;
+  font-weight: 700;
+}

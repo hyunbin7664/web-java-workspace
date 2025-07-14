@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	table {
+		width: 100%;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+		padding: 10px;
+	}
+	th, td {
+		text-align: center
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작</h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th><input type="checkbox" id="ck-all"></th>
+				<th>순번</th>
+				<th>이름</th>
+				<th>전화번호</th>
+				<th>이메일</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="#row=100">
+				<td><input type="checkbox" name="ck"></td>
+				<td>100</td>
+				<td>홍길동</td>
+				<td>010-1111-1111</td>
+				<td>hong@gmail.com</td>
+				<td><button data-row-id id="#row=100">삭제</button></td>
+			</tr>
+			<tr id="#row=201">
+				<td><input type="checkbox" name="ck"></td>
+				<td>201</td>
+				<td>김도영</td>
+				<td>010-2222-2222</td>
+				<td>kim@gmail.com</td>
+				<td><button data-row-id id="#row=201">삭제</button></td>
+			</tr>
+			<tr id="#row=214">
+				<td><input type="checkbox" name="ck"></td>
+				<td>214</td>
+				<td>정재현</td>
+				<td>010-3333-3333</td>
+				<td>jeong@gmail.com</td>
+				<td><button data-row-id id="#row=214">삭제</button></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div>
+		<button id="btn-checked-delete">선택삭제</button>
+		<button id="btn-all-delete">전체삭제</button>
+	</div>
+	<script type="text/javascript">
+		// change 이벤트 - checkbox, radio, select에서 발생
+		$("#ck-all").change(function(){
+			let checked = $(this).prop("checked");
+			
+			$(":checked[name='ck']").prop("checked", checked);
+		})
+		
+		$("table tbody button").click(function() {
+			let id = $(this).attr("data-row-id");
+			$(id).remove();
+		})
+		
+		$("#btn-checked-delete").click(function() {
+			$("table tbody tr:has(:checkbox:checked)").remove();
+		})
+		
+		$("#btn-all-delete").click(function() {
+			$("table tbody").empty();
+		})
+		
+	</script>
+</body>
+</html>

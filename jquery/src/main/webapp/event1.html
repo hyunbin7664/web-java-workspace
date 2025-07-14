@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>이벤트 처리</h1>
+	
+	<button id="btn-1" onclick="handler1()">버튼1</button>
+	<button id="btn-2">버튼2</button>
+	<button id="btn-3">버튼3</button>
+	<button id="btn-4">버튼4</button>
+	<button id="btn-5">버튼5</button>
+	
+	<script type="text/javascript">
+		// 1. inline 이벤트처리
+		// 	- 이벤트리스너(이벤트핸들러)를 작성하고, 태그와 연결한다.
+		function handler1() {
+			alert("버튼1이 클릭되었습니다.");
+		}
+		
+		// 2. 엘리먼트에 이벤트리스너를 등록하기
+		// 	- 엘리먼트를 찾고, 엘리먼트객체의 이벤트 프로퍼티에 이벤트리스너를 등록한다
+		let el1 = document.querySelector("#btn-2");
+		el1.onclick = function() {
+			alert("버튼2가 클릭되었습니다.");
+		}
+		
+		// 3. 엘리먼트에 이벤트리스너 등록하기
+		// 	- 엘리먼트를 찾고, 엘리먼트 객체의 addEventListener() 메소드를 이용해서 
+		// 	  이벤트 리스너를 등록한다.
+		let el2 = document.querySelector("#btn-3");
+		el2.addEventListener("click", function() {
+			alert("버튼3이 클릭되었습니다.");
+		});
+		
+		// 4. jQuery의 이벤트처리
+		// 	- 엘리먼트를 선택하고, on()메소드를 이용해서 이벤트핸들러를 등록한다.
+		$("#btn-4").on('click', function() {
+			alert("버튼4가 클릭되었습니다.");
+		});
+		
+		// 5. jQuery의 이벤트처리
+		// 	- 엘리먼트를 선택하고, 이벤트이름에 해당하는 편리메소드를 이용해서 이벤트핸들러를 등록한다.
+		$("#btn-5").click(function() {
+			alert("버튼5가 클릭되었습니다.");
+		}); 		/// 이게 젤 편리하니까 이거 쓰기
+	</script>
+</body>
+</html>

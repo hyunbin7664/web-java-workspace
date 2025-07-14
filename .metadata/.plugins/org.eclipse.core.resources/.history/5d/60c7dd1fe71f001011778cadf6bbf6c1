@@ -1,0 +1,277 @@
+/* payment.css */
+
+.payment-wrapper {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: flex;
+    gap: 32px;
+  }
+  
+  .payment-left {
+    width: 65%;
+  }
+  
+  .payment-right {
+    width: 35%;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #FF498D;
+  }
+  
+  .shipping-box, .product-box, .summary-box, .point-benefit, .point-wallet, .pay-method, .cash-receipt, .payment-btn-container{
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  
+  .shipping-info p {
+    margin: 6px 0;
+    font-size: 14px;
+  }
+  
+  .shipping-info .tag {
+    background-color: #ddd;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 6px;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+  
+  .shipping-info select {
+    margin-top: 12px;
+    padding: 8px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .checkbox {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .product-detail .store-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .product-detail .label {
+    font-size: 12px;
+    background: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  
+  .product-summary {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .product-summary img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .summary-text p {
+    margin: 4px 0;
+  }
+  
+  .option {
+    color: #888;
+    font-size: 13px;
+  }
+  
+  .price {
+    color: #999;
+    font-size: 14px;
+  }
+  
+  .price-main {
+    float: right;
+    color: #FF498D;
+    font-weight: bold;
+  }
+  
+  .summary-box p, .benefit-list p {
+    font-size: 14px;
+    margin: 6px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .benefit-list ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .benefit-list li {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+  }
+  
+  .highlight {
+    color: #FF498D;
+    float: right;
+  }
+  
+  .benefit-btn {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #FF498D;
+    background-color: #fff0f5;
+    color: #FF498D;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .price-main {
+    float: right;
+    color: #FF498D;
+    font-weight: bold;
+  }
+  
+  .wallet-summary p,
+  .wallet-summary li,
+  .benefit-list p,
+  .benefit-list li {
+    font-size: 14px;
+    margin: 6px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .wallet-summary ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .point-use {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  
+  .point-use input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .btn-outline {
+    padding: 8px 14px;
+    border: 1px solid #FF498D;
+    background: #fff0f5;
+    color: #FF498D;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .checkbox {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .pay-method label {
+    display: flex;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .pay-method label img {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+  }
+  
+  .badge {
+    background: #FF498D;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-left: 6px;
+  }
+  
+  .badge.green {
+    background: #4caf50;
+  }
+  
+  .rewards-msg {
+    background: #e7f9ec;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #333;
+    margin: 10px 0 20px;
+  }
+  
+  .account-select {
+    display: flex;
+    gap: 12px;
+    margin: 10px 0;
+  }
+  
+  .account {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    background: #fafafa;
+  }
+  
+  .account.active {
+    border: 2px solid #FF498D;
+    background: #fff0f5;
+  }
+  
+  .dimmed {
+    font-size: 13px;
+    color: #aaa;
+    margin: 8px 0;
+  }
+  
+  .benefit-btn {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #FF498D;
+    background-color: #fff0f5;
+    color: #FF498D;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .pay-btn {
+    width: 100%;
+    border: none;
+    background-color: #FF498D;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .pay-btn:hover {
+    background-color: #ff005d;
+  }

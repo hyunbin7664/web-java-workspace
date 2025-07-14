@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>DOM 이벤트</h1>
+	
+	<p>기본동작 방해하기</p>
+	
+	<a href="http://www.daum.net" onclick="fn()">다음</a>
+	<a href="http://www.naver.com" onclick="fn()">네이버</a>
+	
+	<script type="text/javascript">
+		function fn() {
+			event.preventDefault();
+			console.log("클릭됨.")
+		}
+	</script>
+</body>
+</html>

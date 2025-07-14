@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	div {
+		border: 1px solid black;
+		padding: 20px;
+		margin-bottom: 10px;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>이벤트 처리</h1>
+	
+	<div id="box-1">
+		<button>버튼1</button>
+		<button>버튼2</button>
+		<button>버튼3</button>
+	</div>
+	
+	<div id="box-2">
+		<button>버튼4</button>
+	</div>
+	
+	<button id="btn-add">추가 버튼</button>
+	
+	<script type="text/javascript">
+		/*
+			이벤트 일괄등록하기
+			- jQuery의 이벤트처리 메소드는 
+			  선택된 모든 엘리먼트에 이벤트핸들러를 한번에 등록시킬 수 있다.
+			  
+			jQuery의 이벤트핸들러 함수의 특징
+			- 핸들러함수안에서 this에는 이벤트가 발생한 엘리먼트 객체가 대입되어 있다.
+			  $(this)를 실행해서 jQuery집합객체를 반환받아서 사용한다.
+		*/
+		$("#box-1 button").click(function() {
+			$(this).css('color', 'red');
+		});
+		
+		/*
+			미래에 추가되는 엘리먼트에 이벤트핸들러 등록하기
+			$("컨테이너선택자").on('이벤트이름', '이벤트핸들러를등록할대상', 함수)
+		*/
+		$("#box-2 button").click(function() {
+			alert("버튼이 클릭되었습니다.")
+		});
+		
+		$("#btn-add").click(function() {
+			$("#box-2").append("<button>새버튼</button>");
+		});
+		
+		
+	</script>
+</body>
+</html>

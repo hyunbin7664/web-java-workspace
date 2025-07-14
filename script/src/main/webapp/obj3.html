@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>생성자 함수</h1>
+	<script type="text/javascript">
+		/*
+			자바스크립트의 생성자 함수
+			- 생성자함수는 new 키워드와 같이 사용되는 함수다.
+			- 생성자함수는 대체로 함수이름이 대문자로 시작한다.
+			- 생성자함수를 이용하면 비슷한 모양의 객체를 반복적으로 생성할 수 있는 틀을 만들 수 있다.
+			
+			생성자함수의 구조
+			function 함수명(매개변수1, 매개변수2, 매개변수3)
+				this.속성1 = 매개변수1;
+				this.속성2 = 매개변수2;
+				this.속성3 = 매개변수3;
+				this.속성4 = 값;
+				this.메소드명1 = function() { 수행문; }
+				this.메소드명2 = function() { 수행문; }
+				this.메소드명3 = function() { 수행문; }
+				
+			생성자함수로 객체 생성하기
+			let obj1 = new 생성자함수명(인자값, 인자값, 인자값);
+			let obj2 = new 생성자함수명(인자값, 인자값, 인자값);
+			let obj3 = new 생성자함수명(인자값, 인자값, 인자값);
+			
+			// obj1, obj2, obj3은 같은 생성자 함수로 찍어낸 객체다.
+			
+			생성자함수의 동작절차
+			1. 아래의 생성자 함수 실행
+				let obj1 = new 생성자함수명(인자값, 인자값, 인자값);
+			2. 빈 객체를 생성한다.
+				{} <--- 빈 객체를 생성한다.
+			3. 2번에서 생성한 빈 객체를 생성자함수 this에 바인딩한다.
+				생성자함수의 this에 {} 빈 객체를 연결한다.
+			4. 생성자함수의 수행문이 실행된다.
+				생성자함수에서는 this로 전달받은 빈 객체에 속성과 메소드를 추가한다.
+			5. this가 반환된다.(묵시적 반환)
+			
+		*/
+		
+		// 1. 생성자함수 작성하기
+		function Person(name, email, tel, age) {
+				// this -> {}
+				this.name = name;
+				// this ->{name:xxx}
+				this.email = email;
+				// this -> {name:xxx, email:xxx}
+				this.tel = tel;
+				// this -> {name:xxx, email:xxx, tel:xxx}
+				this.age = age;
+				// this -> {name:xxx, email:xxx, tel:xxx, age:xxx}
+				
+				this.info = function() {
+					console.log("이름", this.name);
+					console.log("이메일", this.email);
+					console.log("전화번호", this.tel);
+					console.log("나이", this.age);
+				}
+				// this -> {name:xxx, email:xxx, tel:xxx, age:xxx, info:function() {...}}
+		}
+		// 2. 생성자함수를 실행해서 객체 찍어내기
+//		let p1 = Person();			-> new 키워드가 없어 일반 함수처럼 실행됨.(생성자함수x)
+		let p1 = new Person('홍길동', 'hong@gmail.com', '010-1111-1111', 30);
+		let p2 = new Person('김유신', 'kim@gmail.com', '010-1111-2222', 50);
+		let p3 = new Person('강감찬', 'kang@gmail.com', '010-1111-3333', 40);
+		
+		// 3. 생성자함수로 생성된 객체 확인하기
+		console.log(p1)
+		console.log(p2)
+		console.log(p3)
+		
+		// 4. info() 메소드 실행해보기
+		p1.info();
+		p2.info();
+		p3.info();
+	</script>
+</body>
+</html>

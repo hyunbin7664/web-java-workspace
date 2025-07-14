@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>마이페이지</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	color: #333;
+	padding-top: 80px;
+}
+
+.navbar-brand {	
+	color: #e6002d !important;
+	font-size: 1.5rem;
+}
+
+.nav-item {
+	padding-right: 1rem;
+}
+
+.navbar-nav .nav-link.active {
+	font-weight: bold;
+	color: #e6002d !important;
+}
+
+.logo-img {
+	width: 160px;
+	height: 50px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.navbar .container-fluid {
+	padding-right: 2rem;
+}
+
+.container {
+	display: flex;
+	padding: 20px;
+}
+
+.sidebar {
+	width: 200px;
+	background-color: white;
+	border-radius: 12px;
+	padding: 15px;
+	margin-right: 20px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+	margin-top: 0;
+	font-size: 16px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar ul li {
+	margin: 10px 0;
+}
+
+.sidebar ul li a {
+	color: #333;
+	text-decoration: none;
+}
+
+.sidebar ul li a.active, .sidebar ul li a:hover {
+	color: #1abc9c;
+	font-weight: bold;
+}
+
+.main-content {
+	flex: 1;
+	background-color: white;
+	padding: 80px;
+	text-align: center;
+	border-radius: 12px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	/* margin: 0 auto; */
+}
+
+.main-content img {
+	width: 60px;
+	margin-bottom: 20px;
+}
+
+.main-content p {
+	font-size: 14px;
+	color: #555;
+}
+
+.main-content input[type="password"] {
+	padding: 8px;
+	width: 220px;
+	margin-top: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 13px;
+}
+
+.main-content div {
+	margin-top: 15px;
+}
+
+.main-content button {
+	padding: 8px 16px;
+	margin: 0 5px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 13px;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  margin-right: 30px;
+}
+
+.card-custom {
+  padding: 30px 40px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background-color: #fff;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 120px auto 120px auto;
+  row-gap: 12px;
+  column-gap: 10px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.info-grid div {
+  white-space: nowrap;
+}
+
+.card-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* .confirm-btn {
+	background-color: #4CAF50;
+	color: #fff;
+}
+
+.cancel-btn {
+	background-color: #ccc;
+	color: #333;
+} */
+
+footer {
+	text-align: center;
+	padding: 15px;
+	font-size: 12px;
+	color: #999;
+	border-top: 1px solid #eee;
+	margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center" href="index.html"> 
+				<span class="logo-crop"> 
+					<img src="grouvy_logo.jpg" alt="GROUVY 로고" class="logo-img">
+				</span>
+			</a>
+			<ul class="navbar-nav mb-2 mb-lg-0">
+				<li class="nav-item"><a class="nav-link active" href="#">전자결재</a></li>
+				<!-- 커서 active-->
+				<li class="nav-item"><a class="nav-link" href="#">업무문서함</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">업무 관리</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">쪽지</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">메신저</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">조직도</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">일정</a></li>
+				<li class="nav-item"><a class="nav-link" href="admin_dashboard.html">관리자</a></li>
+			</ul>
+			<div class="d-flex align-items-center">
+				<a href="mypage.html" >
+					<img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fs3.orbi.kr%2Fdata%2Ffile%2Funited2%2F6cc64e06aa404ac3a176745b9c1d5bfa.jpeg&type=sc960_832"
+							alt="프로필" class="rounded-circle" width="36" height="36">
+				</a>
+				<a href="mypage.html" class="ms-2 text-decoration-none text-dark">마이페이지</a>
+			</div>
+		</div>
+	</nav>
+
+	<main>
+		<div class="container">
+			<!-- 좌측 nav -->
+			<div class="sidebar">
+				<h3>마이페이지</h3>
+				<ul>
+					<li><a href="mypage_profile.html">개인 정보</a></li>
+					<li><a href="mypage_attendance.html">근태 관리</a></li>
+					<li><a href="mypage_loginlog.html">로그인 기록</a></li>
+					<li><a href="mypage_settings.html">페이지 설정</a></li>
+				</ul>
+			</div>
+
+			<!-- 기능 페이지 -->
+			<!-- <div class="main-content">
+				<img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
+					alt="lock icon">
+				<p>
+					개인 정보 조회를 위해서는 인증이 필요합니다.<br> 비밀번호를 입력한 후 확인 버튼을 클릭해 주세요.
+				</p>
+				<input type="password" placeholder="비밀번호">
+				<div>
+					<button class="confirm-btn">확인</button>
+					<button class="cancel-btn">취소</button>
+				</div>
+			</div> -->
+			
+			<!-- 마이페이지 > 개인 정보 -->
+			<div class="main-content text-start">
+  <h4 class="mb-4 fw-bold border-bottom pb-2">개인 정보</h4>
+
+  <div class="card card-custom mb-4 card-wrapper">
+    <div class="d-flex align-items-center mb-4">
+      <img src="default_profile.png" alt="프로필 사진" class="profile-photo">
+      <input type="file" class="form-control form-control-sm w-auto">
+    </div>
+
+    <div class="info-grid">
+      <div class="fw-bold">이름</div><div>홍길동</div>
+      <div class="fw-bold">사원번호</div><div>20250001</div>
+
+      <div class="fw-bold">직급</div><div>대리</div>
+      <div class="fw-bold">부서</div><div>개발팀</div>
+
+      <div class="fw-bold">생년월일</div><div>1990-01-01</div>
+      <div class="fw-bold">주소</div><div>서울특별시 강남구</div>
+
+      <div class="fw-bold">이메일</div>
+      <div>example@grouvy.com (local)</div>
+      <div class="fw-bold"></div>
+      <div><a href="#" class="text-decoration-none small text-muted">비밀번호 초기화</a></div>
+
+      <div class="fw-bold">입사일</div><div>2020-03-15</div>
+    </div>
+  </div>
+
+  <div class="card card-custom mb-4 card-wrapper">
+    <h5 class="fw-bold mb-3">인사 관련 정보</h5>
+    <div class="info-grid">
+      <div class="fw-bold">인사변동일자</div><div>2024-05-01</div>
+      <div class="fw-bold">근무상태변경일자</div><div>2023-12-10</div>
+
+      <div class="fw-bold">발령일자</div><div>2023-11-05</div>
+      <div class="fw-bold">계정상태변경일자</div><div>2025-01-01</div>
+    </div>
+  </div>
+</div>
+
+				
+
+	</main>
+
+	<footer>© 2025 그룹웨어 Corp.</footer>
+
+</body>
+</html>

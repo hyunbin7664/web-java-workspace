@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>장바구니 - MovMov</title>
+  <link rel="stylesheet" href="style/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .cart-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .cart-header {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+    }
+    .cart-item img {
+      width: 80px;
+      border-radius: 8px;
+      margin-right: 16px;
+    }
+    .item-info {
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+    .item-details {
+      display: flex;
+      flex-direction: column;
+    }
+    .item-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .item-price {
+      color: #FF498D;
+      font-size: 14px;
+    }
+    .item-qty {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .item-qty button {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      background-color: #fafafa;
+      cursor: pointer;
+    }
+    .item-qty input {
+      width: 40px;
+      text-align: center;
+    }
+    .item-total {
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .cart-summary {
+      text-align: right;
+      margin-top: 30px;
+      font-size: 18px;
+    }
+    .cart-summary span {
+      font-weight: bold;
+      color: #FF498D;
+    }
+    .checkout-btn {
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      background-color: #FF498D;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="resources/logo-primary.png" alt="logo" class="logo-img" /></div>
+    <nav>
+      <ul>
+        <li>홈</li>
+        <li>영화</li>
+        <li>커뮤니티</li>
+        <li>매거진</li>
+        <li>Mov Commerce</li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-cart">장바구니</button>
+      <button class="btn-signout">로그아웃</button>
+      <img src="resources/default-profile.png" id="profile-toggle" alt="프로필">
+    </div>
+  </header>
+
+  <main>
+    <div class="cart-container">
+      <div class="cart-header">🛒 장바구니</div>
+
+      <div class="cart-item">
+        <div class="item-info">
+          <img src="resources/ticket1.jpg" alt="상품 이미지">
+          <div class="item-details">
+            <div class="item-name">일반 영화 관람권</div>
+            <div class="item-price">₩13,000</div>
+          </div>
+        </div>
+        <div class="item-qty">
+          <button onclick="updateQty(-1)">-</button>
+          <input type="text" id="qty" value="1" readonly>
+          <button onclick="updateQty(1)">+</button>
+        </div>
+        <div class="item-total" id="item-total">₩13,000</div>
+      </div>
+
+      <div class="cart-summary">
+        총 결제 금액: <span id="total">₩13,000</span>
+      </div>
+
+      <button class="checkout-btn">구매하기</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-top">
+        <p class="rating-info">지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.</p>
+        <div class="language-select">
+          <select>
+            <option>한국어</option>
+          </select>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">서비스 이용약관</a>
+        <span>|</span>
+        <a href="#"><strong>개인정보 처리방침</strong></a>
+        <span>|</span>
+        <a href="#">회사 안내</a>
+      </div>
+      <div class="footer-contact">
+        <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+        <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+        <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+      </div>
+      <div class="footer-company">
+        <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+        <p>사업자 등록 번호 211-210-61239</p>
+      </div>
+      <div class="footer-bottom">
+        <span class="copyright">© Copy Right MovMov 2025 Inc. All rights reserved.</span>
+        <div class="footer-socials">
+          <span><i class="fa-brands fa-facebook"></i></span>
+          <span><i class="fa-brands fa-x-twitter"></i></span>
+          <span><i class="fa-brands fa-instagram"></i></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let qty = 1;
+    const unitPrice = 13000;
+    const qtyInput = document.getElementById("qty");
+    const itemTotal = document.getElementById("item-total");
+    const total = document.getElementById("total");
+
+    function updateQty(change) {
+      qty = Math.max(1, qty + change);
+      qtyInput.value = qty;
+      const price = (qty * unitPrice).toLocaleString();
+      itemTotal.innerText = `₩${price}`;
+      total.innerText = `₩${price}`;
+    }
+  </script>
+</body>
+</html>

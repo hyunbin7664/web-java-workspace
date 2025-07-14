@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>선택자 연습</h1>
+	
+	<h3>직원목록</h3>
+	<ul id="emp-list">
+		<li>김유신</li>
+		<li>강감찬</li>
+		<li><strong>이순신</strong></li>
+		<li>유관순</li>
+	</ul>
+	
+	<script type="text/javascript">
+		// li중에서 컨텐츠로 "강감찬"을 포함하고 있는 것 선택
+		$("#emp-list li:contains('강감찬')").css('color', 'red');
+		
+		// li중에서 컨텐츠로 "강감찬"을 포함하고 있지 않은 것 선택
+		$("#emp-list li:not(:contains('강감찬'))").css('color', 'blue');
+		
+		// li중에서 컨텐츠로 첫번째 li가 아닌 것 선택
+		$("#emp-list li:not(:first)").css('background-color', 'yellow');
+		
+		// li 중에서 strong을 갖고 있는 것 선택
+		$("#emp-list li:has(strong)").css("font-size", "30px");
+	</script>
+</body>
+</html>

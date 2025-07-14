@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>Promise 연습</h1>
+	
+	<script type="text/javascript">
+		// 비동기작업을 Promise API를 사용하지 않고 실행했을 때
+		
+		// 1. 삼계탕 주문하기
+		let promise1 = new Promise(function(resolve, reject) { 
+			setTimeout(function() {
+				console.log("101. 삼계탕 준비하기");
+				console.log("102. 물끓이기");
+				console.log("103. 닭 넣고 끓이기");
+				console.log("104. 조리완료");
+				
+				resolve("삼계탕");
+			}, 5000);
+		});
+		
+		// 2. 잔치국수 주문하기
+		let promise2 = new Promise(function(resolve, reject) { 
+			setTimeout(function() {
+				console.log("201. 국수 삶기");
+				console.log("202. 양념 만들기");
+				console.log("203. 그릇에 육수, 국수, 양념 담기");
+				console.log("204. 조리완료");
+				
+				resolve("잔치국수");
+			}, 5000);
+		});
+		
+		promise1
+			.then(function(result) {
+				console.log("100번 주문결과", result);
+			})
+			.catch(function(error) {
+				console.log("실패 사유", error);
+			});
+		
+		promise2
+			.then(function(result) {
+				console.log("100번 주문결과", result);
+			})
+			.catch(function(error) {
+				console.log("실패 사유", error);
+			});
+	</script>
+</body>
+</html>
+<!--
+	동기방식과 비동기방식
+	- 동기방식
+		+ 코드가 순서대로 실행되는 방식이다.
+		+ 앞에서 작성한 수행문의 실행이 완료되면 다음 수행문을 실행한다.
+		+ 예시)
+			console.log("수행문1");
+			console.log("수행문2");
+			console.log("수행문3");
+	- 비동기방식
+		+ 앞에서 작성한 수행문의 실행이 완료될 때까지 기다리지 않고,
+		  다음 수행문을 실행하는 방식이다.
+		+ 작업이 완료되면 Promise 혹은 async/await을 이용해서 그 결과를 처리해야 한다.
+		+ 예시)
+			// Promise API를 사용하면 비동기방식으로 작업을 실행하더라도
+			// 해당 작업이 완료(성공 혹은 실패)되면 그 결과를 처리할 수 있다.
+			let promise = new Promise(function(resolve, reject) {
+				// 비동기방식으로 처리할 작업을 실행한다.
+				
+				if (성공여부체크) {
+					resolve(결과값);
+				} else {
+					reject(오류메시지);
+				}
+			});
+			promise
+				.then(function() {
+					// 비동기작업이 성공했고 결과값을 전달받았다.
+					// 전달받은 결과값을 처리한다.
+				})
+					
+				.catch(function() {
+					// 비동기작업이 실패했고 오류메시지를 전달받았다
+					// 오류를 출력한다.
+				})
+	
+	
+	비동기작업의 정의 및 실행하기
+	1. 비동기방식으로 실행시키고 싶은 작업 정의하기
+	  (실행시간이 오래걸리는 작업이다. 실행시간이 오래걸리는 작업은 진동벨을 반환하자.)
+	  function getUser() {
+	  	let promise = new Promise(function(resolve, reject) {
+	  		// 실행시간이 오래 걸리는 작업
+	  		let user = 서버에서 사용자정보를 조회하는 코드;
+	  		if (user != null) {
+	  			resolve(user);
+	  		} else {
+	  			reject("사용자가 존재하지 않습니다.");
+	  		}
+	  	});
+	  	
+	  	return promise;
+	  }
+	  
+	2. 비동기방식으로 실행하기
+		* Promise API를 사용
+			// 실행시간이 오래 걸리는 작업 호출
+			let promise = getUser()
+			promise
+				.then(function(result) {...})
+				.catch(function(error) {...});
+			// 위의 작업이 완료되기를 기다리지 않고, 다른 작업 실행하기
+			console.log( ... )
+			console.log( ... )
+		* async/await
+			// 실행시간이 오래 걸리는 작업을 async 함수안에서 호출한다.
+			async function fn() {
+				try {
+					let user = await getUser();
+					...// 성공완료
+				} catch (error) { 
+					...// 실패완료
+				}
+			}
+			// async 함수를 호출해서 비동기작업을 호출한다.
+			fn();
+			// async 함수의 실행이 완료될 때까지 기다리지 않고, 다른 작업을 호출한다.
+			console.log( ... )
+			console.log( ... )
+-->

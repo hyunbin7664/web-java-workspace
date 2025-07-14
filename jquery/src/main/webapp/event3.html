@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>이벤트 처리</h1>
+	
+	<div>
+		<button id="btn-1">버튼1</button>
+		<button id="btn-2">버튼2</button>
+	</div>
+	
+	<div>
+		<button id="btn-3">버튼3</button>
+		<button id="btn-add-handler">추가</button>
+		<button id="btn-remove-handler">삭제</button>
+	</div>
+	
+	<script type="text/javascript">
+		$("#btn-1").click(function() {
+			alert("버튼1이 클릭되었습니다.")
+		});
+		
+		/*
+			한번만 실행될 이벤트 핸들러 등록하기
+		*/
+		$("#btn-2").one('click', function() {
+			alert("버튼2이 클릭되었습니다.")
+		});
+		
+		$("#btn-add-handler").click(function() {
+			$("#btn-3").click(function() {
+				alert("버튼3이 클릭되었습니다.")
+				})
+		});
+			
+		// 이벤트와 관련된 이벤트핸들러 제거하기
+		$("#btn-remove-handler").click(function() {
+			$("#btn-3").off('click');
+			
+		});
+		
+		
+	</script>
+</body>
+</html>

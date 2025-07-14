@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	form {
+		margin-bottom: 20px;
+	
+	}
+	table {
+		width: 100%;
+	}
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>AJAX 연습</h1>
+	
+	<form>
+		<label>날짜: </label>
+		<input type="date" name="date" />
+		<button type="button" id="btn-get-boxoffice">조회</button>
+	</form>
+	
+	<table id="table-box-office">
+		<colgroup>
+			<col width="10%">
+			<col width="*">
+			<col width="15%">
+			<col width="15%">
+			<col width="15%">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>순위</th>
+				<th>제목</th>
+				<th>개봉일</th>
+				<th>누적매출액</th>
+				<th>누적관객수</th>
+			</tr>
+			<tbody>
+			<!-- JS로 데이터 삽입 -->
+		</tbody>
+		</thead>	
+	</table>
+	<script type="text/javascript">
+		// 박스오피스 조회하기
+		// 1. 입력필드에 입력된 날짜값을 읽어온다.
+		// 2. 날짜를 YYYYMMDD형식으로 바꾼다.
+		// 3. 날짜를 전달해서 박스오피스정보를 조회한다.
+		$("#btn-get-boxoffice").click(function() {
+			let date = $(":input[name='date']").val();
+			date = date.replaceAll("-", "");
+			refreshBoxOffice(date);
+		});
+		
+		// 영화진흥위원회에 url을 보내고 박스오피스데이터 받기
+		// 1. XHR 객체 생성하기
+		// 2. XHR 객체에 이벤트핸들러 등록하기
+		// 3. XHR 객체 초기화하기
+		// 4. XHR 객체를 이용해서 서버에 요청보내기
+		function refreshBoxOffice(date) {
+			let $tbody = $("#table-box-office tbody").empty();
+			
+			let url = `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=726512c39b94fec57ffea53d92b955ff&targetDt=${date}`
+			let xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					let text = xhr.responseText;
+					let obj = JSON.parse(text);
+					let boxOfficeList = obj.boxOfficeResult.dailyBoxOfficeList;
+					for (let item of boxOfficeList){
+						let rank = item.rank;
+						let title = item.movieNm;
+						let open = item.openDt;
+						let sales = item.salesAcc;
+						let audience = item.audiAcc;
+						
+						let tr = `
+							<tr>
+								<td>${rank}</td>
+								<td>${title}</td>
+								<td>${open}</td>
+								<td>${sales}</td>
+								<td>${audience}</td>
+							</tr>
+							`;
+							$tbody.append(tr);
+						
+						
+					}
+				}
+			}
+			xhr.open("get", url);
+			xhr.send();
+		}
+		
+	</script>
+</body>
+</html>
+<!--
+	XMLHttpRequest
+	- 웹서버와 HTTP 통신을 하고, 데이터를 교환할 수 있는 객체다.
+	- 주요 API
+		속성
+			readyState
+				- XMLHttpRequest의 상태를 표현한다.
+				- readyState의 상태
+					0 : XHR이 생성됨
+					1 : XHR이 초기화됨
+					2 : XHR이 서버로 요청을 보냄
+					3 : 서버에서 요청을 처리하고 있음
+					4 : 서버에서 응답을 받았음
+			status
+				- HTTP 응답코드를 표현한다.
+				- 응답코드	
+					200 : ok
+					400 : not found
+					500 : internal server error
+			responseText
+				- 텍스트 형식의 응답데이터를 반환한다.
+				- 일반텍스트, csv, json 등의 텍스트 데이터
+			responseXML
+				- XML DOM 객체를 반환한다.
+				  (응답으로 받은 XML 텍스트를 XML DOM 객체로 변환한 다음
+				   responseXML에 담는다)
+		메소드
+			open(요청방식, URL)
+				- XHR객체를 초기화하는 메소드다.
+				- 요청방식과 요청URL를 설정한다.
+				- 요청방식은 'get' 혹은 'post' 중 하나다.
+			send(data)
+				- 요청을 서버로 보내는 메소스다.
+				- data는 요청처리에 필요한 정보다.
+				- 요청방식이 post일 때만 data를 전달할 수 있다.
+		이벤트
+			onreadystatechange
+				- XHR의 readyState의 속성값이 변할 때 마다 발생하는 이벤트다.
+				- 이 
+-->

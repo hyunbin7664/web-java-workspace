@@ -1,0 +1,28 @@
+package kr.co.bookstore.vo;
+
+import java.util.Date;
+
+import org.apache.ibatis.type.Alias;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Alias("Order")
+public class Order {
+
+	private int no;
+	private String status;
+	private String message;
+	private User user;
+	private Address address;
+	private int bookTotalPrice;
+	private int deliveryFee;
+	private int orderTotalPrice;
+	private int depositPoint;
+	private Date createdDate;
+	private Date updatedDate;
+}

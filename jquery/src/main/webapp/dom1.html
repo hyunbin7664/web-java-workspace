@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	div {
+		border: 1px solid black;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>DOM 조작하기</h1>
+	
+	<div>
+		<p id="txt">내용입니다.</p>
+		<button id="btn-get-text">조회하기</button>
+		<button id="btn-set-text">변경하기</button>
+	</div>
+	
+	<div>
+		<div id="box-1">
+			<a href="http://www.daum.net">다음</a>
+			<button>버튼</button>
+		</div>
+		<div id="box-2">
+		</div>
+			
+		<button id="btn-get-html">조회하기</button>
+		<button id="btn-set-html">변경하기</button>
+	</div>
+	
+	<div>
+		<img src="resources/images/book1.png"
+			width="230" height="340"
+			id="img-big"
+			alt="책표지">
+			
+		<img src="resources/images/book1.png"
+			width="67.7" height="100"
+			class="img-thumb"
+			alt="책표지 작은 그림">
+			
+		<img src="resources/images/book2.jpeg"
+			width="67.7" height="100"
+			class="img-thumb"
+			alt="책표지 작은 그림">
+	</div>
+	
+	<div>
+		<form action="">
+			<div>
+				<label>이름</label>
+				<input type="text" name="name" id="name"/>
+			</div>
+			<div>
+				<button id="btn-get-value">조회하기</button>
+				<button id="btn-set-value">변경하기</button>
+			</div>
+			<div>
+				<label>보유기술</label>
+				<input type="checkbox" name="skill" value="c"/>C
+				<input type="checkbox" name="skill" value="java"/>Java
+				<input type="checkbox" name="skill" value="python"/>Python
+			</div>
+			<div>
+				<button id="btn-checked">전체 선택</button>
+			</div>
+		</form>
+	</div>
+	
+	<script type="text/javascript">
+		// 조회버튼에 이벤트핸들러 등록하기
+		$("#btn-get-text").click(function() {
+			let textContent = $("#txt").text();
+			alert(textContent);
+		});
+
+		// 변경버튼에 이벤트핸들러 등록하기
+		$("#btn-set-text").click(function() {
+			$("#txt").text("새 내용입니다.");
+		});
+		
+		// 조회버튼에 html컨텐츠를 조회하는 이벤트핸들러 등록하기
+		$("#btn-get-html").click(function(){
+			let htmlContent = $("#box-1").html();
+			alert(htmlContent);
+		})
+		// 변경버튼에 html컨텐츠를 변경하는 이벤트핸들러 등록하기
+		$("#btn-set-html").click(function(){
+			$("#box-2").html("<button>버튼</button>");
+		})
+		
+		
+		// 작은 이미지에 마우스가 진입할 때마다 실행되는 이벤트핸들러 등록하기
+		$(".img-thumb").mouseenter(function() {
+			let srcPath = $(this).attr("src");
+			$("#img-big").attr("src", srcPath);
+		})
+		
+		// 입력필드의 입력값을 조회하는 이벤트핸들러 등록하기
+		$("#btn-get-value").click(function(){
+			let name = $("input[name='name']").val();
+			alert(name);
+		});
+		// 입력필드의 입력값을 변경하는 이벤트핸들러 등록하기
+		$("#btn-set-value").click(function(){
+			$("inpit[name='name']").val("홍길동");
+		});
+		
+		// 체크박스를 체크하는 이벤트핸들러 등록하기
+		$("#btn-checked").click(function(e) {
+			e.preventDefault(); // form 기본 제출 막기
+			$("input[type='checkbox'][name='skill']").prop("checked", true);
+		});
+	</script>
+</body>
+</html>

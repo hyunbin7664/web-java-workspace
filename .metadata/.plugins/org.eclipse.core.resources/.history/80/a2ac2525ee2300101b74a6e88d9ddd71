@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>평가하기 - ${movie.title}</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style/evaluate.css">
+</head>
+<body>
+	<header>
+    <div class="logo"><img src="../resources/logo-primary.png" alt="" class="logo-img"></div>
+    <nav>
+      <ul>
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="movList.html">영화</a></li>
+        <li><a href="community.html">커뮤니티</a></li>
+        <li><a href="shopmain.html">Mov Commerce</a></li>
+      </ul>
+    </nav>
+    <div class="client">
+      <button class="btn-signin">로그인</button>
+      <button class="btn-signup">회원가입</button>
+      <img src="../resources/default-profile.png" alt="">
+    </div>
+  </header>
+  <!-- Hero 섹션 -->
+  <header class="hero">
+    <img src="https://m.media-amazon.com/images/I/81dYTGqK6ZL._AC_SY679_.jpg" alt="The Matrix 배너">
+    <div class="hero-overlay text-white text-center">
+      <h1>The Matrix</h1>
+      <p>1999 · 액션, SF · 136분 · 15세 이상 관람가</p>
+    </div>
+  </header>
+
+  <div class="container my-5">
+    <h1 class="mb-4">${movie.title} 평가하기</h1>
+    <form action="/submitRating" method="post">
+      <input type="hidden" name="movieId" value="${movie.id}">
+      
+      <!-- 별 평점 선택 -->
+      <div class="mb-4">
+        <label for="rating" class="form-label">평점</label>
+        <div class="star-rating">
+		  <input type="radio" id="star5" name="rating" value="5">
+		  <label for="star5">★</label>
+		  <input type="radio" id="star4" name="rating" value="4">
+		  <label for="star4">★</label>
+		  <input type="radio" id="star3" name="rating" value="3">
+		  <label for="star3">★</label>
+		  <input type="radio" id="star2" name="rating" value="2">
+		  <label for="star2">★</label>
+		  <input type="radio" id="star1" name="rating" value="1">
+		  <label for="star1">★</label>
+		</div>
+      </div>
+
+      <!-- 코멘트 입력 -->
+      <div class="mb-4">
+        <label for="comment" class="form-label">코멘트</label>
+        <textarea class="form-control" id="comment" name="comment" rows="4" placeholder="영화에 대한 생각을 남겨주세요"></textarea>
+      </div>
+      
+      <!-- 버튼 -->
+      <button action type="submit" class="btn btn-primary">제출</button>
+      <a href="detail.html" class="btn btn-secondary">취소</a>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="footer">
+  <div class="footer-wrapper">
+    <div class="footer-top">
+      <p class="rating-info">
+        지금까지 <span class="rating-count">★737,166,391</span> 개의 평가가 쌓였어요.
+      </p>
+      <div class="language-select">
+        <select>
+          <option>한국어</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">서비스 이용약관</a>
+      <span>|</span>
+      <a href="#"><strong>개인정보 처리방침</strong></a>
+      <span>|</span>
+      <a href="#">회사 안내</a>
+    </div>
+
+    <div class="footer-contact">
+      <p>고객센터 | cs@movmov.com, 02-000-0000</p>
+      <p>광고 문의 | ad-sales@movmov.com / 최신 광고 소개서</p>
+      <p>제휴 및 대외 협력 | <a href="https://movmov.team/contact" target="_blank">https://movmov.team/contact</a></p>
+    </div>
+
+    <div class="footer-company">
+      <p>주식회사 뭅뭅 | 대표 이응수 | 서울 종로구 율곡로10길 105 디아망 4층</p>
+      <p>사업자 등록 번호 211-210-61239</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="copyright"> © Copy Right MovMov 2025 Inc. All rights reserved.</span>
+      <div class="footer-socials">
+        <span><i class="fa-brands fa-facebook"></i></span>
+        <span><i class="fa-brands fa-x-twitter"></i></span>
+        <span><i class="fa-brands fa-instagram"></i></span>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>

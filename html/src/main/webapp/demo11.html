@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>컨테이너 엘리먼트</h1>
+	<!-- 
+		컨테이너 엘리먼트는 다른 엘리먼트를 담는 엘리먼트다.
+		
+		<div>
+			+ 블록 레벨 엘리먼트다.
+			+ 블록 레벨 컨테이너다.
+			+ 블록 레벨 엘리먼트나 인라인 레벨 엘리먼트를 담는 
+			  컨테이너 역할을 수행하는 엘리먼트다.
+			+ div는 다른 div를 담을 수 있다.
+			+ 서로 관련있는 엘리먼트를 div에 담아서 그룹화한다.
+			+ 그룹화하면 스타일을 일괄적용할 수 있고 스크립트로 쉽게 다룰 수 있다.
+		<span>
+			+ 인라인 레벨 엘리먼트다.
+			+ 인라인 레벨 컨테이너다.
+			+ 텍스트나 문서의 일부분 혹은 인라인 레벨 엘리먼트를 담는 컨테이너다.
+			+ 텍스트의 일부분에 다른 스타일을 적용하거나 
+			  텍스트의 일부분만 스크립트로 조작하기 위해 span으로 감싼다.
+	-->
+
+	<h2>div 엘리먼트로 그룹화하기</h2>
+	<div style="background-color: black; color: white;">
+		<h3>뉴스 속보</h3>
+		<ul>
+			<li>뉴스 속보가 있습니다.</li>
+			<li>뉴스 속보가 있습니다.</li>
+			<li>뉴스 속보가 있습니다.</li>
+			<li>뉴스 속보가 있습니다.</li>
+		</ul>
+		<p>내용입니다.</p>
+	</div>
+
+	<div style="background-color: green; color: orange;">
+		<h2>스포츠 뉴스</h2>
+		<li>스포츠 뉴스가 있습니다.</li>
+		<li>스포츠 뉴스가 있습니다.</li>
+		<li>스포츠 뉴스가 있습니다.</li>
+		<li>스포츠 뉴스가 있습니다.</li>
+	</div>
+	
+	<h2>span으로 텍스트의 일부분 감싸기</h2>
+	<p>
+		총 주문금액은 <span style="color: red;"><strong>45,000</strong>원</span>(<span
+			style="color: blue; font-size: small">적립포인트: 1,200점</span>)입니다.
+	</p>
+	<button onclick="changePrice();">변경</button>
+	<script type="text/javascript">function changePrice() {
+		let arr = ["45,000", "100,000", "15,000"];
+		
+		let value = arr[new Date().getTime()%3];
+		document.querySelector("span strong").textContent = value;
+	}</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo</title>
+<style type="text/css">
+	div {
+		border: 1px solid black;
+		padding: 20px;
+		margin-bottom: 20px;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<h1>선택자 연습</h1>
+	
+	<div>
+		<p>내용1</p>
+		<p>내용2</p>
+		<p>내용3</p>
+		<p>내용4</p>
+		<p>내용4</p>
+		<p>내용4</p>
+		<p>내용4</p>
+		<p>내용4</p>
+		<p>내용4</p>
+		<p>내용4</p>
+	</div>
+	
+	<div>
+		<p>내용1</p>
+		<p>내용2</p>
+		<p>내용3</p>
+		<p>내용4</p>
+	</div>
+	
+	<div>
+		<p>내용1</p>
+		<p>내용2</p>
+		<p>내용3</p>
+		<p>내용4</p>
+	</div>
+	
+	
+	<script type="text/javascript">
+		/*
+			:first와 :last
+				- 선택된 엘리먼트 중에서 첫번째 혹은 마지막번째 엘리먼트를 선택
+				- 하나 선택된다.
+			:first-child와 :last-child
+				- 선택된 엘리먼트 중에서 부모를 기준으로 첫번째 자식 혹은 마지막번째 자식 선택
+				- 여러 개 선택될 수 있다.
+			:nth-child(n)
+				- n번쨰 자식인 엘리먼트 선택
+			
+		*/
+		
+		// p중에서 첫번째 엘리먼트 선택
+		$("p:first").css("color", "red");
+		
+		// p중에서 첫번째 자식인 엘리먼트 선택
+		$("p:first-child").css("border", "2px solid blue");
+		
+		// p중에서 3번째 자식인 엘리먼트 선택
+		$('p:nth-child(3)').css('border', '2px solid red');
+		
+		// p중에서 짝수번째 자식인 엘리먼트 선택
+		$('p:nth-child(2n)').css('font-size', '5px');
+	</script>
+</body>
+</html>

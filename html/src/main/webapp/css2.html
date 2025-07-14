@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/* 자손선택자*/
+	#first-box a {background-color: yellow;}
+	#first-box ul a {border: 2px dotted blue;}
+	
+	/* 자식선택자*/
+	#first-box > a {border: 2px solid red;}
+	
+	/* 다음형제 선택자*/
+	#second-box h3 + p {color: red;}
+	
+	/* 모든형제 선택자 */
+	#second-box h3 ~ p {background-color: gray;}
+	
+	
+</style>
+</head>
+<body>
+	<h1>복합 선택자</h1>
+	
+	<div id="first-box">
+		<a href="">링크1</a>
+		<p>선택자 연습입니다.</p>
+		
+		<h3>즐겨찾기</h3>
+		<ul>
+			<li><a href="">링크2</a></li>
+			<li><a href="">링크2</a></li>
+			<li><a href="">링크2</a></li>
+			<li><a href="">링크2</a></li>
+		</ul>
+	</div>
+	
+	<div id="second-box">
+		<h3>선택자 연습</h3>
+		<p>연습입니다.</p>
+		<p>연습입니다.</p>
+		<p>연습입니다.</p>
+		<p>연습입니다.</p>
+	</div>
+	
+<!--
+	복합 선택자
+	---------------------------------------------
+	자손 선택자		A   B	A요소의 모든 자손 중에서 B요소를 전부 선택
+						div p { ... }
+						.box a { ... }
+						#header div h3 { ... }
+	자식 선택자		A > B	A요소의 모든 자식 중에서 B요소를 전부 선택
+						div > p { ... }
+	다음형제 선택자	A + B	A요소의 바로 다음 형제 B요소를 선택
+						선택된 것이 없거나 오직 하나 선택된다.
+	모든형제 선택자	A ~ B	A요소의 모든 형제 중에서 B요소를 선택
+						여러 개 선택될 수 있다.
+	---------------------------------------------
+	
+-->
+
+</body>
+</html>
